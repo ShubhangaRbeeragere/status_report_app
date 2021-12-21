@@ -1,4 +1,7 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm"
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany} from "typeorm"
+import { TodoComment } from "typescript";
+import ToDoContent from "./toDoContent";
+import toDoContent from "./toDoContent"
 
 Entity()
 export default class ToDoList{
@@ -10,4 +13,7 @@ export default class ToDoList{
 
     @Column({type: "date", unique: false, nullable: false})
     date: string;
+
+    @OneToMany(type => ToDoContent, toDoContent => toDoContent.list_id_fk)
+    contentKey: TodoComment; 
 }
