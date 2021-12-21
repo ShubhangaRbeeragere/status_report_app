@@ -73,28 +73,17 @@ export const addData = async(req: Request, res: Response) => {
             throw new Error("POST: user already exists");
         }
 
-        let applicantDetails = new ApplicantDetails();
-        applicantDetails.applicant_name = personalData.applicantName;
-        applicantDetails.applied_position = personalData.appliedPosition;
-        applicantDetails.applied_date = personalData.appliedDate;
-        applicantDetails.email_address = personalData.emailAddress;
-        applicantDetails.address = personalData.address;
-        applicantDetails.available_from = personalData.availableFrom;
+        let achievements = new Achievements();
+        achievements.achievement_name = receivedData.ACHIEVEMENT_NAME;
+        achievements.content = receivedData.CONTENT;
+        achievements.date = receivedData.DATE;
+
+
 
         //save applicantDetails
-        await manager.save(applicantDetails);
-
-        //add phone details///////////////////////////////////////////////
-        let phoneData = personalData.phone;
-        phoneData.forEach(async(phone) => {
-            let phoneDetails = new PhoneNumber();  
-            phoneDetails.phone_num = phone.number;
-            phoneDetails.applicant_id_fk = applicantDetails;
-            await manager.save(phoneDetails);
-        })
-
+        await manager.save(achievements);
 ///////////////2>>>>>>>>>>>>>>>>>previous employment details///////////////////////////////////////////
-        employmentData.forEach(async(employment) => {
+        MILESTONES.forEach(async(employment) => {
            let  previousEmployment = new PreviousEmployment();
            previousEmployment.company_name = employment.company;
            previousEmployment.position = employment.position;
