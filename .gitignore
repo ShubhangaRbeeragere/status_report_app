@@ -1,0 +1,6 @@
+/node/node_modules
+/node/package.json
+
+
+/status-report-app/node_modules
+/status-report-app/copyFolder

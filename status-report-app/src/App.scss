@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+//variables
+$mainColor: rgba(24, 78, 119, 0.8);
+$subColor: rgba(82, 182, 154, 0.6);
+$textColor: #FFFBFB;
+$mainDim: #87A8B9;
+$warning: rgb(192, 12, 12);
+
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+}
+
+body{
+   height: 100vh; 
+   user-select: none;
+}
+
+.app{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    .companyHolder{
+        height: 100vh;
+        width: 50vw;
+        background-image: linear-gradient(to bottom right, $mainColor 30%, $subColor);
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        justify-content: center;
+
+        .nameHolder{
+            margin-top: 25%;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+            .logo{
+                height: 5.2rem;
+                width: 5.2rem;
+                background-image: url("loginPage/images/logo.jpg"), linear-gradient($mainColor, $subColor);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.3);
+            }
+            .name{
+                line-height: 60px;
+                color: $textColor; 
+                width: 10ch;
+                font-size: 3rem;
+
+                text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+    .loginHolder{
+        background-color: $mainColor;
+        height: 100vh;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        .name{
+            color: $textColor;
+            font-size: 2rem;
+            margin: 1rem;
+            margin-top: 18%;
+
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+        }
+        form{
+            color: white;
+            background-color: $mainColor;
+            padding: 1.6rem 3rem 0.8rem;
+            display: flex;
+            flex-direction: column;
+            row-gap: 4px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.3);
+            label{
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            }
+            input{
+                &:focus{
+                    outline: 2px solid black;
+                    transition: 100ms all;
+                }
+                font-size: 0.9rem;
+                line-height: 1.5rem;
+                text-align: center;
+                width: 10rem;
+                height: 1.7rem;
+                margin-bottom: 1rem;
+                border: none;
+                border-radius: 5px;
+            }
+            .button{
+                &:focus{
+                    outline: none;
+                }
+                &:active{
+                    background-color: $mainColor;
+                }
+                font-weight: 500;
+                color: white;
+                background-color: darken($mainColor, 8);
+                width: 4rem;
+                margin-left: auto;
+                margin-right: auto;
+                box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .messages{
+            margin-top: 2rem;
+            color: $warning;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .loader{
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
+        display: grid;
+        place-items: center;
+
+        .loaderCircle{
+            height: 3rem;
+            width: 3rem;
+            background-color: transparent;
+            border-radius: 50%;
+            border: 7px solid rgb(0, 0, 0);
+            border-right-color: rgb(255, 255, 255);
+            animation: rotate forwards linear 1s infinite;
+        }
+    }
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
+
