@@ -6,7 +6,7 @@ import {PrimaryGeneratedColumn,
   export class SubAchievements {
     
       @PrimaryGeneratedColumn()
-      sub_achievement_id! : number;
+      sub_achievements_id! : number;
 
       @Column({ type: "varchar", nullable: false ,unique:true})
       sub_achievement_name!: string;    
