@@ -3,7 +3,10 @@ import ToDoContent from "../model/entity/toDoContent"
 import ToDoList from "../model/entity/toDoList"
 import {Request, Response} from "express";
 import * as toDoLayout from "../model/interface/toDoList.interface"
-//get all the to do list rows
+import { table } from "console";
+
+
+//get all the to do list table/////////////////////////////////////////////////
 export const getAll = async function(req: Request, res: Response){
     let manager = getManager();
     try{
@@ -18,13 +21,35 @@ export const getAll = async function(req: Request, res: Response){
         res.status(400).send("GET: error occured");
     }
 }
-//get one row from to do list rows
-export const getOnly = function(req: Request, res: Response){
-
+//get one row from to do list/////////////////////////////////////////////////
+export const getOnly = async function(req: Request, res: Response){
+    const receivedData: any = req.query;
+    let manager = getManager();
+    try{
+        /*
+            get only the entries related to the project title
+            note: tableData will contain array of row, so take tableData[0]
+       */ 
+        let tableData = await manager.find(ToDoList,{
+            where: {title: receivedData.project},
+            relations: ["contentKey"]
+        }) 
+        //if project doesn't exist in the database
+        if(tableData[0] === undefined){
+            throw new Error("GET: data doesn't exist");
+        }
+        //else
+        // console.log(tableData);
+        res.status(200).send(tableData[0]);
+    }
+    catch(error: any){
+        console.log(error.message)
+        res.status(400).send("GET: error occured");
+    }
 }
-//add one row to 'to do list'
+//add one row to 'to do list'/////////////////////////////////////////////////
 export const addData = async function(req: Request, res: Response){
-    let receivedData: toDoLayout.toDoList = req.body;
+    const receivedData: toDoLayout.toDoList = req.body;
     let manager = getManager();
 
     //add the received data to the instance of class ToDoList
@@ -53,15 +78,15 @@ export const addData = async function(req: Request, res: Response){
     }
     catch(error: any){
         console.log(error.message);
-        res.status(400).send("POST: problem occured");
+        res.status(400).send("POST: error occured");
     };
 }
-//remove to do list rows
+//remove to do list rows/////////////////////////////////////////////////
 export const removeData = function(req: Request, res: Response){
 
 }
 
-//update to do list
+//update to do list/////////////////////////////////////////////////
 export const updateData = function(req: Request, res: Response){
 
 }
