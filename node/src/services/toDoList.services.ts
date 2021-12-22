@@ -4,9 +4,19 @@ import ToDoList from "../model/entity/toDoList"
 import {Request, Response} from "express";
 import * as toDoLayout from "../model/interface/toDoList.interface"
 //get all the to do list rows
-export const getAll = function(req: Request, res: Response){
-    
-    res.status(200).send("ok")
+export const getAll = async function(req: Request, res: Response){
+    let manager = getManager();
+    try{
+        let tableData = await manager.find(ToDoList, {
+            relations: ["contentKey"]
+        }); 
+        console.log(tableData);
+        res.status(200).send(tableData);
+    }
+    catch(error: any){
+        console.log(error.message);
+        res.status(400).send("GET: error occured");
+    }
 }
 //get one row from to do list rows
 export const getOnly = function(req: Request, res: Response){
