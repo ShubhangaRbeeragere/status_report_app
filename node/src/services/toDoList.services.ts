@@ -5,7 +5,8 @@ import {Request, Response} from "express";
 
 //get all the to do list rows
 export const getAll = function(req: Request, res: Response){
-
+    
+    res.status(200).send("ok")
 }
 //get all the to do list rows
 export const getOnly = function(req: Request, res: Response){
