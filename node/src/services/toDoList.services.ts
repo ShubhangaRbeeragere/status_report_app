@@ -17,17 +17,19 @@ export const addData = async function(req: Request, res: Response){
     let receivedData: toDoLayout.toDoList = req.body;
     let manager = getManager();
 
-    //save the list and content in the tables
+    //add the received data to the instance of class ToDoList
     let toDoList = new ToDoList();
     toDoList.title = receivedData.title;
     toDoList.date = receivedData.date;
     
     try{
+        //check if the project already exists
         let findList = await manager.findOne(ToDoList, {title: receivedData.title});
+            //if exists 
             if(findList !== undefined){
                 throw new Error("data already exists");
             }
-            //save the todolist table
+            //if not save the todolist table
             await manager.save(toDoList);
             //save todocontent table with foreign key
             receivedData.content.forEach(async (data) => {
