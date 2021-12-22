@@ -3,7 +3,6 @@ import ToDoContent from "../model/entity/toDoContent"
 import ToDoList from "../model/entity/toDoList"
 import {Request, Response} from "express";
 import * as toDoLayout from "../model/interface/toDoList.interface"
-import { table } from "console";
 
 
 //get all the to do list table/////////////////////////////////////////////////
@@ -18,7 +17,7 @@ export const getAll = async function(req: Request, res: Response){
     }
     catch(error: any){
         console.log(error.message);
-        res.status(400).send("GET: error occured");
+        res.status(400).send(error.message);
     }
 }
 //get one row from to do list/////////////////////////////////////////////////
@@ -44,7 +43,7 @@ export const getOnly = async function(req: Request, res: Response){
     }
     catch(error: any){
         console.log(error.message)
-        res.status(400).send("GET: error occured");
+        res.status(400).send(error.message);
     }
 }
 //add one row to 'to do list'/////////////////////////////////////////////////
@@ -62,7 +61,7 @@ export const addData = async function(req: Request, res: Response){
         let findList = await manager.findOne(ToDoList, {title: receivedData.title});
             //if exists 
             if(findList !== undefined){
-                throw new Error("data already exists");
+                throw new Error("POST: data already exists");
             }
             //if not save the todolist table
             await manager.save(toDoList);
@@ -78,15 +77,83 @@ export const addData = async function(req: Request, res: Response){
     }
     catch(error: any){
         console.log(error.message);
-        res.status(400).send("POST: error occured");
+        res.status(400).send(error.message);
     };
 }
 //remove to do list rows/////////////////////////////////////////////////
-export const removeData = function(req: Request, res: Response){
+export const removeData = async function(req: Request, res: Response){
+    /*
+        To remove a row from the table
+        >> if the "deleteProject" flag is set
+            >> find the listId from the todolist using project from receivedData
+            >> first remove all the rows from the child table using the listId as key
+            >> then remove the row from the parent with the project name as key
+        >> else 
+            >> remove only the content given in the received data from 
+            the child table
+    */
+    const receivedData: toDoLayout.projectName = req.body;
+    let manager = getManager();
+    try{
+        let findList = await manager.findOne(ToDoList, {title: receivedData.project});
+        //if the project doesn't exist
+        if(findList === undefined){
+            throw new Error("DELETE: data doesn't exist");
+        }
+        //else
+        let findContent = await manager.find(ToDoContent, {
+            list_id_fk: findList
+        })
+        // console.log(findContent);
+        //delete all the children with the foreign key "listid"
+        for(const content in findContent){
+            await manager.remove(findContent[content]);
+        }
+        //remove the parent 
+        await manager.remove(findList);
+        console.log("DELETE: data deleted")
+        res.status(200).send("DELETE: deleted");
+    }
+    catch(error: any){
+        console.log(error.message);
+        res.status(400).send(error.message);
+    }
 
 }
 
 //update to do list/////////////////////////////////////////////////
-export const updateData = function(req: Request, res: Response){
+export const updateData = async function(req: Request, res: Response){
+/*
+    To update a row of a table in database
+    >> check if the project exists 
+            >> add the content 
+*/
+    const receivedData: toDoLayout.updateProject = req.body;
+
+    let manager = getManager();
+    try{
+        let findList = await manager.findOne(ToDoList, {title: receivedData.project});
+        //if project doesn't exist
+        if(findList === undefined){
+            throw new Error("PUT: data doesn't exist");
+        }
+        //else
+        // check if the content already exists
+        let findContent = await manager.findOne(ToDoContent, {content: receivedData.content});
+        if(findContent !== undefined){
+            throw new Error("PUT: content data already exists");
+        }
+        //else
+        let toDoContent = new ToDoContent();
+        toDoContent.content = receivedData.content;
+        toDoContent.list_id_fk = findList;
+        await manager.save(toDoContent);
+        res.status(200).send("PUT: data updated");
+        console.log("PUT: data updated");
+    }
+    catch(error: any){
+        console.log(error.message);
+        res.status(400).send(error.message);
+    }
 
 }
