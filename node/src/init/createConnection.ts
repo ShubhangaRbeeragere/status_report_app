@@ -1,5 +1,6 @@
 import { createConnection } from "typeorm";
-import toDoList from "../model/entity/toDoList"
+import ToDoContent from "../model/entity/toDoContent";
+import ToDoList from "../model/entity/toDoList"
 
 
 export const makeConnection = createConnection({
@@ -9,8 +10,9 @@ export const makeConnection = createConnection({
     username: "postgres",
     password: "12345678",
     database: "weekly_status_report",
-    synchronize: false,
+    synchronize: true,
     entities: [
-        toDoList
+        ToDoList,
+        ToDoContent
     ]
 });

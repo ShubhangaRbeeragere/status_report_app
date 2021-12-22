@@ -1,7 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm"
 import ToDoList from "./toDoList";
 
-Entity()
+@Entity()
 export default class ToDoContent{
     @PrimaryGeneratedColumn()
     content_id: number;
