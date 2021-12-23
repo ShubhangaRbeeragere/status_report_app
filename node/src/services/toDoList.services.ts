@@ -92,7 +92,7 @@ export const removeData = async function(req: Request, res: Response){
             >> remove only the content given in the received data from 
             the child table
     */
-    const receivedData: toDoLayout.projectName = req.body;
+    const receivedData: toDoLayout.removeProject = req.body;
     let manager = getManager();
     try{
         let findList = await manager.findOne(ToDoList, {title: receivedData.project});
@@ -100,19 +100,34 @@ export const removeData = async function(req: Request, res: Response){
         if(findList === undefined){
             throw new Error("DELETE: data doesn't exist");
         }
-        //else
-        let findContent = await manager.find(ToDoContent, {
-            list_id_fk: findList
-        })
-        // console.log(findContent);
-        //delete all the children with the foreign key "listid"
-        for(const content in findContent){
-            await manager.remove(findContent[content]);
+        //if deleteProject is true, delete the project itself
+        if(receivedData.deleteProject === true){
+            //delete all the children with the foreign key "listid"
+            let findContent = await manager.find(ToDoContent, {
+                list_id_fk: findList
+            })
+            for(const content in findContent){
+                await manager.remove(findContent[content]);
+            }
+            //then remove the parent 
+            await manager.remove(findList);
+            console.log("DELETE: project data deleted")
+            res.status(200).send("DELETE: project deleted");
         }
-        //remove the parent 
-        await manager.remove(findList);
-        console.log("DELETE: data deleted")
-        res.status(200).send("DELETE: deleted");
+        //else remove only the content in the child
+        else{
+            //delete the child with the foreign key "listid" and content receivedData.content
+            let findContent = await manager.findOne(ToDoContent, {
+                list_id_fk: findList,
+                content: receivedData.content
+            })
+            if(findContent === undefined){
+                throw new Error("DELET: content couldn't be found");
+            }
+            await manager.remove(findContent);
+            console.log("DELETE: content data deleted");
+            res.status(200).send("DELETE: content deleted");
+        }
     }
     catch(error: any){
         console.log(error.message);
