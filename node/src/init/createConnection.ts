@@ -1,6 +1,7 @@
 import { createConnection } from "typeorm";
 import ToDoContent from "../model/entity/toDoContent";
 import ToDoList from "../model/entity/toDoList"
+import Login from "../model/entity/login"
 
 
 export const makeConnection = createConnection({
@@ -13,6 +14,7 @@ export const makeConnection = createConnection({
     synchronize: true,
     entities: [
         ToDoList,
-        ToDoContent
+        ToDoContent,
+        Login
     ]
 });
