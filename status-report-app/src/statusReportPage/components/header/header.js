@@ -3,7 +3,7 @@ import { Period } from "./period";
 import { Presentation } from "./presentation";
 export const Header = (props) => {
     return (
-        <div className="header">
+        <div className="header boxes">
             { <CompanyLogo/> }
             { <Period/> }
             { <Presentation/> }

@@ -1,3 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+.homePage {
+  color: #FFFBFB;
+  background-color: #FFFBFB;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 68vw 30vw;
+  grid-template-rows: 15% 85%;
+  justify-content: center;
+  grid-template-areas: "header header" "achievements toDoList";
+}
+.homePage .boxes {
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+}
+.homePage .header {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-image: linear-gradient(to top right, #184e77 30%, rgba(82, 182, 154, 0.6));
+  grid-area: header;
+}
+.homePage .achievements {
+  background-color: #184e77;
+  grid-area: achievements;
+  font-size: 50px;
+  text-align: center;
+}
+.homePage .toDoList {
+  grid-area: toDoList;
+  background-color: #184e77;
+  font-size: 50px;
+  text-align: center;
+}
 
 /*# sourceMappingURL=Home.css.map */

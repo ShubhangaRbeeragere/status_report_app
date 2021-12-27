@@ -56,12 +56,12 @@ const App = () => {
 
     return (
         <Router>
-            <div className="app">
-                    {/* <CompanyName/> 
+            {/* <div className="app">
+                    <CompanyName/> 
                     <LoginTemplate formValidation={formValidation} updateInputs={updateInputs} userInput={userInput} error={error}/>
-                    {loader&&<LoadingScreen/>} */}
-                    <HomePage/>
-             </div> 
+                    {loader&&<LoadingScreen/>}
+             </div>  */}
+            <HomePage/>
         </Router>
     )
 }

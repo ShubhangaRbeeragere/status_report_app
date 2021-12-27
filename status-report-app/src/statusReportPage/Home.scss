@@ -1,1 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+//variables
+$mainColor: rgb(24, 78, 119);
+$subColor: rgba(82, 182, 154, 0.6);
+$textColor: #FFFBFB;
+$mainDim: #87A8B9;
+$warning: rgb(192, 12, 12);
+
+
+.homePage{
+    color: $textColor;
+    background-color: $textColor;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 68vw 30vw;
+    grid-template-rows: 15% 85%;
+    justify-content: center;
+    grid-template-areas:
+    "header header"
+    "achievements toDoList";
+
+    .boxes{
+        border: none;
+        border-radius: 10px;
+        margin: 5px;
+    }
+    .header{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        
+        background-image: linear-gradient(to top right, $mainColor 30%, $subColor);
+        grid-area: header;
+    }
+
+    .achievements{
+        background-color: $mainColor;
+        grid-area: achievements;
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .toDoList{
+        grid-area: toDoList;
+        background-color: $mainColor;
+        font-size: 50px;
+        text-align: center;
+    }
+}
