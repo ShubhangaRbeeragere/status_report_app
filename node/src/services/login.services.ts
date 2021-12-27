@@ -5,7 +5,7 @@ import brcypt from "bcryptjs";
 import * as loginLayout from "../model/interface/login.interface";
 import Login from "../model/entity/login";
 
-export const save = async function(req: Request, res: Response) {
+export const saveUser = async function(req: Request, res: Response) {
     const user: loginLayout.login = req.body;
     let login = new Login();
     let manager = getManager();
@@ -33,19 +33,19 @@ export const save = async function(req: Request, res: Response) {
 }
 
 //verify the user login credentials
-export const auth = async function(req: Request, res: Response) {
+export const authenticate = async function(req: Request, res: Response) {
     const user: loginLayout.login = req.body;
     let manager = getManager();
     //check if  username and password matches
     try{
         let findUser = await manager.findOne(Login, {username: user.username}) 
         if(!findUser){
-            throw new Error("Invalid username");
+            throw new Error("Invalid username Or Password");
         }
         let password = findUser.password;
         let checkPassword = await brcypt.compare(user.password, password);
         if(!checkPassword){
-            throw new Error("Invalid password");
+            throw new Error("Invalid username or password");
         }
         //create a token for verification
         jwt.sign(user, process.env.TOKEN_KEY || "secretKey", {expiresIn: '30min'}, (err, token) => {
@@ -66,8 +66,9 @@ export const auth = async function(req: Request, res: Response) {
 
 }
 
+/*
 //verify the token
-export const verifyUser = function(req: Request, res: Response) {
+export const verifyToken = function(req: Request, res: Response) {
     let token: any = req.headers.token;
     // console.log("token ", token);
     try{
@@ -85,3 +86,4 @@ export const verifyUser = function(req: Request, res: Response) {
         res.status(401).send(error.message);
     }
 }
+*/
