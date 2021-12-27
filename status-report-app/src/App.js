@@ -1,7 +1,9 @@
 import CompanyName from "./loginPage/CompanyName";
 import LoginTemplate from "./loginPage/LoginTemplate";
 import LoadingScreen from "./loginPage/LoadingScreen";
+import { HomePage } from "../src/statusReportPage/Home";
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css'
 
 const App = () => {
@@ -53,11 +55,14 @@ const App = () => {
     }
 
     return (
-        <div className="app">
-                <CompanyName/>
-                <LoginTemplate formValidation={formValidation} updateInputs={updateInputs} userInput={userInput} error={error}/>
-                {loader&&<LoadingScreen/>} 
-        </div> 
+        <Router>
+            <div className="app">
+                    {/* <CompanyName/> 
+                    <LoginTemplate formValidation={formValidation} updateInputs={updateInputs} userInput={userInput} error={error}/>
+                    {loader&&<LoadingScreen/>} */}
+                    <HomePage/>
+             </div> 
+        </Router>
     )
 }
 
