@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
 //variables
-$mainColor: rgb(24, 78, 119);
-$subColor: rgba(82, 182, 154, 0.6);
+$mainColor: rgb(9, 40, 65);
+$subColor: rgba(82, 182, 154);
 $textColor: #FFFBFB;
-$mainDim: #87A8B9;
 $warning: rgb(192, 12, 12);
 
 
 .homePage{
     color: $textColor;
-    background-color: $textColor;
+    background-image: linear-gradient(to right bottom, $mainColor 50%, $subColor 130%);
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -36,7 +35,8 @@ $warning: rgb(192, 12, 12);
         justify-content: space-between;
         padding: 0px 30px;
         
-        background-image: linear-gradient(to top right, $mainColor 20%, 80%, $subColor);
+        // background-image: linear-gradient(to top right, rgba($mainColor, 0.7) 20%, 60%, rgba($subColor, 0.6));
+        background-color: rgba($subColor, 0.3);
         grid-area: header;
 
         .companyLogo{
@@ -62,13 +62,51 @@ $warning: rgb(192, 12, 12);
         }
 
         .period{
-            display: flex;
-            column-gap: 10px;
+            .datePicker{
+                color: white;
+                text-shadow: 0px 0px 30px black;
+                width: 130px;
+                height: 35px;
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+                border: none;
+                border-radius: 5px;
+                background-color: $subColor;
+                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+                cursor: pointer;
+                transition: 100ms;
+                &:focus{
+                    outline: none;
+                }
+                &:hover{
+                    background-color: darken($color: $subColor, $amount: 10%);
+                }
+            }
+        }
+
+        .presentation{
+            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 30px black;
+            width: 130px;
+            height: 35px;
+            font-size: 18px;
+            line-height: 35px;
+            font-weight: bolder;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            background-color: $subColor;
+            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+            &:hover{
+                background-color: darken($color: $subColor, $amount: 10%);
+            }
         }
     }
-
     .achievements{
-        background-color: $mainColor;
+        // background-color: rgba($mainColor, 0.5);
+        // background-color: rgba($subColor, 0.1);
+        background-color: rgba(white, 0.1);
         grid-area: achievements;
         font-size: 50px;
         text-align: center;
@@ -76,7 +114,9 @@ $warning: rgb(192, 12, 12);
 
     .toDoList{
         grid-area: toDoList;
-        background-color: $mainColor;
+        // background-color: $mainColor;
+        // background-color: rgba($subColor, 0.1);
+        background-color: rgba(white, 0.1);
         font-size: 50px;
         text-align: center;
     }
