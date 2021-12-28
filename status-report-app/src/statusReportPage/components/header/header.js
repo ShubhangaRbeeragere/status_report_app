@@ -5,7 +5,7 @@ export const Header = (props) => {
     return (
         <div className="header boxes">
             { <CompanyLogo/> }
-            { <Period/> }
+            { <Period fetchData = {props.fetchData} date = {props.date} setDate = {props.setDate}/> }
             { <Presentation/> }
         </div>
     )

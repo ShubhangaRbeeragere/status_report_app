@@ -1,8 +1,6 @@
-import DatePicker from "react-datepicker"
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react"
 export const Period = (props) => {
-    const [startDate, setStartDate] = useState(new Date()); 
     return(
         <div className="period">
             {/* <div className="year">Year</div>
@@ -14,7 +12,8 @@ export const Period = (props) => {
                 <option value="wednesday">Wednesday</option>
                 <option value="thursday">Thursday</option>
             </select> */}
-            <DatePicker selected={startDate} className="datePicker" onChange={(date) => setStartDate(date)}/>
+            <DatePicker selected={props.date} className="datePicker" onChange={(date) => props.setDate(date)}/>
+            <button className="searchButton" onClick={() => {props.fetchData()}}>Search</button>
         </div>
     )
 }

@@ -62,6 +62,17 @@ $warning: rgb(192, 12, 12);
         }
 
         .period{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            // react generated class
+            .react-datepicker-wrapper{
+                width: max-content;
+                .react-datepicker__input-container{
+                    width: max-content;
+                }
+            }
             .datePicker{
                 color: white;
                 text-shadow: 0px 0px 30px black;
@@ -71,6 +82,29 @@ $warning: rgb(192, 12, 12);
                 font-weight: bold;
                 text-align: center;
                 border: none;
+                border-radius: 5px;
+                background-color: $subColor;
+                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+                cursor: pointer;
+                transition: 100ms;
+                &:focus{
+                    outline: none;
+                }
+                &:hover{
+                    background-color: darken($color: $subColor, $amount: 10%);
+                }
+            }
+            .searchButton{
+                background-color: $subColor;
+                color: white;
+                margin-left: 10px;
+                border: none;
+                width: 90px;
+                height: 35px;
+                font-size: 18px;
+                font-weight:600;
+                letter-spacing: 0.5px;
+                text-align: center;
                 border-radius: 5px;
                 background-color: $subColor;
                 box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);

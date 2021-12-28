@@ -48,6 +48,18 @@
   font-weight: bolder;
   font-size: 30px;
 }
+.homePage .header .period {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+.homePage .header .period .react-datepicker-wrapper {
+  width: max-content;
+}
+.homePage .header .period .react-datepicker-wrapper .react-datepicker__input-container {
+  width: max-content;
+}
 .homePage .header .period .datePicker {
   color: white;
   text-shadow: 0px 0px 30px black;
@@ -67,6 +79,29 @@
   outline: none;
 }
 .homePage .header .period .datePicker:hover {
+  background-color: #3f967e;
+}
+.homePage .header .period .searchButton {
+  background-color: #52b69a;
+  color: white;
+  margin-left: 10px;
+  border: none;
+  width: 90px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #52b69a;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .header .period .searchButton:focus {
+  outline: none;
+}
+.homePage .header .period .searchButton:hover {
   background-color: #3f967e;
 }
 .homePage .header .presentation {
