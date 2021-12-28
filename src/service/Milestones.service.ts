@@ -1,6 +1,8 @@
 import {getManager} from "typeorm";
 import {Response, Request} from "express";
 import { Milestones } from '../model/entity/Milestone';
+import { StructureFORupdate } from '../interface/test.interface';
+import { SubAchievements } from '../model/entity/SubAchievements';
 
 ///////--------GET ALL MILESTONES DETAIL---------/////////
 
@@ -59,6 +61,33 @@ export const updateMILESTONE = async(req: Request, res: Response) => {
         console.log(error.message);
     }
 }
+export const UpdateMILESTONES = async function(req: Request, res: Response){
+
+    const receivedData: StructureFORupdate = req.body;
+    const milestonesData = receivedData.Milestone;
+
+
+    let manager = getManager();
+    try{
+        let milestone = await manager.findOne(Milestones, {title: milestonesData.title});
+        if(milestone === undefined){
+            throw new Error("no data found");
+        }
+        milestone.content = milestonesData.content;
+
+        await manager.save(milestone);
+ 
+
+        res.status(200).send("data updated");
+        console.log("data updated");
+
+    }
+    catch(error: any){
+        console.log(error.message);
+        res.status(400).send(error.message);
+    }
+
+}
 
 export const deleteMILESTONE = async(req: Request, res: Response) => {
     let manager = getManager();
@@ -81,3 +110,4 @@ export const deleteMILESTONE = async(req: Request, res: Response) => {
         console.log(error.message);
     }
 }
+

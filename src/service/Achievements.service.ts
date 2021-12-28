@@ -185,8 +185,6 @@ export const UpdateDETAILS = async function(req: Request, res: Response){
 
     const receivedData: StructureOF = req.body;
     const achievementsData = receivedData.Achievement;
-    const subAchievementsData = receivedData.SubAchievement;
-    const milestonesData = receivedData.Milestone;
 
 
     let manager = getManager();
@@ -199,19 +197,6 @@ export const UpdateDETAILS = async function(req: Request, res: Response){
         achievement.date = achievementsData.date;
         await manager.save(achievement);
  
-
-      
-
-        
-
-        subAchievementsData.forEach(async(subAchievements) => {
-            let updatedsubachievement= new SubAchievements();
-            updatedsubachievement.sub_achievement_name = subAchievements.sub_achievement_name;
-            updatedsubachievement.content = subAchievements.content;
-
-    
-            await manager.save(updatedsubachievement);
-        })
 
         res.status(200).send("data updated");
         console.log("data updated");

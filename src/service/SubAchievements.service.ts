@@ -1,6 +1,7 @@
 import {getManager} from "typeorm";
 import {Response, Request} from "express";
 import { SubAchievements } from '../model/entity/SubAchievements';
+import { StructureFORupdate } from "../interface/test.interface";
 
 ///////--------GET ALL subachievement DETAIL---------/////////
 
@@ -59,6 +60,35 @@ export const updateSUBS = async(req: Request, res: Response) => {
         console.log(error.message);
     }
 }
+
+export const UpdateSUBSS = async function(req: Request, res: Response){
+
+    const receivedData: StructureFORupdate = req.body;
+    const subAchievementsData = receivedData.SubAchievement;
+
+
+    let manager = getManager();
+    try{
+        let sub_achievement = await manager.findOne(SubAchievements, {sub_achievement_name: subAchievementsData.sub_achievement_name});
+        if(sub_achievement === undefined){
+            throw new Error("no data found");
+        }
+        sub_achievement.content = subAchievementsData.content;
+
+        await manager.save(sub_achievement);
+ 
+
+        res.status(200).send("data updated");
+        console.log("data updated");
+
+    }
+    catch(error: any){
+        console.log(error.message);
+        res.status(400).send(error.message);
+    }
+
+}
+
 
 export const deleteSUBS = async(req: Request, res: Response) => {
     let manager = getManager();
