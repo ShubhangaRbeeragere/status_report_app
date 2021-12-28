@@ -1,4 +1,5 @@
 import { Content } from "./content";
+import { AddListButton } from "./addListButton";
 export const ToDoList = (props) => {
         let toDoList = props.toDoList;
 
@@ -12,8 +13,9 @@ export const ToDoList = (props) => {
 
     return(
         <div className="toDoList boxes">
-            <h1>ToDoList</h1>
+            <h2>Issues and Risk</h2>
             {toDoItems}
+            <AddListButton/>
         </div>
     )
 }
