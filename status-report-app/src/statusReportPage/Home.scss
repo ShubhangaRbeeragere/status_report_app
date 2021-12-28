@@ -75,7 +75,6 @@ $warning: rgb(192, 12, 12);
             }
             .datePicker{
                 color: white;
-                text-shadow: 0px 0px 30px black;
                 width: 130px;
                 height: 35px;
                 font-size: 18px;
@@ -103,7 +102,7 @@ $warning: rgb(192, 12, 12);
                 height: 35px;
                 font-size: 18px;
                 font-weight:600;
-                letter-spacing: 0.5px;
+                letter-spacing: 0.3px;
                 text-align: center;
                 border-radius: 5px;
                 background-color: $subColor;
@@ -128,6 +127,7 @@ $warning: rgb(192, 12, 12);
             line-height: 35px;
             font-weight: bolder;
             text-align: center;
+            letter-spacing: 0.3px;
             border: none;
             border-radius: 5px;
             background-color: $subColor;
@@ -148,10 +148,57 @@ $warning: rgb(192, 12, 12);
 
     .toDoList{
         grid-area: toDoList;
-        // background-color: $mainColor;
-        // background-color: rgba($subColor, 0.1);
         background-color: rgba(white, 0.1);
-        font-size: 50px;
         text-align: center;
+        overflow: scroll;
+        //remove the scroll bar
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
+        &::-webkit-scrollbar {
+            display: none;
+        } 
+        h1{
+            color: white;
+            margin: 10px;
+        }
+        .item{
+            border: none;
+            margin: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            //heading
+            h3{
+                width: max-content;
+                margin: 8px;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+                &::after{
+                    content: "";
+                    background-color: white;
+                    position: absolute;
+                    height: 1px;
+                    width: 100%;
+                    left: 0;
+                    bottom: 0;
+                }
+            }
+            
+
+            //date
+            h4{
+                color: $subColor;
+            }
+            //contents
+            .content{
+                line-height: 25px;
+                margin-left: 20px;
+                text-align: left;
+            }
+        }
     }
 }

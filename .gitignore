@@ -3,3 +3,4 @@
 
 /status-report-app/node_modules
 /status-report-app/copyFolder
+/status-report-app/src/statusReportPage/components/toDoList/data.json
