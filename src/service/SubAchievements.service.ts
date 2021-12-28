@@ -7,8 +7,8 @@ import { SubAchievements } from '../model/entity/SubAchievements';
 
 export const getSUBS = async(req: Request, res: Response) =>
 {
-    let dataManager = getManager();
-    let Data = await dataManager.find(SubAchievements); 
+    let getmanager = getManager();
+    let Data = await getmanager.find(SubAchievements); 
     console.log(Data);
     res.status(200).send(Data);
 }

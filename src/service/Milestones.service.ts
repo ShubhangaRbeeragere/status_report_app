@@ -7,8 +7,8 @@ import { Milestones } from '../model/entity/Milestone';
 
 export const getMILESTONE = async(req: Request, res: Response) =>
 {
-    let dataManager = getManager();
-    let Data = await dataManager.find(Milestones); 
+    let getmanager = getManager();
+    let Data = await getmanager.find(Milestones); 
     console.log(Data);
     res.status(200).send(Data);
 }

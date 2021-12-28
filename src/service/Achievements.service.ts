@@ -11,8 +11,8 @@ import { StructureOF } from '../interface/Structure.interface';
 
 export const getDETAIL = async(req: Request, res: Response) =>{
 try{
-    let dataManager = getManager();
-    let Data = await dataManager.find(Achievements); 
+    let getmanager = getManager();
+    let Data = await getmanager.find(Achievements); 
     console.log(Data);
     res.status(200).send(Data);
 }
