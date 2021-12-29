@@ -82,9 +82,9 @@
   background-color: #3f967e;
 }
 .homePage .header .period .searchButton {
+  margin-left: 10px;
   background-color: #52b69a;
   color: white;
-  margin-left: 10px;
   border: none;
   width: 90px;
   height: 35px;
@@ -93,7 +93,6 @@
   letter-spacing: 0.3px;
   text-align: center;
   border-radius: 5px;
-  background-color: #52b69a;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
   cursor: pointer;
   transition: 100ms;
@@ -192,15 +191,22 @@
   position: fixed;
   right: 1.8%;
   top: 100px;
+  background-color: #52b69a;
+  color: white;
+  border: none;
   width: 50px;
   height: 30px;
-  font-weight: bolder;
-  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
   letter-spacing: 0.3px;
-  border: none;
+  text-align: center;
   border-radius: 5px;
-  background-color: #52b69a;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .toDoList .addListButton:focus {
+  outline: none;
 }
 .homePage .toDoList .addListButton:hover {
   background-color: #3f967e;
@@ -218,22 +224,89 @@
 }
 .homePage .addListWrapper form {
   background-color: #52b69a;
-  padding: 25px 30px;
+  padding: 20px 50px;
   height: max-content;
   min-width: 15rem;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 20px;
 }
 .homePage .addListWrapper form label {
+  font-size: 22px;
   font-weight: bold;
   color: black;
   margin-right: 5px;
+  width: max-content;
 }
 .homePage .addListWrapper form input {
+  font-family: "Raleway", sans-serif;
+  font-size: large;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
   outline: none;
-  height: 25px;
+}
+.homePage .addListWrapper form input:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addListWrapper form textarea {
+  font-size: large;
+  max-height: 100px;
+  max-width: 220px;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+}
+.homePage .addListWrapper form textarea:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addListWrapper form .submitButton {
+  align-self: center;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 80px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addListWrapper form .submitButton:focus {
+  outline: none;
+}
+.homePage .addListWrapper form .submitButton:hover {
+  background-color: #030c14;
+}
+.homePage .addListWrapper form .cancelButton {
+  align-self: flex-end;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addListWrapper form .cancelButton:focus {
+  outline: none;
+}
+.homePage .addListWrapper form .cancelButton:hover {
+  background-color: #030c14;
 }
 
 /*# sourceMappingURL=Home.css.map */

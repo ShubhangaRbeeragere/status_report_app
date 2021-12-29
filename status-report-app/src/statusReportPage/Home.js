@@ -7,6 +7,17 @@ import './Home.css'
 
 export const HomePage = (params) => {
     const [date, setDate] = useState(new Date()); 
+    const [addList, setAddList] = useState({AddListButtonState: false, project: "", date: date.toLocaleDateString().replaceAll("/", "-"), content: ""})
+    //function for addList template
+    //add or cancel the addlist
+    function toggleAddlist() {
+        let buttonState  = addList.AddListButtonState ? false: true;
+        setAddList({...addList, AddListButtonState: buttonState})
+    }
+    //add all the data to the form elements
+    function addListinputValidate(e) {
+        
+    }
     const toDoList = [
         {
                 list_id: 3,
@@ -88,8 +99,8 @@ export const HomePage = (params) => {
             <div className="homePage">
                  <Header date = {date} setDate = {setDate} fetchData = {fetchData}/>
                  <Achievements/> 
-                 <ToDoList toDoList = {toDoList}/> 
-                 <AddList />
+                 <ToDoList toDoList = {toDoList} toggleAddList = {toggleAddlist}/> 
+                 {addList.AddListButtonState && <AddList toggleAddList = {toggleAddlist} date={date} setDate={setDate}/>}
             </div>
    )
 }

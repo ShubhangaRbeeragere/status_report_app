@@ -6,7 +6,34 @@ $subColor: rgba(82, 182, 154);
 $textColor: #FFFBFB;
 $warning: rgb(192, 12, 12);
 
+///mixins///////////////////////////////////////////////////////////////
+@mixin createButton($width: 50px, $height: 30px, $background-color: $subColor, $font-size: 18px) {
+    background-color: $background-color;
+    color: white;
+    border: none;
+    width: $width;
+    height: $height;
+    font-size: $font-size;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+    cursor: pointer;
+    transition: 100ms;
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        background-color: darken($color: $background-color, $amount: 10%);
+    }
+}
 
+
+
+
+
+///mixins////////////////////////////////////////////////////////////////
 .homePage{
     font-family: 'Raleway', sans-serif;
     color: $textColor;
@@ -96,27 +123,8 @@ $warning: rgb(192, 12, 12);
                 }
             }
             .searchButton{
-                background-color: $subColor;
-                color: white;
                 margin-left: 10px;
-                border: none;
-                width: 90px;
-                height: 35px;
-                font-size: 18px;
-                font-weight:600;
-                letter-spacing: 0.3px;
-                text-align: center;
-                border-radius: 5px;
-                background-color: $subColor;
-                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
-                cursor: pointer;
-                transition: 100ms;
-                &:focus{
-                    outline: none;
-                }
-                &:hover{
-                    background-color: darken($color: $subColor, $amount: 10%);
-                }
+                @include createButton($background-color: $subColor, $width: 90px, $height: 35px);
             }
         }
 
@@ -220,18 +228,7 @@ $warning: rgb(192, 12, 12);
                 position: fixed;
                 right: 1.8%;
                 top: 100px;
-                width: 50px;
-                height: 30px;
-                font-weight: bolder;
-                text-align: center;
-                letter-spacing: 0.3px;
-                border: none;
-                border-radius: 5px;
-                background-color: $subColor;
-                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
-                &:hover{
-                    background-color: darken($color: $subColor, $amount: 10%);
-                }
+                @include createButton($background-color: $subColor, $width: 50px);
             }
         
     }
@@ -248,21 +245,52 @@ $warning: rgb(192, 12, 12);
         place-items: center;
         form{
             background-color: $subColor;
-            padding: 25px 30px;
+            padding: 20px 50px;
             height: max-content;
             min-width: 15rem;
             border-radius: 5px;
             display: flex;
             flex-direction: column;
-            row-gap: 10px;
+            row-gap: 20px;
             label{
+                font-size: 22px;
                 font-weight: bold;
                 color: black;
                 margin-right: 5px;
+                width: max-content;
             }
             input{
+                font-family: 'Raleway', sans-serif;
+                font-size: large;
+                height: 30px;
+                text-align: center;
+                border: none;
+                border-radius: 5px;
                 outline: none;
-                height: 25px;
+                &:focus{
+                    box-shadow: 0px 0px 5px 0.2px $mainColor;
+                }
+            }
+            textarea{
+                font-size: large;
+                max-height: 100px;
+                max-width: 220px;
+                text-align: left;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                padding: 5px;
+                &:focus{
+                    box-shadow: 0px 0px 5px 0.2px $mainColor;
+                }
+            }
+            .submitButton{
+                align-self: center;
+                @include createButton($background-color: $mainColor, $width: 80px, $height: 35px);
+            }
+            .cancelButton{
+                align-self: flex-end;
+                @include createButton($background-color: $mainColor, $width: 35px, $height: 30px);
             }
         }
     }

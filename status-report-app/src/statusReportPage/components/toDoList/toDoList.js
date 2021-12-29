@@ -15,7 +15,7 @@ export const ToDoList = (props) => {
         <div className="toDoList boxes">
             <h2>Issues and Risk</h2>
             {toDoItems}
-            <AddListButton/>
+            <AddListButton toggleAddList = {props.toggleAddList}/>
         </div>
     )
 }
