@@ -12,7 +12,7 @@ export const Period = (props) => {
                 <option value="wednesday">Wednesday</option>
                 <option value="thursday">Thursday</option>
             </select> */}
-            <DatePicker selected={props.date} className="datePicker" onChange={(date) => props.setDate(date)}/>
+            <DatePicker dateFormat="dd/MM/yyyy" selected={props.date} className="datePicker" onChange={(date) => props.setDate(date)}/>
             <button className="searchButton" onClick={() => {props.fetchData()}}>Search</button>
         </div>
     )

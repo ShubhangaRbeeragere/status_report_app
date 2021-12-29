@@ -7,16 +7,27 @@ import './Home.css'
 
 export const HomePage = (params) => {
     const [date, setDate] = useState(new Date()); 
-    const [addList, setAddList] = useState({AddListButtonState: false, project: "", date: date.toLocaleDateString().replaceAll("/", "-"), content: ""})
-    //function for addList template
+    let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    const [addList, setAddList] = useState({AddListButtonState: false, project: "", date: formDate, content: ""})
+    //function for addList template///////////////////////////////
     //add or cancel the addlist
     function toggleAddlist() {
         let buttonState  = addList.AddListButtonState ? false: true;
         setAddList({...addList, AddListButtonState: buttonState})
     }
     //add all the data to the form elements
-    function addListinputValidate(e) {
-        
+    function setFormDate() {
+        setAddList({...addList, date: date.toLocaleDateString().replaceAll("/", "-")}); 
+    }
+    function addListInputValidate(e) {
+       console.log(e.target.name, e.target.value); 
+       setAddList({...addList, [e.target.name]: e.target.value})
+    }
+    function addListFormValidate(e) {
+        e.preventDefault();
+        console.log("form submitted");
+        setAddList({...addList, AddListButtonState: false})
+        console.log(addList);
     }
     const toDoList = [
         {
@@ -95,12 +106,19 @@ export const HomePage = (params) => {
        console.log(`selected Date is ${dateValue}`); 
     }
     return(
-
-            <div className="homePage">
-                 <Header date = {date} setDate = {setDate} fetchData = {fetchData}/>
-                 <Achievements/> 
-                 <ToDoList toDoList = {toDoList} toggleAddList = {toggleAddlist}/> 
-                 {addList.AddListButtonState && <AddList toggleAddList = {toggleAddlist} date={date} setDate={setDate}/>}
-            </div>
+        <div className="homePage">
+            <Header date = {date} setDate = {setDate} fetchData = {fetchData}/>
+            <Achievements/> 
+            <ToDoList toDoList = {toDoList} toggleAddList = {toggleAddlist}/> 
+            {  addList.AddListButtonState &&
+               <AddList toggleAddList = {toggleAddlist}
+                    addListInputValidate = {addListInputValidate}
+                    addListFormValidate = {addListFormValidate}
+                    addList = {addList}
+                    setAddList = {setAddList}
+                    date={date} formDate = {formDate}
+                    />
+            }
+        </div>
    )
 }

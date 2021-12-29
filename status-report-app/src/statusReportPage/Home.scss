@@ -243,6 +243,7 @@ $warning: rgb(192, 12, 12);
         z-index: 10;
         display: grid;
         place-items: center;
+        transition: 1s;
         form{
             background-color: $subColor;
             padding: 20px 50px;

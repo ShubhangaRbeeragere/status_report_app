@@ -221,6 +221,7 @@
   z-index: 10;
   display: grid;
   place-items: center;
+  transition: 1s;
 }
 .homePage .addListWrapper form {
   background-color: #52b69a;
