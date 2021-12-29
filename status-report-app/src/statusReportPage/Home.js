@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "./components/header/header";
 import { ToDoList } from './components/toDoList/toDoList';
 import { Achievements } from "./components/achievements/achievements";
+import { AddList } from "./components/toDoList/addList";
 import './Home.css'
 
 export const HomePage = (params) => {
@@ -85,9 +86,10 @@ export const HomePage = (params) => {
     return(
 
             <div className="homePage">
-                { <Header date = {date} setDate = {setDate} fetchData = {fetchData}/> }
-                { <Achievements/> }
-                { <ToDoList toDoList = {toDoList}/> }
+                 <Header date = {date} setDate = {setDate} fetchData = {fetchData}/>
+                 <Achievements/> 
+                 <ToDoList toDoList = {toDoList}/> 
+                 <AddList />
             </div>
    )
 }

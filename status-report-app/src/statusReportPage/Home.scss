@@ -26,6 +26,7 @@ $warning: rgb(192, 12, 12);
         border-radius: 10px;
         margin: 5px;
     }
+    //section: header/////////////////////////////////////////////////////////
     .header{
         width: 100%;
         margin-left: auto;
@@ -138,6 +139,7 @@ $warning: rgb(192, 12, 12);
             }
         }
     }
+    //section: achievement/////////////////////////////////////////////////////////
     .achievements{
         // background-color: rgba($mainColor, 0.5);
         // background-color: rgba($subColor, 0.1);
@@ -146,7 +148,7 @@ $warning: rgb(192, 12, 12);
         font-size: 50px;
         text-align: center;
     }
-
+    //section: toDoList/////////////////////////////////////////////////////////
     .toDoList{
         grid-area: toDoList;
         background-color: rgba(white, 0.1);
@@ -232,5 +234,36 @@ $warning: rgb(192, 12, 12);
                 }
             }
         
+    }
+    //add list template
+    .addListWrapper{
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 10;
+        display: grid;
+        place-items: center;
+        form{
+            background-color: $subColor;
+            padding: 25px 30px;
+            height: max-content;
+            min-width: 15rem;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            label{
+                font-weight: bold;
+                color: black;
+                margin-right: 5px;
+            }
+            input{
+                outline: none;
+                height: 25px;
+            }
+        }
     }
 }

@@ -205,5 +205,35 @@
 .homePage .toDoList .addListButton:hover {
   background-color: #3f967e;
 }
+.homePage .addListWrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+}
+.homePage .addListWrapper form {
+  background-color: #52b69a;
+  padding: 25px 30px;
+  height: max-content;
+  min-width: 15rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.homePage .addListWrapper form label {
+  font-weight: bold;
+  color: black;
+  margin-right: 5px;
+}
+.homePage .addListWrapper form input {
+  outline: none;
+  height: 25px;
+}
 
 /*# sourceMappingURL=Home.css.map */
