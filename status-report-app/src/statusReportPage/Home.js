@@ -76,10 +76,9 @@ export const HomePage = (params) => {
     console.log(projectName);
     setAddContent({ ...addContent, project: projectName });
   }
-  //add or cancel the contentlist form
+  //add or cancel the contentlist form and also update the project name for future
   function toggleContentlist(projectName) {
     let buttonState = addContent.addContentButtonState ? false : true;
-    console.log(buttonState);
     if (buttonState === true) {
       setAddContent({
         ...addContent,
@@ -100,24 +99,38 @@ export const HomePage = (params) => {
     setAddContent({ ...addContent, addContentButtonState: false });
     //add data to the database
     let jsonData = {
-      title: addContent.project,
-      content: [{ text: addContent.content }],
+      project: addContent.project,
+      content: addContent.content,
     };
     //update the content and get the updated content
-    // let receiveData = async () => {
-    //   let response = await updateData(
-    //     "http://localhost:7000/toDoList/updateData",
-    //     token,
-    //     jsonData
-    //   );
-    //   if (response === "error") {
-    //     console.log("error occured");
-    //   } else {
-    //     console.log("PUT: content updated");
-    //     console.log(response);
-    //   }
-    // };
-    // receiveData();
+    let receiveData = async () => {
+      let response = await updateData(
+        "http://localhost:7000/toDoList/updateData",
+        token,
+        jsonData
+      );
+      if (response === "error") {
+        console.log("error occured");
+      } else {
+        console.log(response);
+        let content = response.content;
+        let projectIndex = 0;
+        let project = response.project;
+        for (const list in toDoList) {
+          if (project === toDoList[list].title) {
+            projectIndex = list;
+            break;
+          }
+        }
+
+        //clone the list
+        let newList = toDoList.slice();
+        newList[projectIndex].contentKey.push(content);
+        console.log(newList);
+        setToDoList(newList);
+      }
+    };
+    receiveData();
   }
   ////////delete the project onClick//////////////////////////////////////////////
   function deleteProjectOnclick(projectName) {

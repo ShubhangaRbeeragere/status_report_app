@@ -151,7 +151,7 @@ export const updateData = async function (req: Request, res: Response) {
             >> add the content 
 */
   const receivedData: toDoLayout.updateProject = req.body;
-
+  console.log(receivedData);
   let manager = getManager();
   try {
     let findList = await manager.findOne(ToDoList, {
@@ -174,9 +174,17 @@ export const updateData = async function (req: Request, res: Response) {
     toDoContent.content = receivedData.content;
     toDoContent.list_id_fk = findList;
     await manager.save(toDoContent);
-    res
-      .status(200)
-      .json({ project: receivedData.project, content: receivedData.content });
+    let sendData = await manager.findOne(ToDoContent, {
+      content: receivedData.content,
+    });
+    console.log("send data", sendData);
+    res.status(200).json({
+      project: receivedData.project,
+      content: {
+        content_id: sendData?.content_id,
+        content: receivedData.content,
+      },
+    });
     console.log("PUT: data updated");
   } catch (error: any) {
     console.log(error.message);
