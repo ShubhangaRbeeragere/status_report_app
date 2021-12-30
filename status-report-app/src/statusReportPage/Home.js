@@ -19,7 +19,7 @@ export const HomePage = (params) => {
     content: "",
   });
   let token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA4NDQ3MzEsImV4cCI6MTY0MDg0NjUzMX0.6shsYRvhfDIXun7Sk6l4Tr_Q_oD9HGENIh0RliF-cco";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA4NDkyNjAsImV4cCI6MTY0MDg1MTA2MH0.6aeFP589GbuXAb0ER9NIfHDlxY6rh_6BO5j3VEDC-wE";
   //for adding project to toDoList
   let { data: toDoList, setData: setToDoList } = useGet(
     "http://localhost:7000/toDoList/getAll",
