@@ -65,14 +65,21 @@ export const addData = async function(req: Request, res: Response){
             //if not save the todolist table
             await manager.save(toDoList);
             //save todocontent table with foreign key
-            receivedData.content.forEach(async (data) => {
+            for(const data in receivedData.content){
                 let toDoContent = new ToDoContent();
-                toDoContent.content = data.text; 
+                console.log(receivedData.content[data]);
+                toDoContent.content = receivedData.content[data].text; 
                 toDoContent.list_id_fk = toDoList;
                 await manager.save(toDoContent);
-            })
+            }
+
+            //send the saved project to the frontend for user 
+            let tableData = await manager.find(ToDoList,{
+                where: {title: receivedData.title},
+                relations: ["contentKey"]
+            }) 
             console.log("POST: data saved");
-            res.status(200).send("POST: data saved");
+            res.status(200).json(tableData[0]);
     }
     catch(error: any){
         console.log(error.message);

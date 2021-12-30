@@ -6,6 +6,7 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import mainRouter from "../src/init/mainRouter";
 import {makeConnection} from "../src/init/createConnection";
+import { access } from "fs";
 
 dotenv.config();
 if (!process.env.PORT) {
