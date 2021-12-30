@@ -1,31 +1,29 @@
 
-export default function addData(url, token, jsonData, nextFunction, setToDoList) {
-    fetch(url, {
-            method: 'POST', 
-            mode: 'cors', 
-            cache: 'no-cache', 
-            credentials: 'same-origin', 
-            headers: {
-                'Content-Type': 'application/json',
-                token: token
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', 
-            referrerPolicy: 'no-referrer',
-            body: JSON.stringify(jsonData)
-        }).then(
-            result => {
-                if(!result.ok){
-                    throw new Error("POST fetch unsuccessful");
-                }
-                return result.json();
+export default async function addData(url, token, jsonData) {
+    try{
+        let response = await fetch(url, {
+                method: 'POST', 
+                mode: 'cors', 
+                cache: 'no-cache', 
+                credentials: 'same-origin', 
+                headers: {
+                    'Content-Type': 'application/json',
+                    token: token
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', 
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify(jsonData)
+            })
+            if(!response.ok){
+                throw new Error("fetch error occured");
             }
-        ).then(
-            data => {
-                console.log(data);
-                nextFunction("http://localhost:7000/toDoList/getAll", token, setToDoList);
-            }
-        ).catch(
-            error => {console.log(error)}
-        )
+            let  result = await response.json(); 
+            console.log("addData response: ", result);
+            return result;
+    }
+    catch(error){
+        console.log(error);
+        return ("error");
+    }
 }

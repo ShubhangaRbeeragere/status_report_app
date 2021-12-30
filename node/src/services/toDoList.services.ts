@@ -83,7 +83,7 @@ export const addData = async function(req: Request, res: Response){
     }
     catch(error: any){
         console.log(error.message);
-        res.status(400).send(error.message);
+        res.status(400).json({error: error.message});
     };
 }
 //remove to do list rows/////////////////////////////////////////////////

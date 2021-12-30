@@ -1,4 +1,4 @@
-export default function getAll(url, token, setToDoList){
+export default function getAll(url, token){
     fetch(url, {
             method: 'GET', 
             mode: 'cors', 
@@ -22,7 +22,6 @@ export default function getAll(url, token, setToDoList){
         ).then(
             data => {
                 console.log(data);
-                setToDoList(data);
             }
         ).catch(
             error => {console.log(error)}
