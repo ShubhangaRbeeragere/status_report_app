@@ -19,7 +19,7 @@ export const HomePage = (params) => {
     content: "",
   });
   let token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA4NDkyNjAsImV4cCI6MTY0MDg1MTA2MH0.6aeFP589GbuXAb0ER9NIfHDlxY6rh_6BO5j3VEDC-wE";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA4NTU2NDcsImV4cCI6MTY0MDg2Mjg0N30.AldN4M-KPpMk5RMasvO6nOSUnr6kJIeY6SL9YXuN8CA";
   //for adding project to toDoList
   let { data: toDoList, setData: setToDoList } = useGet(
     "http://localhost:7000/toDoList/getAll",
@@ -62,7 +62,7 @@ export const HomePage = (params) => {
     receiveData();
   }
 
-  ////////delete the project onClick//////////////////////////////////////////////////////////////////////
+  ////////delete the project onClick//////////////////////////////////////////////
   function deleteProjectOnclick(projectName) {
     let jsonData = {
       project: projectName,
@@ -87,6 +87,44 @@ export const HomePage = (params) => {
     };
     deleteProject();
   }
+  ////////delete the content of the project onClick/////////////////////////////////////
+  function deleteContentOnclick(projectName, content) {
+    let jsonData = {
+      project: projectName,
+      deleteProject: false,
+      content: content,
+    };
+    //delete the content and remove the content from the toDoList
+    let deleteContent = async () => {
+      let response = await deleteData(
+        "http://localhost:7000/toDoList/removeData",
+        token,
+        jsonData
+      );
+      if (response === "error") {
+        console.log("deleteData: error occured");
+      } else {
+        let content = response.content;
+        let projectIndex = 0;
+        let project = response.project;
+        for (const list in toDoList) {
+          if (project === toDoList[list].title) {
+            projectIndex = list;
+            break;
+          }
+        }
+        let newContent = toDoList[projectIndex].contentKey.filter((data) => {
+          return content === data.content ? false : true;
+        });
+
+        //clone the list
+        let newList = toDoList.slice();
+        newList[projectIndex].contentKey = newContent;
+        setToDoList(newList);
+      }
+    };
+    deleteContent();
+  }
   //dummy
   const fetchData = () => {
     let dateValue = date.toLocaleDateString().replaceAll("/", "-");
@@ -102,6 +140,7 @@ export const HomePage = (params) => {
           toDoList={toDoList}
           toggleAddList={toggleAddlist}
           deleteProject={deleteProjectOnclick}
+          deleteContent={deleteContentOnclick}
         />
       }
 

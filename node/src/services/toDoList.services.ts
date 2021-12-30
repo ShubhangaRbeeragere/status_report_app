@@ -133,7 +133,9 @@ export const removeData = async function (req: Request, res: Response) {
       }
       await manager.remove(findContent);
       console.log("DELETE: content data deleted");
-      res.status(200).send("DELETE: content deleted");
+      res
+        .status(200)
+        .json({ content: receivedData.content, project: receivedData.project });
     }
   } catch (error: any) {
     console.log(error.message);

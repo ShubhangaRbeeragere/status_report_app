@@ -20,7 +20,11 @@ export const ToDoList = (props) => {
           </button>
         </h3>
         <h4>{list.date}</h4>
-        <Content contentArray={list.contentKey} />
+        <Content
+          project={list.title}
+          deleteContent={props.deleteContent}
+          contentArray={list.contentKey}
+        />
       </div>
     ));
 

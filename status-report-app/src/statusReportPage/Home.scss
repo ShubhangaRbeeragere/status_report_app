@@ -207,6 +207,7 @@ $warning: rgb(192, 12, 12);
       background-color: rgba(0, 0, 0, 0.6);
       transition: box-shadow 150ms;
       position: relative;
+      //add animation
       &::after {
         position: absolute;
         content: "";
@@ -220,7 +221,7 @@ $warning: rgb(192, 12, 12);
         border-radius: 5px;
       }
       &:hover::after {
-        height: 50%;
+        height: 90%;
       }
       //heading
       h3 {

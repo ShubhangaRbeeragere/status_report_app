@@ -18,7 +18,7 @@ export default async function deleteData(url, token, jsonData) {
       throw new Error("DELETE:deleteData: fetch error occured");
     }
     let result = await response.json();
-    console.log("addData response: ", result);
+    console.log("deleteData response: ", result);
     return result;
   } catch (error) {
     console.log(error);

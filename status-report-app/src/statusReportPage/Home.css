@@ -179,7 +179,7 @@
   border-radius: 5px;
 }
 .homePage .toDoList .item:hover::after {
-  height: 50%;
+  height: 90%;
 }
 .homePage .toDoList .item h3 {
   width: max-content;

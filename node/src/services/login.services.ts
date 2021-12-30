@@ -5,66 +5,66 @@ import brcypt from "bcryptjs";
 import * as loginLayout from "../model/interface/login.interface";
 import Login from "../model/entity/login";
 
-export const saveUser = async function(req: Request, res: Response) {
-    const user: loginLayout.login = req.body;
-    let login = new Login();
-    let manager = getManager();
-    //check if user already exist in the database
-    try{
-        let findUser = await manager.findOne(Login, {username: user.username}); 
-        if(findUser){
-            throw new Error("user exists");
-        }
-        //hash the password
-        let salt = await brcypt.genSalt(10);
-        let hashedPassword = await brcypt.hash(user.password, salt);
+export const saveUser = async function (req: Request, res: Response) {
+  const user: loginLayout.login = req.body;
+  let login = new Login();
+  let manager = getManager();
+  //check if user already exist in the database
+  try {
+    let findUser = await manager.findOne(Login, { username: user.username });
+    if (findUser) {
+      throw new Error("user exists");
+    }
+    //hash the password
+    let salt = await brcypt.genSalt(10);
+    let hashedPassword = await brcypt.hash(user.password, salt);
 
-        //save username and hashed password
-        login.username = user.username;
-        login.password = hashedPassword;
-        await manager.save(login);
-        console.log("user saved");
-        res.status(200).send("user saved");
-    }
-    catch(error: any){
-        res.status(400).send(error.message);
-        console.log(error.message);
-    }
-}
+    //save username and hashed password
+    login.username = user.username;
+    login.password = hashedPassword;
+    await manager.save(login);
+    console.log("user saved");
+    res.status(200).send("user saved");
+  } catch (error: any) {
+    res.status(400).send(error.message);
+    console.log(error.message);
+  }
+};
 
 //verify the user login credentials
-export const authenticate = async function(req: Request, res: Response) {
-    const user: loginLayout.login = req.body;
-    let manager = getManager();
-    //check if  username and password matches
-    try{
-        let findUser = await manager.findOne(Login, {username: user.username}) 
-        if(!findUser){
-            throw new Error("Invalid username Or Password");
-        }
-        let password = findUser.password;
-        let checkPassword = await brcypt.compare(user.password, password);
-        if(!checkPassword){
-            throw new Error("Invalid username or password");
-        }
-        //create a token for verification
-        jwt.sign(user, process.env.TOKEN_KEY || "secretKey", {expiresIn: '30min'}, (err, token) => {
-            if(err){
-                console.log(err.message);
-                res.status(500).send("POST: error occured");
-            }
-            else{
-                res.status(200).json({token});
-            }
-        })
+export const authenticate = async function (req: Request, res: Response) {
+  const user: loginLayout.login = req.body;
+  let manager = getManager();
+  //check if  username and password matches
+  try {
+    let findUser = await manager.findOne(Login, { username: user.username });
+    if (!findUser) {
+      throw new Error("Invalid username Or Password");
     }
-    catch(error: any){
-        res.status(400).send(error.message);
-        console.log(error.message);
+    let password = findUser.password;
+    let checkPassword = await brcypt.compare(user.password, password);
+    if (!checkPassword) {
+      throw new Error("Invalid username or password");
     }
-    
-
-}
+    //create a token for verification
+    jwt.sign(
+      user,
+      process.env.TOKEN_KEY || "secretKey",
+      { expiresIn: "2hr" },
+      (err, token) => {
+        if (err) {
+          console.log(err.message);
+          res.status(500).send("POST: error occured");
+        } else {
+          res.status(200).json({ token });
+        }
+      }
+    );
+  } catch (error: any) {
+    res.status(400).send(error.message);
+    console.log(error.message);
+  }
+};
 
 /*
 //verify the token
