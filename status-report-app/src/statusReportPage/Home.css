@@ -190,7 +190,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap: 5px;
+  column-gap: 10px;
 }
 .homePage .toDoList .item h3::after {
   content: "";
@@ -202,11 +202,11 @@
   bottom: 0;
 }
 .homePage .toDoList .item h3 .removeProjectButton {
-  background-color: rgba(255, 0, 0, 0.705);
+  background-color: rgba(255, 255, 255, 0.7);
   color: white;
   border: none;
   width: 15px;
-  height: 15px;
+  height: 16px;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -215,12 +215,13 @@
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
   cursor: pointer;
   transition: 100ms;
+  color: #092841;
 }
 .homePage .toDoList .item h3 .removeProjectButton:focus {
   outline: none;
 }
 .homePage .toDoList .item h3 .removeProjectButton:hover {
-  background-color: rgba(204, 0, 0, 0.705);
+  background-color: rgba(102, 102, 102, 0.7);
 }
 .homePage .toDoList .item h4 {
   color: #52b69a;
@@ -257,10 +258,10 @@
   background-color: #52b69a;
 }
 .homePage .toDoList .item .content li .removeContentButton {
-  background-color: red;
+  background-color: white;
   color: white;
   border: none;
-  width: 15px;
+  width: 16px;
   height: 15px;
   font-size: 10px;
   font-weight: 600;
@@ -270,18 +271,42 @@
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
   cursor: pointer;
   transition: 100ms;
+  color: black;
+  font-size: bolder;
 }
 .homePage .toDoList .item .content li .removeContentButton:focus {
   outline: none;
 }
 .homePage .toDoList .item .content li .removeContentButton:hover {
-  background-color: #cc0000;
+  background-color: #4d4d4d;
 }
 .homePage .toDoList .item .content li p {
   height: max-content;
   line-height: 20px;
   width: 100%;
   overflow: hidden;
+}
+.homePage .toDoList .item .addContentButton {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  color: black;
+}
+.homePage .toDoList .item .addContentButton:focus {
+  outline: none;
+}
+.homePage .toDoList .item .addContentButton:hover {
+  background-color: #30725f;
 }
 .homePage .toDoList .addListButton {
   position: fixed;
@@ -403,6 +428,104 @@
   outline: none;
 }
 .homePage .addListWrapper form .cancelButton:hover {
+  background-color: #030c14;
+}
+.homePage .addContentWrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  transition: 1s;
+}
+.homePage .addContentWrapper form {
+  background-color: #52b69a;
+  padding: 20px 50px;
+  height: max-content;
+  min-width: 15rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.homePage .addContentWrapper form label {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  margin-right: 5px;
+  width: max-content;
+}
+.homePage .addContentWrapper form input {
+  font-family: "Raleway", sans-serif;
+  font-size: large;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.homePage .addContentWrapper form input:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addContentWrapper form textarea {
+  font-size: large;
+  max-height: 100px;
+  max-width: 220px;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+}
+.homePage .addContentWrapper form textarea:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addContentWrapper form .submitButton {
+  align-self: center;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 80px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addContentWrapper form .submitButton:focus {
+  outline: none;
+}
+.homePage .addContentWrapper form .submitButton:hover {
+  background-color: #030c14;
+}
+.homePage .addContentWrapper form .cancelButton {
+  align-self: flex-end;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addContentWrapper form .cancelButton:focus {
+  outline: none;
+}
+.homePage .addContentWrapper form .cancelButton:hover {
   background-color: #030c14;
 }
 

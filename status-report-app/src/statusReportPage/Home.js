@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Header } from "./components/header/header";
 import { ToDoList } from "./components/toDoList/toDoList";
 import { Achievements } from "./components/achievements/achievements";
@@ -6,20 +6,29 @@ import { AddList } from "./components/toDoList/addList";
 import { useGet } from "./HTTPhooks/fetch";
 import addData from "./HTTPmethods/addData";
 import deleteData from "./HTTPmethods/deleteData";
+import updateData from "./HTTPmethods/updateData";
+import { AddContent } from "./components/toDoList/addContent";
 import "./Home.css";
 
 export const HomePage = (params) => {
   //hooks
   const [date, setDate] = useState(new Date());
   let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  //for addList form validation
   const [addList, setAddList] = useState({
     AddListButtonState: false,
     project: "",
     date: formDate,
     content: "",
   });
+  //for addContent form validation
+  const [addContent, setAddContent] = useState({
+    addContentButtonState: false,
+    content: "",
+    project: "",
+  });
   let token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA4NTU2NDcsImV4cCI6MTY0MDg2Mjg0N30.AldN4M-KPpMk5RMasvO6nOSUnr6kJIeY6SL9YXuN8CA";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA4NjMxNTAsImV4cCI6MTY0MDg3MDM1MH0.DWFZsqx0oeVUgfxCLmK05PJv45ubsNTptGiOwf5MpAQ";
   //for adding project to toDoList
   let { data: toDoList, setData: setToDoList } = useGet(
     "http://localhost:7000/toDoList/getAll",
@@ -61,7 +70,55 @@ export const HomePage = (params) => {
     };
     receiveData();
   }
-
+  //////addContent form validation//////////////////////////////////////////////////
+  //add the project name from the addList
+  function updateProjectName(projectName) {
+    console.log(projectName);
+    setAddContent({ ...addContent, project: projectName });
+  }
+  //add or cancel the contentlist form
+  function toggleContentlist(projectName) {
+    let buttonState = addContent.addContentButtonState ? false : true;
+    console.log(buttonState);
+    if (buttonState === true) {
+      setAddContent({
+        ...addContent,
+        addContentButtonState: buttonState,
+        project: projectName,
+      });
+    } else {
+      setAddContent({ ...addContent, addContentButtonState: buttonState });
+    }
+  }
+  function addContentInputValidate(e) {
+    setAddContent({ ...addContent, [e.target.name]: e.target.value });
+  }
+  function addContentFormValidate(e) {
+    e.preventDefault();
+    console.log("form data is ", addContent.project, addContent.content);
+    console.log("content form submitted");
+    setAddContent({ ...addContent, addContentButtonState: false });
+    //add data to the database
+    let jsonData = {
+      title: addContent.project,
+      content: [{ text: addContent.content }],
+    };
+    //update the content and get the updated content
+    // let receiveData = async () => {
+    //   let response = await updateData(
+    //     "http://localhost:7000/toDoList/updateData",
+    //     token,
+    //     jsonData
+    //   );
+    //   if (response === "error") {
+    //     console.log("error occured");
+    //   } else {
+    //     console.log("PUT: content updated");
+    //     console.log(response);
+    //   }
+    // };
+    // receiveData();
+  }
   ////////delete the project onClick//////////////////////////////////////////////
   function deleteProjectOnclick(projectName) {
     let jsonData = {
@@ -139,6 +196,8 @@ export const HomePage = (params) => {
         <ToDoList
           toDoList={toDoList}
           toggleAddList={toggleAddlist}
+          toggleContentlist={toggleContentlist}
+          updateProjectName={updateProjectName}
           deleteProject={deleteProjectOnclick}
           deleteContent={deleteContentOnclick}
         />
@@ -150,9 +209,14 @@ export const HomePage = (params) => {
           addListInputValidate={addListInputValidate}
           addListFormValidate={addListFormValidate}
           addList={addList}
-          setAddList={setAddList}
-          date={date}
-          formDate={formDate}
+        />
+      )}
+      {addContent.addContentButtonState && (
+        <AddContent
+          addContent={addContent}
+          toggleContentList={toggleContentlist}
+          addContentFormValidate={addContentFormValidate}
+          addContentInputValidate={addContentInputValidate}
         />
       )}
     </div>

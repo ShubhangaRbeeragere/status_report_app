@@ -6,6 +6,7 @@ export const Content = (props) => {
         <li key={contentData.content_id.toString()}>
           <p>{contentData.content}</p>
           <button
+            title="delete content"
             className="removeContentButton"
             onClick={() => {
               deleteContent(props.project, contentData.content);

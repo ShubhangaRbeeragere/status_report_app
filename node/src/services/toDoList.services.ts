@@ -174,7 +174,9 @@ export const updateData = async function (req: Request, res: Response) {
     toDoContent.content = receivedData.content;
     toDoContent.list_id_fk = findList;
     await manager.save(toDoContent);
-    res.status(200).send("PUT: data updated");
+    res
+      .status(200)
+      .json({ project: receivedData.project, content: receivedData.content });
     console.log("PUT: data updated");
   } catch (error: any) {
     console.log(error.message);

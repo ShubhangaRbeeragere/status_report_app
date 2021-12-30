@@ -3,7 +3,6 @@ import { AddListButton } from "./addListButton";
 export const ToDoList = (props) => {
   let toDoList = props.toDoList;
   let deleteProject = props.deleteProject;
-
   let toDoItems =
     toDoList &&
     toDoList.map((list) => (
@@ -11,12 +10,13 @@ export const ToDoList = (props) => {
         <h3>
           {list.title}
           <button
+            title="delete project"
             className="removeProjectButton"
             onClick={() => {
               deleteProject(list.title);
             }}
           >
-            <i className="fas fa-minus"></i>
+            <i className="fas fa-times"></i>
           </button>
         </h3>
         <h4>{list.date}</h4>
@@ -25,6 +25,15 @@ export const ToDoList = (props) => {
           deleteContent={props.deleteContent}
           contentArray={list.contentKey}
         />
+        <button
+          title="Add Content"
+          className="addContentButton"
+          onClick={() => {
+            props.toggleContentlist(list.title);
+          }}
+        >
+          <i className="fas fa-plus"></i>
+        </button>
       </div>
     ));
 
