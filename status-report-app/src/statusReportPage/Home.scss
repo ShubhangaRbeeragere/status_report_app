@@ -1,298 +1,329 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 
 //variables
 $mainColor: rgb(9, 40, 65);
 $subColor: rgba(82, 182, 154);
-$textColor: #FFFBFB;
+$textColor: #fffbfb;
 $warning: rgb(192, 12, 12);
 
 ///mixins///////////////////////////////////////////////////////////////
-@mixin createButton($width: 50px, $height: 30px, $background-color: $subColor, $font-size: 18px) {
-    background-color: $background-color;
-    color: white;
-    border: none;
-    width: $width;
-    height: $height;
-    font-size: $font-size;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
-    cursor: pointer;
-    transition: 100ms;
-    &:focus{
-        outline: none;
-    }
-    &:hover{
-        background-color: darken($color: $background-color, $amount: 10%);
-    }
+@mixin createButton(
+  $width: 50px,
+  $height: 30px,
+  $background-color: $subColor,
+  $font-size: 18px,
+  $border-radius: 5px
+) {
+  background-color: $background-color;
+  color: white;
+  border: none;
+  width: $width;
+  height: $height;
+  font-size: $font-size;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: $border-radius;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: darken($color: $background-color, $amount: 10%);
+  }
 }
 
-
-
-
-
 ///mixins////////////////////////////////////////////////////////////////
-.homePage{
-    font-family: 'Raleway', sans-serif;
-    color: $textColor;
-    background-image: linear-gradient(to right bottom, $mainColor 50%, $subColor 130%);
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: 68vw 30vw;
-    grid-template-rows: 15% 85%;
-    justify-content: center;
-    grid-template-areas:
+.homePage {
+  font-family: "Raleway", sans-serif;
+  color: $textColor;
+  background-image: linear-gradient(
+    to right bottom,
+    $mainColor 50%,
+    $subColor 130%
+  );
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 68vw 30vw;
+  grid-template-rows: 15% 85%;
+  justify-content: center;
+  grid-template-areas:
     "header header"
     "achievements toDoList";
 
-    .boxes{
-        border: none;
-        border-radius: 10px;
-        margin: 5px;
+  .boxes {
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+  }
+  //section: header/////////////////////////////////////////////////////////
+  .header {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+
+    // background-image: linear-gradient(to top right, rgba($mainColor, 0.7) 20%, 60%, rgba($subColor, 0.6));
+    background-color: rgba($subColor, 0.3);
+    grid-area: header;
+
+    .companyLogo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 5px;
+      .logo {
+        background-image: url("./components/header/images/logo.jpg"),
+          linear-gradient($mainColor, $subColor);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 50px;
+        width: 50px;
+        order: 1;
+      }
+      .name {
+        order: 2;
+        font-weight: bolder;
+        font-size: 30px;
+      }
     }
-    //section: header/////////////////////////////////////////////////////////
-    .header{
+
+    .period {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      align-content: center;
+      // react generated class
+      .react-datepicker-wrapper {
+        width: max-content;
+        .react-datepicker__input-container {
+          width: max-content;
+        }
+      }
+      .datePicker {
+        color: white;
+        width: 130px;
+        height: 35px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        background-color: $subColor;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+        cursor: pointer;
+        transition: 100ms;
+        &:focus {
+          outline: none;
+        }
+        &:hover {
+          background-color: darken($color: $subColor, $amount: 10%);
+        }
+      }
+      .searchButton {
+        margin-left: 10px;
+        @include createButton(
+          $background-color: $subColor,
+          $width: 90px,
+          $height: 35px
+        );
+      }
+    }
+
+    .presentation {
+      color: rgb(255, 255, 255);
+      text-shadow: 0px 0px 30px black;
+      width: 130px;
+      height: 35px;
+      font-size: 18px;
+      line-height: 35px;
+      font-weight: bolder;
+      text-align: center;
+      letter-spacing: 0.3px;
+      border: none;
+      border-radius: 5px;
+      background-color: $subColor;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+      &:hover {
+        background-color: darken($color: $subColor, $amount: 10%);
+      }
+    }
+  }
+  //section: achievement/////////////////////////////////////////////////////////
+  .achievements {
+    // background-color: rgba($mainColor, 0.5);
+    // background-color: rgba($subColor, 0.1);
+    background-color: rgba(white, 0.1);
+    grid-area: achievements;
+    font-size: 50px;
+    text-align: center;
+  }
+  //section: toDoList/////////////////////////////////////////////////////////
+  .toDoList {
+    grid-area: toDoList;
+    background-color: rgba(white, 0.1);
+    text-align: center;
+    overflow: scroll;
+    position: relative;
+    //remove the scroll bar
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    //todo heading
+    h2 {
+      color: white;
+      margin: 10px;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: rgba($subColor, 0.4);
         width: 100%;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+      }
+    }
+    .item {
+      border: none;
+      margin: 5px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      //heading
+      h3 {
+        width: max-content;
+        margin: 8px;
         margin-left: auto;
         margin-right: auto;
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        padding: 0px 30px;
-        
-        // background-image: linear-gradient(to top right, rgba($mainColor, 0.7) 20%, 60%, rgba($subColor, 0.6));
-        background-color: rgba($subColor, 0.3);
-        grid-area: header;
-
-        .companyLogo{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            column-gap: 5px;
-            .logo{
-                background-image: url("./components/header/images/logo.jpg"), linear-gradient($mainColor, $subColor);
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                height: 50px;
-                width: 50px;
-                order: 1;
-            }
-            .name{
-                order: 2;
-                font-weight: bolder;
-                font-size: 30px;
-            }
+        column-gap: 5px;
+        &::after {
+          content: "";
+          background-color: white;
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          left: 0;
+          bottom: 0;
         }
-
-        .period{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            align-content: center;
-            // react generated class
-            .react-datepicker-wrapper{
-                width: max-content;
-                .react-datepicker__input-container{
-                    width: max-content;
-                }
-            }
-            .datePicker{
-                color: white;
-                width: 130px;
-                height: 35px;
-                font-size: 18px;
-                font-weight: bold;
-                text-align: center;
-                border: none;
-                border-radius: 5px;
-                background-color: $subColor;
-                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
-                cursor: pointer;
-                transition: 100ms;
-                &:focus{
-                    outline: none;
-                }
-                &:hover{
-                    background-color: darken($color: $subColor, $amount: 10%);
-                }
-            }
-            .searchButton{
-                margin-left: 10px;
-                @include createButton($background-color: $subColor, $width: 90px, $height: 35px);
-            }
+        .removeProjectButton {
+          @include createButton(
+            $background-color: rgba(255, 0, 0, 0.705),
+            $width: 15px,
+            $height: 15px,
+            $font-size: 10px,
+            $border-radius: 10px
+          );
         }
+      }
 
-        .presentation{
-            color: rgb(255, 255, 255);
-            text-shadow: 0px 0px 30px black;
-            width: 130px;
-            height: 35px;
-            font-size: 18px;
-            line-height: 35px;
-            font-weight: bolder;
-            text-align: center;
-            letter-spacing: 0.3px;
-            border: none;
-            border-radius: 5px;
-            background-color: $subColor;
-            box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
-            &:hover{
-                background-color: darken($color: $subColor, $amount: 10%);
-            }
-        }
+      //date
+      h4 {
+        color: $subColor;
+      }
+      //contents
+      .content {
+        line-height: 25px;
+        margin-left: 20px;
+        text-align: left;
+      }
     }
-    //section: achievement/////////////////////////////////////////////////////////
-    .achievements{
-        // background-color: rgba($mainColor, 0.5);
-        // background-color: rgba($subColor, 0.1);
-        background-color: rgba(white, 0.1);
-        grid-area: achievements;
-        font-size: 50px;
+
+    .addListButton {
+      position: fixed;
+      right: 1.8%;
+      top: 100px;
+      @include createButton($background-color: $subColor, $width: 50px);
+    }
+  }
+  //add list template
+  .addListWrapper {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    transition: 1s;
+    form {
+      background-color: $subColor;
+      padding: 20px 50px;
+      height: max-content;
+      min-width: 15rem;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+      label {
+        font-size: 22px;
+        font-weight: bold;
+        color: black;
+        margin-right: 5px;
+        width: max-content;
+      }
+      input {
+        font-family: "Raleway", sans-serif;
+        font-size: large;
+        height: 30px;
         text-align: center;
-    }
-    //section: toDoList/////////////////////////////////////////////////////////
-    .toDoList{
-        grid-area: toDoList;
-        background-color: rgba(white, 0.1);
-        text-align: center;
-        overflow: scroll;
-        position: relative;
-        //remove the scroll bar
-        -ms-overflow-style: none; 
-        scrollbar-width: none; 
-        &::-webkit-scrollbar {
-            display: none;
-        } 
-        //todo heading
-        h2{
-            color: white;
-            margin: 10px;
-            position: relative;
-            &::after{
-                content: "";
-                position: absolute;
-                background-color: rgba($subColor, 0.4);
-                width: 100%;
-                height: 2px;
-                bottom: -4px;
-                left: 0;
-            }
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        &:focus {
+          box-shadow: 0px 0px 5px 0.2px $mainColor;
         }
-        .item{
-            border: none;
-            margin: 5px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 80%;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            //heading
-            h3{
-                width: max-content;
-                margin: 8px;
-                margin-left: auto;
-                margin-right: auto;
-                position: relative;
-                &::after{
-                    content: "";
-                    background-color: white;
-                    position: absolute;
-                    height: 1px;
-                    width: 100%;
-                    left: 0;
-                    bottom: 0;
-                }
-            }
-            
-
-            //date
-            h4{
-                color: $subColor;
-            }
-            //contents
-            .content{
-                line-height: 25px;
-                margin-left: 20px;
-                text-align: left;
-            }
+      }
+      textarea {
+        font-size: large;
+        max-height: 100px;
+        max-width: 220px;
+        text-align: left;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        padding: 5px;
+        &:focus {
+          box-shadow: 0px 0px 5px 0.2px $mainColor;
         }
-            
-            .addListButton{
-                position: fixed;
-                right: 1.8%;
-                top: 100px;
-                @include createButton($background-color: $subColor, $width: 50px);
-            }
-        
+      }
+      .submitButton {
+        align-self: center;
+        @include createButton(
+          $background-color: $mainColor,
+          $width: 80px,
+          $height: 35px
+        );
+      }
+      .cancelButton {
+        align-self: flex-end;
+        @include createButton(
+          $background-color: $mainColor,
+          $width: 35px,
+          $height: 30px,
+          $border-radius: 5px
+        );
+      }
     }
-    //add list template
-    .addListWrapper{
-        position: absolute;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        top: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 10;
-        display: grid;
-        place-items: center;
-        transition: 1s;
-        form{
-            background-color: $subColor;
-            padding: 20px 50px;
-            height: max-content;
-            min-width: 15rem;
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            row-gap: 20px;
-            label{
-                font-size: 22px;
-                font-weight: bold;
-                color: black;
-                margin-right: 5px;
-                width: max-content;
-            }
-            input{
-                font-family: 'Raleway', sans-serif;
-                font-size: large;
-                height: 30px;
-                text-align: center;
-                border: none;
-                border-radius: 5px;
-                outline: none;
-                &:focus{
-                    box-shadow: 0px 0px 5px 0.2px $mainColor;
-                }
-            }
-            textarea{
-                font-size: large;
-                max-height: 100px;
-                max-width: 220px;
-                text-align: left;
-                border: none;
-                border-radius: 5px;
-                outline: none;
-                padding: 5px;
-                &:focus{
-                    box-shadow: 0px 0px 5px 0.2px $mainColor;
-                }
-            }
-            .submitButton{
-                align-self: center;
-                @include createButton($background-color: $mainColor, $width: 80px, $height: 35px);
-            }
-            .cancelButton{
-                align-self: flex-end;
-                @include createButton($background-color: $mainColor, $width: 35px, $height: 30px);
-            }
-        }
-    }
+  }
 }

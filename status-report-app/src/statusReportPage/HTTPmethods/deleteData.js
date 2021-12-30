@@ -1,7 +1,7 @@
-export default async function addData(url, token, jsonData) {
+export default async function deleteData(url, token, jsonData) {
   try {
     let response = await fetch(url, {
-      method: "POST",
+      method: "DELETE",
       mode: "cors",
       cache: "no-cache",
       credentials: "same-origin",
@@ -15,7 +15,7 @@ export default async function addData(url, token, jsonData) {
       body: JSON.stringify(jsonData),
     });
     if (!response.ok) {
-      throw new Error("POST:addData: fetch error occured");
+      throw new Error("DELETE:deleteData: fetch error occured");
     }
     let result = await response.json();
     console.log("addData response: ", result);
