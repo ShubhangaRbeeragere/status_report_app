@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import CompanyName from "./loginPage/CompanyName";
 import LoginTemplate from "./loginPage/LoginTemplate";
 import LoadingScreen from "./loginPage/LoadingScreen";
@@ -11,6 +11,7 @@ const App = () => {
   let [userInput, setUserInput] = useState({ username: "", password: "" });
   let [error, setError] = useState(null);
   let [loader, setLoader] = useState(false);
+  let navigate = useNavigate();
 
   ////for fetching the data from the server
   const fetchData = async (username, password) => {
@@ -23,7 +24,8 @@ const App = () => {
       } else {
         localStorage.setItem("token", data.token);
         setLoader(false);
-        console.log(localStorage.getItem("token"));
+        console.log("token in local storage is", localStorage.getItem("token"));
+        navigate("/home");
       }
     } catch (error) {
       setError(error.message);
@@ -53,17 +55,24 @@ const App = () => {
 
   return (
     <div className="app">
-      <>
-        <CompanyName />
-        <LoginTemplate
-          formValidation={formValidation}
-          updateInputs={updateInputs}
-          userInput={userInput}
-          error={error}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <CompanyName />
+              <LoginTemplate
+                formValidation={formValidation}
+                updateInputs={updateInputs}
+                userInput={userInput}
+                error={error}
+              />
+              {loader && <LoadingScreen />}
+            </>
+          }
         />
-        {loader && <LoadingScreen />}
-      </>
-      {/* <HomePage /> */}
+        <Route path="home" element={<HomePage />} />
+      </Routes>
     </div>
   );
 };
