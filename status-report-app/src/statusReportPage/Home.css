@@ -228,7 +228,7 @@
   height: 1px;
   width: 100%;
   left: 0;
-  bottom: 0;
+  bottom: -1px;
 }
 .homePage .toDoList .item h4 {
   color: #52b69a;

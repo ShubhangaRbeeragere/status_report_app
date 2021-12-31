@@ -33,7 +33,7 @@ export const AddContent = (props) => {
             }}
           ></textarea>
         </label>
-        <input className="submitButton" type="submit" value="Submit" />
+        <input className="submitButton" type="submit" value="Save" />
       </form>
     </div>
   );
