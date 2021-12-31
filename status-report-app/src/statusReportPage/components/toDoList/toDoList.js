@@ -7,18 +7,16 @@ export const ToDoList = (props) => {
     toDoList &&
     toDoList.map((list) => (
       <div className="item" key={list.list_id.toString()}>
-        <h3>
-          {list.title}
-          <button
-            title="delete project"
-            className="removeProjectButton"
-            onClick={() => {
-              deleteProject(list.title);
-            }}
-          >
-            <i className="fas fa-times"></i>
-          </button>
-        </h3>
+        <button
+          title="delete project"
+          className="removeProjectButton"
+          onClick={() => {
+            deleteProject(list.title);
+          }}
+        >
+          <i className="fas fa-times"></i>
+        </button>
+        <h3>{list.title}</h3>
         <h4>{list.date}</h4>
         <Content
           project={list.title}
