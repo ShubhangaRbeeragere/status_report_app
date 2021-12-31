@@ -24,7 +24,7 @@ const App = () => {
       } else {
         localStorage.setItem("token", data.token);
         setLoader(false);
-        console.log("token in local storage is", localStorage.getItem("token"));
+        // console.log("token in local storage is", localStorage.getItem("token"));
         navigate("/home");
       }
     } catch (error) {

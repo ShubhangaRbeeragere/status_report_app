@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "./components/header/header";
 import { ToDoList } from "./components/toDoList/toDoList";
 import { Achievements } from "./components/achievements/achievements";
@@ -8,10 +8,15 @@ import addData from "./HTTPmethods/addData";
 import deleteData from "./HTTPmethods/deleteData";
 import updateData from "./HTTPmethods/updateData";
 import { AddContent } from "./components/toDoList/addContent";
+import LoginError from "./components/errors/loginError";
 import "./Home.css";
 
 export const HomePage = (params) => {
   //hooks
+  //set the title for home page
+  useEffect(() => {
+    document.title = "Home page";
+  }, []);
   const [date, setDate] = useState(new Date());
   let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
   console.log(formDate);
@@ -22,19 +27,25 @@ export const HomePage = (params) => {
     date: formDate,
     content: "",
   });
+  //delete the token when the home window is closed
+  window.onbeforeunload = () => {
+    console.log("token cleared");
+    localStorage.removeItem("token");
+  };
   //for addContent form validation
   const [addContent, setAddContent] = useState({
     addContentButtonState: false,
     content: "",
     project: "",
   });
-  let token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGxpYW0uayIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJpYXQiOjE2NDA5MjUxNzMsImV4cCI6MTY0MDkzMjM3M30.qMROpN_ybw_hsOarJCCSC6c7PQ81izE3xIkI7KtNKmQ";
+  let token = localStorage.getItem("token");
   //for adding project to toDoList
-  let { data: toDoList, setData: setToDoList } = useGet(
-    "http://localhost:7000/toDoList/getAll",
-    token
-  );
+  let {
+    data: toDoList,
+    setData: setToDoList,
+    loadPage,
+    error,
+  } = useGet("http://localhost:7000/toDoList/getAll", token);
 
   //function for addList template///////////////////////////////
   //add or cancel the addlist form
@@ -203,36 +214,41 @@ export const HomePage = (params) => {
   };
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
-    <div className="homePage">
-      <Header date={date} setDate={setDate} fetchData={fetchData} />
-      <Achievements />
-      {
-        <ToDoList
-          toDoList={toDoList}
-          toggleAddList={toggleAddlist}
-          toggleContentlist={toggleContentlist}
-          updateProjectName={updateProjectName}
-          deleteProject={deleteProjectOnclick}
-          deleteContent={deleteContentOnclick}
-        />
-      }
+    <>
+      {loadPage && (
+        <div className="homePage">
+          <Header date={date} setDate={setDate} fetchData={fetchData} />
+          <Achievements />
+          {
+            <ToDoList
+              toDoList={toDoList}
+              toggleAddList={toggleAddlist}
+              toggleContentlist={toggleContentlist}
+              updateProjectName={updateProjectName}
+              deleteProject={deleteProjectOnclick}
+              deleteContent={deleteContentOnclick}
+            />
+          }
 
-      {addList.AddListButtonState && (
-        <AddList
-          toggleAddList={toggleAddlist}
-          addListInputValidate={addListInputValidate}
-          addListFormValidate={addListFormValidate}
-          addList={addList}
-        />
+          {addList.AddListButtonState && (
+            <AddList
+              toggleAddList={toggleAddlist}
+              addListInputValidate={addListInputValidate}
+              addListFormValidate={addListFormValidate}
+              addList={addList}
+            />
+          )}
+          {addContent.addContentButtonState && (
+            <AddContent
+              addContent={addContent}
+              toggleContentList={toggleContentlist}
+              addContentFormValidate={addContentFormValidate}
+              addContentInputValidate={addContentInputValidate}
+            />
+          )}
+        </div>
       )}
-      {addContent.addContentButtonState && (
-        <AddContent
-          addContent={addContent}
-          toggleContentList={toggleContentlist}
-          addContentFormValidate={addContentFormValidate}
-          addContentInputValidate={addContentInputValidate}
-        />
-      )}
-    </div>
+      {error && <LoginError />}
+    </>
   );
 };

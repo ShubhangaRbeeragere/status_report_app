@@ -20,6 +20,7 @@ $warning: rgb(192, 12, 12);
   border: none;
   width: $width;
   height: $height;
+  line-height: $height;
   font-size: $font-size;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -484,6 +485,40 @@ $warning: rgb(192, 12, 12);
           $border-radius: 5px
         );
       }
+    }
+  }
+}
+
+.loginErrorWrapper {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-image: linear-gradient(
+    to right bottom,
+    $mainColor 50%,
+    $subColor 130%
+  );
+  .loginError {
+    color: white;
+
+    .error {
+      font-size: 25px;
+      color: red;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      @include createButton(
+        $background-color: $subColor,
+        $height: 30px,
+        $width: 50px,
+        $border-radius: 10px,
+        $font-size: 15px,
+        $hover-color-darken: 30%
+      );
+      display: inline-block;
+      color: black;
     }
   }
 }
