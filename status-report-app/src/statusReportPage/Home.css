@@ -207,7 +207,7 @@
   outline: none;
 }
 .homePage .toDoList .item .removeProjectButton:hover {
-  background-color: #30725f;
+  background-color: #214e41;
 }
 .homePage .toDoList .item h3 {
   width: max-content;
@@ -237,6 +237,7 @@
   text-align: left;
 }
 .homePage .toDoList .item .content li {
+  min-width: 250px;
   margin: 5px;
   padding: 5px;
   overflow-wrap: break-word;
@@ -249,7 +250,7 @@
   transition: box-shadow 100ms;
 }
 .homePage .toDoList .item .content li:hover {
-  box-shadow: 0px 0px 5px 0.2px rgba(82, 182, 154, 0.4);
+  box-shadow: 0px 0px 5px 0.5px rgba(82, 182, 154, 0.7);
 }
 .homePage .toDoList .item .content li::before {
   content: "";
@@ -311,7 +312,7 @@
   outline: none;
 }
 .homePage .toDoList .item .addContentButton:hover {
-  background-color: #30725f;
+  background-color: #214e41;
 }
 .homePage .toDoList .addListButton {
   position: fixed;

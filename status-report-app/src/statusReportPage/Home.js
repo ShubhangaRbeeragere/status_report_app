@@ -14,6 +14,7 @@ export const HomePage = (params) => {
   //hooks
   const [date, setDate] = useState(new Date());
   let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  console.log(formDate);
   //for addList form validation
   const [addList, setAddList] = useState({
     AddListButtonState: false,
