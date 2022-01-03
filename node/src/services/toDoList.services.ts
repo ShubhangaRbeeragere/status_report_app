@@ -164,7 +164,10 @@ export const updateData = async function (req: Request, res: Response) {
     //else
     // check if the content already exists
     let findContent = await manager.findOne(ToDoContent, {
-      content: receivedData.content,
+      where: {
+        content: receivedData.content,
+        list_id_fk: findList.list_id,
+      },
     });
     if (findContent !== undefined) {
       throw new Error("PUT: content data already exists");

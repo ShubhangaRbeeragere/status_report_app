@@ -451,14 +451,16 @@
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
-  display: grid;
-  place-items: center;
-  transition: 1s;
 }
 .homePage .addContentWrapper form {
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: left-to-right 500ms ease 1 forwards;
   background-color: #52b69a;
   padding: 20px 50px;
   height: max-content;
+  width: 20rem;
   min-width: 15rem;
   border-radius: 5px;
   display: flex;
@@ -543,6 +545,9 @@
 .homePage .addContentWrapper form .cancelButton:hover {
   background-color: #030c14;
 }
+.homePage .addContentWrapper .form-right-to-left {
+  animation: right-to-left 500ms ease 1 forwards;
+}
 
 .loginErrorWrapper {
   position: absolute;
@@ -583,6 +588,28 @@
 }
 .loginErrorWrapper .loginError a:hover {
   background-color: #214e41;
+}
+
+@keyframes left-to-right {
+  from {
+    left: -20%;
+    opacity: 0;
+  }
+  to {
+    left: 50%;
+    opacity: 1;
+  }
+}
+@keyframes right-to-left {
+  from {
+    left: 50%;
+    opacity: 1;
+  }
+  to {
+    left: 110%;
+    opacity: 0;
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=Home.css.map */

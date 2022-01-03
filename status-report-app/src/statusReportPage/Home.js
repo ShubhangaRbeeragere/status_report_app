@@ -18,13 +18,11 @@ export const HomePage = (params) => {
     document.title = "Home page";
   }, []);
   const [date, setDate] = useState(new Date());
-  let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-  console.log(formDate);
   //for addList form validation
   const [addList, setAddList] = useState({
     AddListButtonState: false,
     project: "",
-    date: formDate,
+    date: "",
     content: "",
   });
   //delete the token when the home window is closed
@@ -50,8 +48,10 @@ export const HomePage = (params) => {
   //function for addList template///////////////////////////////
   //add or cancel the addlist form
   function toggleAddlist() {
+    let date = new Date();
+    let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
     let buttonState = addList.AddListButtonState ? false : true;
-    setAddList({ ...addList, AddListButtonState: buttonState });
+    setAddList({ ...addList, AddListButtonState: buttonState, date: formDate });
   }
   //add all the data to the form states/////////////////////////////////////////////////
   function addListInputValidate(e) {
@@ -124,7 +124,6 @@ export const HomePage = (params) => {
       if (response === "error") {
         console.log("error occured");
       } else {
-        console.log(response);
         let content = response.content;
         let projectIndex = 0;
         let project = response.project;
@@ -138,7 +137,6 @@ export const HomePage = (params) => {
         //clone the list
         let newList = toDoList.slice();
         newList[projectIndex].contentKey.push(content);
-        console.log(newList);
         setToDoList(newList);
       }
     };
