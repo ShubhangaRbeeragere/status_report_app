@@ -13,10 +13,6 @@ import "./Home.css";
 
 export const HomePage = (params) => {
   //hooks
-  //set the title for home page
-  useEffect(() => {
-    document.title = "Home page";
-  }, []);
   const [date, setDate] = useState(new Date());
   //for addList form validation
   const [addList, setAddList] = useState({
@@ -25,17 +21,13 @@ export const HomePage = (params) => {
     date: "",
     content: "",
   });
-  //delete the token when the home window is closed
-  window.onbeforeunload = () => {
-    console.log("token cleared");
-    localStorage.removeItem("token");
-  };
   //for addContent form validation
   const [addContent, setAddContent] = useState({
     addContentButtonState: false,
     content: "",
     project: "",
   });
+
   let token = localStorage.getItem("token");
   //for adding project to toDoList
   let {
@@ -45,13 +37,37 @@ export const HomePage = (params) => {
     error,
   } = useGet("http://localhost:7000/toDoList/getAll", token);
 
+  useEffect(() => {
+    //set the title for home page
+    document.title = "Home page";
+    //set the date in addList state
+    let date = new Date();
+
+    let formDate = date.toISOString().substring(0, 10);
+    console.log(formDate);
+    setAddList({
+      ...addList,
+      date: formDate,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //delete the token when the home window is closed
+  // window.onbeforeunload = () => {
+  //   console.log("token cleared");
+  //   localStorage.removeItem("token");
+  // };
   //function for addList template///////////////////////////////
   //add or cancel the addlist form
   function toggleAddlist() {
-    let date = new Date();
-    let formDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
     let buttonState = addList.AddListButtonState ? false : true;
-    setAddList({ ...addList, AddListButtonState: buttonState, date: formDate });
+    setAddList({
+      ...addList,
+      AddListButtonState: buttonState,
+      content: "",
+      project: "",
+      date: new Date().toISOString().substring(0, 10),
+    });
   }
   //add all the data to the form states/////////////////////////////////////////////////
   function addListInputValidate(e) {
@@ -91,15 +107,11 @@ export const HomePage = (params) => {
   //add or cancel the contentlist form and also update the project name for future
   function toggleContentlist(projectName) {
     let buttonState = addContent.addContentButtonState ? false : true;
-    if (buttonState === true) {
-      setAddContent({
-        ...addContent,
-        addContentButtonState: buttonState,
-        project: projectName,
-      });
-    } else {
-      setAddContent({ ...addContent, addContentButtonState: buttonState });
-    }
+    setAddContent({
+      addContentButtonState: buttonState,
+      project: projectName,
+      content: "",
+    });
   }
   function addContentInputValidate(e) {
     setAddContent({ ...addContent, [e.target.name]: e.target.value });
