@@ -35,21 +35,13 @@ export const HomePage = (params) => {
     setData: setToDoList,
     loadPage,
     error,
+    setError,
   } = useGet("http://localhost:7000/toDoList/getAll", token);
 
+  //useeffect hhoookk///////////////////////////////////////////////////////////
   useEffect(() => {
     //set the title for home page
     document.title = "Home page";
-    //set the date in addList state
-    let date = new Date();
-
-    let formDate = date.toISOString().substring(0, 10);
-    console.log(formDate);
-    setAddList({
-      ...addList,
-      date: formDate,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //delete the token when the home window is closed
@@ -92,6 +84,7 @@ export const HomePage = (params) => {
       );
       if (response === "error") {
         console.log("error occured");
+        setError(true);
       } else {
         setToDoList([...toDoList, response]);
       }
@@ -134,6 +127,7 @@ export const HomePage = (params) => {
         jsonData
       );
       if (response === "error") {
+        setError(true);
         console.log("error occured");
       } else {
         let content = response.content;
@@ -168,6 +162,7 @@ export const HomePage = (params) => {
         jsonData
       );
       if (response === "error") {
+        setError(true);
         console.log("deleteData: error occured");
       } else {
         let newList = toDoList.filter((data) => {
@@ -194,6 +189,7 @@ export const HomePage = (params) => {
         jsonData
       );
       if (response === "error") {
+        setError(true);
         console.log("deleteData: error occured");
       } else {
         let content = response.content;

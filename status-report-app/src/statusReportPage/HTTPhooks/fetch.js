@@ -35,9 +35,10 @@ export function useGet(url, token) {
       .catch((error) => {
         console.log(error);
       });
-  }, [url, token]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
 
-  return { data, setData, loadPage, error };
+  return { data, setData, loadPage, error, setError };
 }
 
 export function usePost(url, token, jsonData) {
