@@ -347,9 +347,9 @@ $warning: rgb(192, 12, 12);
         }
 
         .addListButton {
-            position: fixed;
+            position: absolute;
             right: 1.8%;
-            top: 100px;
+            top: 10px;
             @include createButton($background-color: $subColor, $width: 50px);
         }
     }

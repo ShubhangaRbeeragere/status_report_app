@@ -332,9 +332,9 @@
   background-color: #214e41;
 }
 .homePage .toDoList .addListButton {
-  position: fixed;
+  position: absolute;
   right: 1.8%;
-  top: 100px;
+  top: 10px;
   background-color: #52b69a;
   color: white;
   border: none;
