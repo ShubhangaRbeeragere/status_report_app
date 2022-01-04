@@ -12,6 +12,7 @@ export const AddList = (props) => {
                 }}
             >
                 <button
+                    type="button"
                     className="cancelButton"
                     onClick={() => {
                         props.toggleAddList();

@@ -4,6 +4,7 @@ import { ToDoList } from "./components/toDoList/toDoList";
 import { Achievements } from "./components/achievements/achievements";
 import { AddList } from "./components/toDoList/addList";
 import { useGet } from "./HTTPhooks/fetch";
+import LoadingScreen from "../loginPage/LoadingScreen";
 import addData from "./HTTPmethods/addData";
 import deleteData from "./HTTPmethods/deleteData";
 import updateData from "./HTTPmethods/updateData";
@@ -37,10 +38,10 @@ export const HomePage = (params) => {
         loadPage,
         error,
         setError,
+        setLoadPage,
     } = useGet("http://localhost:7000/toDoList/getAll", token);
 
     //for CSS addlist animation
-    let [addListClassName, setAddListClassName] = useState("left-to-right");
     //useeffect hhoookk///////////////////////////////////////////////////////////
     useEffect(() => {
         //set the title for home page
@@ -51,27 +52,13 @@ export const HomePage = (params) => {
     //add or cancel the addlist form///////////////////////////////////////////////////////////
     function toggleAddlist() {
         let buttonState = addList.AddListButtonState ? false : true;
-        if (buttonState === false) {
-            setAddListClassName("left-to-right-two");
-            setTimeout(() => {
-                setAddList({
-                    ...addList,
-                    AddListButtonState: buttonState,
-                    content: "",
-                    project: "",
-                    date: new Date().toISOString().substring(0, 10),
-                });
-            }, 1000);
-        } else {
-            setAddListClassName("left-to-right-one");
-            setAddList({
-                ...addList,
-                AddListButtonState: buttonState,
-                content: "",
-                project: "",
-                date: new Date().toISOString().substring(0, 10),
-            });
-        }
+        setAddList({
+            ...addList,
+            AddListButtonState: buttonState,
+            content: "",
+            project: "",
+            date: new Date().toISOString().substring(0, 10),
+        });
     }
     //add all the data to the form states/////////////////////////////////////////////////
     function addListInputValidate(e) {
@@ -90,6 +77,7 @@ export const HomePage = (params) => {
         };
         //add the data and get the addedd data
         let receiveData = async () => {
+            setLoadPage(true);
             let response = await addData(
                 "http://localhost:7000/toDoList/addData",
                 token,
@@ -97,8 +85,10 @@ export const HomePage = (params) => {
             );
             if (response === "error") {
                 console.log("error occured");
-                setError(true);
+                toggleAddlist();
+                // setError(true);
             } else {
+                setLoadPage(false);
                 setToDoList([...toDoList, response]);
             }
         };
@@ -134,15 +124,17 @@ export const HomePage = (params) => {
         };
         //update the content and get the updated content///////////////////////////////////////////////////////////
         let receiveData = async () => {
+            setLoadPage(true);
             let response = await updateData(
                 "http://localhost:7000/toDoList/updateData",
                 token,
                 jsonData
             );
             if (response === "error") {
-                setError(true);
+                // setError(true);
                 console.log("error occured");
             } else {
+                setLoadPage(false);
                 let content = response.content;
                 let projectIndex = 0;
                 let project = response.project;
@@ -169,15 +161,17 @@ export const HomePage = (params) => {
         };
         //delete the project and remove the item only when succeeds
         let deleteProject = async () => {
+            setLoadPage(true);
             let response = await deleteData(
                 "http://localhost:7000/toDoList/removeData",
                 token,
                 jsonData
             );
             if (response === "error") {
-                setError(true);
+                // setError(true);
                 console.log("deleteData: error occured");
             } else {
+                setLoadPage(false);
                 let newList = toDoList.filter((data) => {
                     let check = data.title !== response.project ? true : false;
                     return check;
@@ -196,15 +190,17 @@ export const HomePage = (params) => {
         };
         //delete the content and remove the content from the toDoList
         let deleteContent = async () => {
+            setLoadPage(true);
             let response = await deleteData(
                 "http://localhost:7000/toDoList/removeData",
                 token,
                 jsonData
             );
             if (response === "error") {
-                setError(true);
+                // setError(true);
                 console.log("deleteData: error occured");
             } else {
+                setLoadPage(false);
                 let content = response.content;
                 let projectIndex = 0;
                 let project = response.project;
@@ -236,44 +232,38 @@ export const HomePage = (params) => {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     return (
         <>
-            {loadPage && (
-                <div className="homePage">
-                    <Header
-                        date={date}
-                        setDate={setDate}
-                        fetchData={fetchData}
+            {loadPage && <LoadingScreen />}
+            <div className="homePage">
+                <Header date={date} setDate={setDate} fetchData={fetchData} />
+                <Achievements />
+                {
+                    <ToDoList
+                        toDoList={toDoList}
+                        toggleAddList={toggleAddlist}
+                        toggleContentlist={toggleContentlist}
+                        updateProjectName={updateProjectName}
+                        deleteProject={deleteProjectOnclick}
+                        deleteContent={deleteContentOnclick}
                     />
-                    <Achievements />
-                    {
-                        <ToDoList
-                            toDoList={toDoList}
-                            toggleAddList={toggleAddlist}
-                            toggleContentlist={toggleContentlist}
-                            updateProjectName={updateProjectName}
-                            deleteProject={deleteProjectOnclick}
-                            deleteContent={deleteContentOnclick}
-                        />
-                    }
+                }
 
-                    {addList.AddListButtonState && (
-                        <AddList
-                            addListClassName={addListClassName}
-                            toggleAddList={toggleAddlist}
-                            addListInputValidate={addListInputValidate}
-                            addListFormValidate={addListFormValidate}
-                            addList={addList}
-                        />
-                    )}
-                    {addContent.addContentButtonState && (
-                        <AddContent
-                            addContent={addContent}
-                            toggleContentList={toggleContentlist}
-                            addContentFormValidate={addContentFormValidate}
-                            addContentInputValidate={addContentInputValidate}
-                        />
-                    )}
-                </div>
-            )}
+                {addList.AddListButtonState && (
+                    <AddList
+                        toggleAddList={toggleAddlist}
+                        addListInputValidate={addListInputValidate}
+                        addListFormValidate={addListFormValidate}
+                        addList={addList}
+                    />
+                )}
+                {addContent.addContentButtonState && (
+                    <AddContent
+                        addContent={addContent}
+                        toggleContentList={toggleContentlist}
+                        addContentFormValidate={addContentFormValidate}
+                        addContentInputValidate={addContentInputValidate}
+                    />
+                )}
+            </div>
             {error && <LoginError />}
         </>
     );
