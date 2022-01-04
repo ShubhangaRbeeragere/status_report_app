@@ -9,7 +9,8 @@ import addData from "./HTTPmethods/addData";
 import deleteData from "./HTTPmethods/deleteData";
 import updateData from "./HTTPmethods/updateData";
 import { AddContent } from "./components/toDoList/addContent";
-import LoginError from "./components/errors/loginError";
+import LoginError from "./components/errorMessages/loginError";
+import StatusMessage from "./components/errorMessages/httpStatusMessage";
 import "./Home.css";
 
 export const HomePage = (params) => {
@@ -32,6 +33,7 @@ export const HomePage = (params) => {
 
     let token = localStorage.getItem("token");
     //for adding project to toDoList///////////////////////////////////////////////////////////
+    //and handling loader and errors
     let {
         data: toDoList,
         setData: setToDoList,
@@ -41,6 +43,12 @@ export const HomePage = (params) => {
         setLoadPage,
     } = useGet("http://localhost:7000/toDoList/getAll", token);
 
+    //for handling statusMessages after HTTP requests
+    let [statusMessage, setStatusMessage] = useState({
+        message: null,
+        isVisible: false,
+    });
+
     //for CSS addlist animation
     //useeffect hhoookk///////////////////////////////////////////////////////////
     useEffect(() => {
@@ -48,6 +56,10 @@ export const HomePage = (params) => {
         document.title = "Home page";
     }, []);
 
+    //function for changing statusMessage isVisible variable
+    function changeMessageVisiblity() {
+        setStatusMessage({ ...statusMessage, isVisible: false });
+    }
     //function for addList template///////////////////////////////
     //add or cancel the addlist form///////////////////////////////////////////////////////////
     function toggleAddlist() {
@@ -87,6 +99,10 @@ export const HomePage = (params) => {
                 console.log("error occured");
                 toggleAddlist();
                 // setError(true);
+            } else if (response.error) {
+                setLoadPage(false);
+                console.log(response.error);
+                setStatusMessage({ isVisible: true, message: response.error });
             } else {
                 setLoadPage(false);
                 setToDoList([...toDoList, response]);
@@ -133,6 +149,10 @@ export const HomePage = (params) => {
             if (response === "error") {
                 // setError(true);
                 console.log("error occured");
+            } else if (response.error) {
+                console.log(response.error);
+                setLoadPage(false);
+                setStatusMessage({ isVisible: true, message: response.error });
             } else {
                 setLoadPage(false);
                 let content = response.content;
@@ -170,6 +190,9 @@ export const HomePage = (params) => {
             if (response === "error") {
                 // setError(true);
                 console.log("deleteData: error occured");
+            } else if (response.error) {
+                setLoadPage(false);
+                console.log(response.error);
             } else {
                 setLoadPage(false);
                 let newList = toDoList.filter((data) => {
@@ -199,6 +222,9 @@ export const HomePage = (params) => {
             if (response === "error") {
                 // setError(true);
                 console.log("deleteData: error occured");
+            } else if (response.error) {
+                setLoadPage(false);
+                console.log(response.error);
             } else {
                 setLoadPage(false);
                 let content = response.content;
@@ -265,6 +291,11 @@ export const HomePage = (params) => {
                 )}
             </div>
             {error && <LoginError />}
+            <StatusMessage
+                message={statusMessage.message}
+                isVisible={statusMessage.isVisible}
+                changeMessageVisiblity={changeMessageVisiblity}
+            />
         </>
     );
 };
