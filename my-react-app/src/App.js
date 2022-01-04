@@ -1,44 +1,28 @@
-import './App.css';
-import { Achievements } from './components/Achievement/Achievement';
-import { Contents } from './components/Achievement/content';
-import React, { useState } from 'react';
-import DatePicker from 'react-date-picker';
-import { Dates } from './components/Achievement/date';
+import React from 'react';
+import Home from './components/Home/home';
+import { BrowserRouter} from "react-router-dom";
+import HomeAchievement from './components/Home/home.achievement';
+import Milestones from './components/Milestone/Milestone';
+import SubAchievements from './components/SubAchievement/SubAchievement';
+import Achievements from './components/Achievement/Achievement'
+import {Route} from 'react-router-dom';
 
-function MyApp() {
-  const [value, onChange] = useState(new Date());
+
+
+
+
+
+function App() {
+
 
   return (
     <div>
-      <DatePicker
-        onChange={onChange}
-        value={value}
 
-      />
+      <Home/>
+ 
+
     </div>
-  );
+  )
 }
-function App() {
-  return (
-    <div class="app">
-     <Achievements/>
-     <br/>
-      <div >
-      <input style={{ height: 50, width: "200%", borderColor: 'gray', borderWidth: 1,  marginBottom: 20 }}/>
-        </div>
-        <Contents/>
-        <br/>
-          <div >
-          <input style={{ height: 200, width: "200%", borderColor: 'gray', borderWidth: 1,  marginBottom: 20 }}/>
-          </div>
-          <Dates/>
-          <br/>
-                <div 
-                className="app__date">
-                <MyApp />
-                
-                </div> 
-</div>
-  )}
 
 export default App;

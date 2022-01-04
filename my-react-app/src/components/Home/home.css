@@ -1,0 +1,228 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+body {
+  font-family: "Raleway", sans-serif;
+  color: #fffbfb;
+  background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 68vw 30vw;
+  grid-template-rows: 15% 85%;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  }
+
+
+ .Home {
+    color: rgb(226, 216, 216);
+
+
+}
+.bgm {
+  min-width: 50px;
+  background-color: rgb(240, 132, 132);
+}
+
+.subsButton {
+
+    color: black;
+    cursor: pointer;
+  
+    width: 400px;
+    height: 40px;
+    margin-bottom: 10px;
+    position: absolute;
+    left:59.5%;
+    top: 20%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px #00000066;
+   
+}
+
+
+.subsButton:hover {
+
+  background-color: #489de2;
+  box-shadow:0 0 5px #ff96ad, 0 0 25px 
+  #279be9, 0 0 50px #ff96ad, 0 0 200px #1cb0dd;
+}
+.milesButton {
+
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 400px;
+    height: 40px;
+    margin-bottom: 10px;
+    position: absolute;
+    left:12%;
+    top:62.5%;
+    box-shadow: 0 4px 6px #00000066;
+    
+   
+}
+
+.milesButton:hover {
+
+  background-color: #489de2;
+  box-shadow:0 0 5px #ff96ad, 0 0 25px 
+  #279be9, 0 0 50px #ff96ad, 0 0 200px #1cb0dd;
+}
+
+.SubAchievements {
+
+    list-style: none;
+    background-color: rgb(244, 244, 245);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:#72726f ;
+    box-shadow: 0 4px 6px #00000066;
+    width: 390px;
+    height: 50px;
+    position: absolute;
+    left: 64.5%;
+    top:30%;
+
+}
+
+
+.Milestones {
+
+    list-style: none;
+    background-color: rgb(244, 244, 245);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:#72726f ;
+    box-shadow: 0 4px 6px #00000066;
+    width: 390px;
+    height: 50px;
+    position: absolute;
+    left: 14.5%;
+    top:76%;
+    }
+
+h3 {
+
+position: absolute;
+left: 70.5%;
+top:10%
+
+
+}
+
+.achievementsHeader {
+  position: absolute;
+  left: 11%;
+  top:10%
+  
+  
+  }
+
+
+
+.milesHeader {
+position: absolute;
+left: 20%;
+top:53%
+
+
+}
+.subsHeader {
+    position: absolute;
+    left: 65%;
+    top:11%
+    
+    
+    }
+    
+ul {
+
+    text-align: left;
+    position: absolute;
+    top:70%;
+    left: 0%;
+  
+  
+  }
+  
+  ul li {
+    display: flex;
+    list-style: none;
+    background-color: rgb(244, 244, 245);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:#72726f ;
+    box-shadow: 0 4px 6px #00000066;
+    position: relative;
+    
+    left: 4.9%; 
+    width: 600px;
+    height: 35px;
+
+  }
+  
+  ul li i {
+  
+    text-align: right;
+    flex: 1;
+  }
+
+ .SUBS{
+
+    text-align: left;
+    position: absolute;
+    top:27.5%;
+    left: 47%;
+  
+  
+  }
+  
+  ul li .Subs{
+    display: flex;
+    list-style: none;
+    background-color: rgb(244, 244, 245);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color:#72726f ;
+    box-shadow: 0 4px 6px #00000066;
+    position: relative;
+    
+    left: 4.9%; 
+    width: 600px;
+    height: 35px;
+
+  }
+  
+  ul li i .Subs{
+  
+    text-align: right;
+    flex: 1;
+  }
+
+p {
+
+  color :rgb(247, 108, 108);
+  display:flex;
+  font-display:inherit;
+  position: absolute;
+  left: 11%;
+  top:20%
+}
+
+.dateHeader{
+
+  position: absolute;
+  left:11%;
+  top:28%;
+  font-size: 18px;
+
+}
+
