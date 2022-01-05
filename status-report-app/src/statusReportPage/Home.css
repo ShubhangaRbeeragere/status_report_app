@@ -145,21 +145,23 @@
   grid-area: toDoList;
   background-color: rgba(255, 255, 255, 0.1);
   text-align: center;
-  overflow: scroll;
   position: relative;
   z-index: 0;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 }
-.homePage .toDoList::-webkit-scrollbar {
-  display: none;
+.homePage .toDoList .toDoList-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
 }
-.homePage .toDoList h2 {
+.homePage .toDoList .toDoList-header h2 {
   color: white;
   margin: 10px;
   position: relative;
 }
-.homePage .toDoList h2::after {
+.homePage .toDoList .toDoList-header h2::after {
   content: "";
   position: absolute;
   background-color: rgba(82, 182, 154, 0.4);
@@ -168,7 +170,37 @@
   bottom: -4px;
   left: 0;
 }
-.homePage .toDoList .item {
+.homePage .toDoList .toDoList-header .addListButton {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .toDoList .toDoList-header .addListButton:focus {
+  outline: none;
+}
+.homePage .toDoList .toDoList-header .addListButton:hover {
+  background-color: #3f967e;
+}
+.homePage .toDoList .itemWrapper {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.homePage .toDoList .itemWrapper::-webkit-scrollbar {
+  display: none;
+}
+.homePage .toDoList .itemWrapper .item {
   border: none;
   margin: 5px;
   margin-left: auto;
@@ -185,7 +217,7 @@
   transition: box-shadow 150ms;
   position: relative;
 }
-.homePage .toDoList .item::after {
+.homePage .toDoList .itemWrapper .item::after {
   position: absolute;
   content: "";
   left: 2px;
@@ -197,10 +229,10 @@
   transition: height 200ms;
   border-radius: 5px;
 }
-.homePage .toDoList .item:hover::after {
+.homePage .toDoList .itemWrapper .item:hover::after {
   height: 90%;
 }
-.homePage .toDoList .item .removeProjectButton {
+.homePage .toDoList .itemWrapper .item .removeProjectButton {
   background-color: #52b69a;
   color: white;
   border: none;
@@ -218,13 +250,13 @@
   align-self: flex-end;
   color: black;
 }
-.homePage .toDoList .item .removeProjectButton:focus {
+.homePage .toDoList .itemWrapper .item .removeProjectButton:focus {
   outline: none;
 }
-.homePage .toDoList .item .removeProjectButton:hover {
+.homePage .toDoList .itemWrapper .item .removeProjectButton:hover {
   background-color: #214e41;
 }
-.homePage .toDoList .item h3 {
+.homePage .toDoList .itemWrapper .item h3 {
   width: max-content;
   max-width: 280px;
   margin: 8px;
@@ -234,7 +266,7 @@
   display: flex;
   flex-direction: row;
 }
-.homePage .toDoList .item h3::after {
+.homePage .toDoList .itemWrapper .item h3::after {
   content: "";
   background-color: white;
   position: absolute;
@@ -243,15 +275,15 @@
   left: 0;
   bottom: -1px;
 }
-.homePage .toDoList .item h4 {
+.homePage .toDoList .itemWrapper .item h4 {
   color: #52b69a;
 }
-.homePage .toDoList .item .content {
+.homePage .toDoList .itemWrapper .item .content {
   line-height: 25px;
   margin-left: 20px;
   text-align: left;
 }
-.homePage .toDoList .item .content li {
+.homePage .toDoList .itemWrapper .item .content li {
   min-width: 250px;
   margin: 5px;
   padding: 5px;
@@ -264,10 +296,10 @@
   border-radius: 5px;
   transition: box-shadow 100ms;
 }
-.homePage .toDoList .item .content li:hover {
+.homePage .toDoList .itemWrapper .item .content li:hover {
   box-shadow: 0px 0px 5px 0.5px rgba(82, 182, 154, 0.7);
 }
-.homePage .toDoList .item .content li::before {
+.homePage .toDoList .itemWrapper .item .content li::before {
   content: "";
   position: absolute;
   left: -15px;
@@ -278,7 +310,7 @@
   border-radius: 50%;
   background-color: #52b69a;
 }
-.homePage .toDoList .item .content li .removeContentButton {
+.homePage .toDoList .itemWrapper .item .content li .removeContentButton {
   background-color: white;
   color: white;
   border: none;
@@ -296,19 +328,19 @@
   color: black;
   font-size: bolder;
 }
-.homePage .toDoList .item .content li .removeContentButton:focus {
+.homePage .toDoList .itemWrapper .item .content li .removeContentButton:focus {
   outline: none;
 }
-.homePage .toDoList .item .content li .removeContentButton:hover {
+.homePage .toDoList .itemWrapper .item .content li .removeContentButton:hover {
   background-color: #4d4d4d;
 }
-.homePage .toDoList .item .content li p {
+.homePage .toDoList .itemWrapper .item .content li p {
   height: max-content;
   line-height: 20px;
   width: 100%;
   overflow: hidden;
 }
-.homePage .toDoList .item .addContentButton {
+.homePage .toDoList .itemWrapper .item .addContentButton {
   background-color: #52b69a;
   color: white;
   border: none;
@@ -325,36 +357,11 @@
   transition: 100ms;
   color: black;
 }
-.homePage .toDoList .item .addContentButton:focus {
+.homePage .toDoList .itemWrapper .item .addContentButton:focus {
   outline: none;
 }
-.homePage .toDoList .item .addContentButton:hover {
+.homePage .toDoList .itemWrapper .item .addContentButton:hover {
   background-color: #214e41;
-}
-.homePage .toDoList .addListButton {
-  position: absolute;
-  right: 1.8%;
-  top: 10px;
-  background-color: #52b69a;
-  color: white;
-  border: none;
-  width: 50px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
-  cursor: pointer;
-  transition: 100ms;
-}
-.homePage .toDoList .addListButton:focus {
-  outline: none;
-}
-.homePage .toDoList .addListButton:hover {
-  background-color: #3f967e;
 }
 .homePage .addListWrapper {
   position: absolute;
@@ -364,6 +371,7 @@
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 5;
+  animation: fade-in forwards ease 500ms 1;
 }
 .homePage .addListWrapper form {
   position: relative;
@@ -466,6 +474,7 @@
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
+  animation: fade-in forwards ease 500ms 1;
 }
 .homePage .addContentWrapper form {
   position: relative;
@@ -643,6 +652,16 @@
   color: white;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 100%;
+  }
+}
 @keyframes left-to-right {
   from {
     left: -20%;

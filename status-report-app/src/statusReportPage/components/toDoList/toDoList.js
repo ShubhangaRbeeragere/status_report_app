@@ -37,9 +37,13 @@ export const ToDoList = (props) => {
 
     return (
         <div className="toDoList boxes">
-            <h2>Issues and Risk</h2>
+            <div className="toDoList-header">
+                <h2>Issues and Risks</h2>
+                {toDoList && (
+                    <AddListButton toggleAddList={props.toggleAddList} />
+                )}
+            </div>
             <div className="itemWrapper">{toDoList && toDoItems}</div>
-            {toDoList && <AddListButton toggleAddList={props.toggleAddList} />}
         </div>
     );
 };
