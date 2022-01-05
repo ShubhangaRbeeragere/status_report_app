@@ -54,7 +54,6 @@ export const HomePage = (params) => {
     useEffect(() => {
         //set the title for home page
         document.title = "Home page";
-        console.log("re rendering ");
     }, []);
 
     //function for changing statusMessage isVisible variable
@@ -80,15 +79,26 @@ export const HomePage = (params) => {
     //data validation for addList///////////////////////////////////////////////////////////
     function addListFormValidate(e) {
         e.preventDefault();
-        console.log("form submitted");
-        setAddList({ ...addList, AddListButtonState: false });
         /*use regular expresions to find all text between # and #.
         so that multiple content can be added at once
         */
+        if (
+            addList.content === "" ||
+            addList.project === "" ||
+            addList.date === ""
+        ) {
+            setStatusMessage({
+                message: "Inputs Can't Be Empty",
+                isVisible: true,
+            });
+            return;
+        }
+        setAddList({ ...addList, AddListButtonState: false });
         let regEx = /#[^(##)]*#/g;
         let array = [];
         let finalArray = [];
         let text = addList.content;
+
         while ((array = regEx.exec(text)) !== null) {
             finalArray.push({ text: array[0].replaceAll("#", "") });
         }
@@ -144,10 +154,15 @@ export const HomePage = (params) => {
     }
     function addContentFormValidate(e) {
         e.preventDefault();
-        console.log("form data is ", addContent.project, addContent.content);
-        console.log("content form submitted");
-        setAddContent({ ...addContent, addContentButtonState: false });
         //add data to the database
+        if (addContent.content === "") {
+            setStatusMessage({
+                message: "Content Can't Be Empty",
+                isVisible: true,
+            });
+            return;
+        }
+        setAddContent({ ...addContent, addContentButtonState: false });
         let jsonData = {
             project: addContent.project,
             content: addContent.content,
