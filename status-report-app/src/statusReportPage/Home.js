@@ -54,6 +54,7 @@ export const HomePage = (params) => {
     useEffect(() => {
         //set the title for home page
         document.title = "Home page";
+        console.log("re rendering ");
     }, []);
 
     //function for changing statusMessage isVisible variable

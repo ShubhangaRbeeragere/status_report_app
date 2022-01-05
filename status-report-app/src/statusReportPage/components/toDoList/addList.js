@@ -30,6 +30,7 @@ export const AddList = (props) => {
                         onChange={(e) => {
                             inputValidate(e);
                         }}
+                        autoFocus
                     />
                 </label>
                 <label>
