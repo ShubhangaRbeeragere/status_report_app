@@ -81,11 +81,24 @@ export const HomePage = (params) => {
         e.preventDefault();
         console.log("form submitted");
         setAddList({ ...addList, AddListButtonState: false });
-        //add data to the database
+        /*use regular expresions to find all text between # and #.
+        so that multiple content can be added at once
+        */
+        let regEx = /#[^(##)]*#/g;
+        let array = [];
+        let finalArray = [];
+        let text = addList.content;
+        while ((array = regEx.exec(text)) !== null) {
+            finalArray.push({ text: array[0].replaceAll("#", "") });
+        }
+        if (finalArray.length === 0) {
+            finalArray = [{ text: addList.content }];
+        } else console.log("final Array", finalArray);
+        //add data to the database with the final array
         let jsonData = {
             title: addList.project,
             date: addList.date,
-            content: [{ text: addList.content }],
+            content: finalArray,
         };
         //add the data and get the addedd data
         let receiveData = async () => {
