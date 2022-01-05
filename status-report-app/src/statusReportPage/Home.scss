@@ -372,7 +372,6 @@ $warning: rgb(192, 12, 12);
         top: 0;
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 5;
-        animation: fade-in forwards ease 500ms 1;
         form {
             position: relative;
             top: 50%;
@@ -437,6 +436,11 @@ $warning: rgb(192, 12, 12);
                 );
             }
         }
+    }
+    .addList-on {
+        animation: fade-in forwards ease 500ms 1;
+    }
+    .addList-off {
     }
     .addContentWrapper {
         position: absolute;
@@ -618,11 +622,13 @@ $warning: rgb(192, 12, 12);
     from {
         left: 50%;
         opacity: 1;
+        visibility: visible;
     }
 
     to {
         left: 110%;
         opacity: 0;
         display: none;
+        visibility: hidden;
     }
 }

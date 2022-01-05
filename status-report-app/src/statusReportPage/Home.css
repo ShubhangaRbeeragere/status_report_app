@@ -371,7 +371,6 @@
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 5;
-  animation: fade-in forwards ease 500ms 1;
 }
 .homePage .addListWrapper form {
   position: relative;
@@ -465,6 +464,9 @@
 }
 .homePage .addListWrapper form .cancelButton:hover {
   background-color: #030c14;
+}
+.homePage .addList-on {
+  animation: fade-in forwards ease 500ms 1;
 }
 .homePage .addContentWrapper {
   position: absolute;
@@ -676,11 +678,13 @@
   from {
     left: 50%;
     opacity: 1;
+    visibility: visible;
   }
   to {
     left: 110%;
     opacity: 0;
     display: none;
+    visibility: hidden;
   }
 }
 
