@@ -98,7 +98,7 @@ export const HomePage = (params) => {
             if (response === "error") {
                 console.log("error occured");
                 toggleAddlist();
-                // setError(true);
+                setError(true);
             } else if (response.error) {
                 setLoadPage(false);
                 console.log(response.error);
@@ -147,7 +147,7 @@ export const HomePage = (params) => {
                 jsonData
             );
             if (response === "error") {
-                // setError(true);
+                setError(true);
                 console.log("error occured");
             } else if (response.error) {
                 console.log(response.error);
@@ -188,7 +188,7 @@ export const HomePage = (params) => {
                 jsonData
             );
             if (response === "error") {
-                // setError(true);
+                setError(true);
                 console.log("deleteData: error occured");
             } else if (response.error) {
                 setLoadPage(false);
@@ -220,7 +220,7 @@ export const HomePage = (params) => {
                 jsonData
             );
             if (response === "error") {
-                // setError(true);
+                setError(true);
                 console.log("deleteData: error occured");
             } else if (response.error) {
                 setLoadPage(false);

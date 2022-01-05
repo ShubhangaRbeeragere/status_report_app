@@ -58,17 +58,7 @@ export const AddList = (props) => {
                         }}
                     ></textarea>
                 </label>
-                {/* <input className="submitButton" type="submit" value="Save" /> */}
-                <input
-                    type="submit"
-                    style={{
-                        position: "absolute",
-                        left: "-9999px",
-                        width: "1px",
-                        height: "1px",
-                        tabindex: "-1",
-                    }}
-                />
+                <input className="submitButton" type="submit" value="Save" />
             </form>
         </div>
     );
