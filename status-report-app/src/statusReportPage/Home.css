@@ -465,24 +465,18 @@
 .homePage .addListWrapper form .cancelButton:hover {
   background-color: #030c14;
 }
-.homePage .addList-on {
-  animation: fade-in forwards ease 500ms 1;
-}
 .homePage .addContentWrapper {
   position: absolute;
-  right: 0;
-  left: 0;
   bottom: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 10;
-  animation: fade-in forwards ease 500ms 1;
+  z-index: 1;
+  visibility: hidden;
 }
 .homePage .addContentWrapper form {
   position: relative;
   top: 50%;
   transform: translate(-50%, -50%);
-  animation: left-to-right 500ms ease 1 forwards;
   background-color: #52b69a;
   padding: 20px 50px;
   height: max-content;
@@ -492,6 +486,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 20px;
+  visibility: hidden;
 }
 .homePage .addContentWrapper form label {
   font-size: 22px;
@@ -571,16 +566,13 @@
 .homePage .addContentWrapper form .cancelButton:hover {
   background-color: #030c14;
 }
-.homePage .addContentWrapper .form-right-to-left {
-  animation: right-to-left 500ms ease 1 forwards;
-}
 
 .loginErrorWrapper {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  z-index: 10;
+  z-index: 50;
   background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
 }
 .loginErrorWrapper .loginError {
@@ -628,7 +620,7 @@
   place-items: center;
   opacity: 1;
   transition: all 100ms linear;
-  z-index: 10;
+  z-index: 20;
 }
 .statusMessage-on .statusMessage p {
   font-size: x-large;
@@ -647,34 +639,70 @@
   opacity: 0;
   visibility: hidden;
   transition: all 300ms 1s;
-  z-index: 10;
+  z-index: 20;
 }
 .statusMessage-off .statusMessage p {
   font-size: x-large;
   color: white;
 }
 
+.form-left-right-one {
+  animation: left-right-one 500ms ease 1 forwards;
+}
+
+.form-left-right-two {
+  animation: left-right-two 500ms ease 1 forwards;
+}
+
+.wrapper-fade-in {
+  animation: fade-in 500ms ease 1 forwards;
+}
+
+.wrapper-fade-out {
+  animation: fade-out 500ms ease 1 forwards;
+}
+
 @keyframes fade-in {
   from {
+    left: 0;
     opacity: 0;
     width: 0;
+    visibility: hidden;
   }
   to {
+    left: 0;
     opacity: 1;
     width: 100%;
+    visibility: visible;
   }
 }
-@keyframes left-to-right {
+@keyframes fade-out {
+  from {
+    right: 0;
+    opacity: 1;
+    width: 100%;
+    visibility: visible;
+  }
+  to {
+    right: 0;
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+  }
+}
+@keyframes left-right-one {
   from {
     left: -20%;
     opacity: 0;
+    visibility: hidden;
   }
   to {
     left: 50%;
     opacity: 1;
+    visibility: visible;
   }
 }
-@keyframes right-to-left {
+@keyframes left-right-two {
   from {
     left: 50%;
     opacity: 1;

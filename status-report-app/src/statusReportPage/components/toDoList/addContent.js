@@ -1,11 +1,14 @@
 export const AddContent = (props) => {
     let inputValidate = props.addContentInputValidate;
     let formValidate = props.addContentFormValidate;
-    let addList = props.addContent;
+    let addContent = props.addContent;
 
     return (
-        <div className="addContentWrapper">
+        <div
+            className={`addContentWrapper ${addContent.addContentWrapperClass}`}
+        >
             <form
+                className={addContent.addContentFormClass}
                 action="#"
                 onSubmit={(e) => {
                     formValidate(e);
@@ -13,8 +16,13 @@ export const AddContent = (props) => {
             >
                 <button
                     className="cancelButton"
+                    type="button"
                     onClick={() => {
-                        props.toggleContentList();
+                        props.toggleContentList(
+                            "",
+                            "form-left-right-two",
+                            "wrapper-fade-out"
+                        );
                     }}
                 >
                     <i className="fas fa-times"></i>
@@ -24,7 +32,7 @@ export const AddContent = (props) => {
                     <br />
                     <textarea
                         name="content"
-                        value={addList.content}
+                        value={addContent.content}
                         id="content"
                         cols="30"
                         rows="10"

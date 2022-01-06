@@ -26,7 +26,8 @@ export const HomePage = (params) => {
     });
     //for addContent form validation///////////////////////////////////////////////////////////
     const [addContent, setAddContent] = useState({
-        addContentButtonState: false,
+        addContentFormClass: "",
+        addContentWrapperClass: "",
         content: "",
         project: "",
     });
@@ -141,10 +142,10 @@ export const HomePage = (params) => {
         setAddContent({ ...addContent, project: projectName });
     }
     //add or cancel the contentlist form and also update the project name for future//////////////////
-    function toggleContentlist(projectName) {
-        let buttonState = addContent.addContentButtonState ? false : true;
+    function toggleContentlist(projectName, formClassName, wrapperClassName) {
         setAddContent({
-            addContentButtonState: buttonState,
+            addContentFormClass: formClassName,
+            addContentWrapperClass: wrapperClassName,
             project: projectName,
             content: "",
         });
@@ -162,7 +163,6 @@ export const HomePage = (params) => {
             });
             return;
         }
-        setAddContent({ ...addContent, addContentButtonState: false });
         let jsonData = {
             project: addContent.project,
             content: addContent.content,
@@ -178,12 +178,21 @@ export const HomePage = (params) => {
             if (response === "error") {
                 setError(true);
                 console.log("error occured");
+                setAddContent({
+                    ...addContent,
+                    addContentFormClass: "form-left-right-two",
+                });
             } else if (response.error) {
                 console.log(response.error);
                 setLoadPage(false);
                 setStatusMessage({ isVisible: true, message: response.error });
             } else {
                 setLoadPage(false);
+                setAddContent({
+                    ...addContent,
+                    addContentFormClass: "form-left-right-two",
+                    addContentWrapperClass: "wrapper-fade-out",
+                });
                 let content = response.content;
                 let projectIndex = 0;
                 let project = response.project;
@@ -310,14 +319,14 @@ export const HomePage = (params) => {
                         addList={addList}
                     />
                 )}
-                {addContent.addContentButtonState && (
+                {
                     <AddContent
                         addContent={addContent}
                         toggleContentList={toggleContentlist}
                         addContentFormValidate={addContentFormValidate}
                         addContentInputValidate={addContentInputValidate}
                     />
-                )}
+                }
             </div>
             {error && <LoginError />}
             <StatusMessage

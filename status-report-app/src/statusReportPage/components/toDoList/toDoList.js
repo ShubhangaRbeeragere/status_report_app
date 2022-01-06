@@ -27,7 +27,11 @@ export const ToDoList = (props) => {
                     title="Add Content"
                     className="addContentButton"
                     onClick={() => {
-                        props.toggleContentlist(list.title);
+                        props.toggleContentlist(
+                            list.title,
+                            "form-left-right-one",
+                            "wrapper-fade-in"
+                        );
                     }}
                 >
                     <i className="fas fa-plus"></i>
