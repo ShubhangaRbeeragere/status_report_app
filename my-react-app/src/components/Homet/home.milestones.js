@@ -5,7 +5,7 @@ export default function HomeMilestone (){
 
 
     return (
-        <form className= 'Home'>
+        <div className= 'Home'>
 
                 <div>
                 <h3 className='milesHeader'>MILESTONES</h3>
@@ -18,13 +18,8 @@ export default function HomeMilestone (){
                     <li>First milestone comes here</li>
                     <li>Second is just an imaginery item</li>
 
- 
-
             </ul>
-
-
-
-        </form>
+        </div>
     )
 }
 

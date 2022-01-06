@@ -1,9 +1,9 @@
 import React from 'react';
 import './home.css';
-import { Route, Link, BrowserRouter, withRouter } from "react-router-dom";
 
 
-export default function HomeSubAchievement (){
+
+export default function HomeSubAchievement (props){
 
 
      
@@ -13,15 +13,12 @@ export default function HomeSubAchievement (){
       };
 
     return (
-        <form className= 'Home'onSubmit={(onSubmit)} >
+        <div className= 'Home'onSubmit={(onSubmit)} >
             
                 <div>
                 <h3 className='subsHeader'>SUB ACHIEVEMENTS</h3>
                 </div>
-                <div>
-                <button className= 'subsButton' >Add Sub Achievement</button>
-                
-                </div>
+              
             
 
             <ul className='SUBS'>
@@ -31,10 +28,13 @@ export default function HomeSubAchievement (){
                     <li className='Subs'>sub Achievements are here</li>
 
             </ul>
+            
+                
+                
+            
 
 
-
-        </form>
+        </div>
     )
 }
 

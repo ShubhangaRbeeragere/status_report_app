@@ -26,7 +26,7 @@ export default function Milestones () {
       };
       const onSubmit = (e) => {
         e.preventDefault();
-        console.log("refresh prevented");
+        console.log(values);
       };
 
     return (

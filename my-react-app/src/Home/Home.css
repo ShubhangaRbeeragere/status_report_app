@@ -1,0 +1,668 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+.homePage {
+  font-family: "Raleway", sans-serif;
+  color: #fffbfb;
+  background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 68vw 30vw;
+  grid-template-rows: 15% 85%;
+  justify-content: center;
+  grid-template-areas: "header header" "achievements toDoList";
+}
+.homePage .boxes {
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+}
+.homePage .header {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+  background-color: rgba(82, 182, 154, 0.3);
+  grid-area: header;
+}
+.homePage .header .companyLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+}
+.homePage .header .companyLogo .logo {
+  background-image: url("./components/header/images/logo.jpg"), linear-gradient(#092841, #52b69a);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  order: 1;
+}
+.homePage .header .companyLogo .name {
+  order: 2;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.homePage .header .period {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+.homePage .header .period .react-datepicker-wrapper {
+  width: max-content;
+}
+.homePage .header .period .react-datepicker-wrapper .react-datepicker__input-container {
+  width: max-content;
+}
+.homePage .header .period .datePicker {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 130px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  transition: 100ms;
+}
+.homePage .header .period .datePicker:focus {
+  outline: none;
+}
+.homePage .header .period .datePicker:hover {
+  background-color: #3f967e;
+}
+.homePage .header .period .datePicker:focus {
+  outline: none;
+}
+.homePage .header .period .datePicker:hover {
+  background-color: #3f967e;
+}
+.homePage .header .period .searchButton {
+  margin-left: 10px;
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 90px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .header .period .searchButton:focus {
+  outline: none;
+}
+.homePage .header .period .searchButton:hover {
+  background-color: #3f967e;
+}
+.homePage .header .presentation {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 130px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .header .presentation:focus {
+  outline: none;
+}
+.homePage .header .presentation:hover {
+  background-color: #3f967e;
+}
+.homePage .achievements {
+  background-color: rgba(255, 255, 255, 0.1);
+  grid-area: achievements;
+  font-size: 50px;
+  text-align: center;
+}
+.homePage .toDoList {
+  grid-area: toDoList;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  overflow: scroll;
+  position: relative;
+  z-index: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.homePage .toDoList::-webkit-scrollbar {
+  display: none;
+}
+.homePage .toDoList h2 {
+  color: white;
+  margin: 10px;
+  position: relative;
+}
+.homePage .toDoList h2::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(82, 182, 154, 0.4);
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+}
+.homePage .toDoList .item {
+  border: none;
+  margin: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: box-shadow 150ms;
+  position: relative;
+}
+.homePage .toDoList .item::after {
+  position: absolute;
+  content: "";
+  left: 2px;
+  top: 50%;
+  height: 0%;
+  transform: translateY(-50%);
+  width: 4px;
+  background-color: #52b69a;
+  transition: height 200ms;
+  border-radius: 5px;
+}
+.homePage .toDoList .item:hover::after {
+  height: 90%;
+}
+.homePage .toDoList .item .removeProjectButton {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  align-self: flex-end;
+  color: black;
+}
+.homePage .toDoList .item .removeProjectButton:focus {
+  outline: none;
+}
+.homePage .toDoList .item .removeProjectButton:hover {
+  background-color: #214e41;
+}
+.homePage .toDoList .item h3 {
+  width: max-content;
+  max-width: 280px;
+  margin: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.homePage .toDoList .item h3::after {
+  content: "";
+  background-color: white;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+}
+.homePage .toDoList .item h4 {
+  color: #52b69a;
+}
+.homePage .toDoList .item .content {
+  line-height: 25px;
+  margin-left: 20px;
+  text-align: left;
+}
+.homePage .toDoList .item .content li {
+  min-width: 250px;
+  margin: 5px;
+  padding: 5px;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 5px;
+  position: relative;
+  border-radius: 5px;
+  transition: box-shadow 100ms;
+}
+.homePage .toDoList .item .content li:hover {
+  box-shadow: 0px 0px 5px 0.5px rgba(82, 182, 154, 0.7);
+}
+.homePage .toDoList .item .content li::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #52b69a;
+}
+.homePage .toDoList .item .content li .removeContentButton {
+  background-color: white;
+  color: white;
+  border: none;
+  width: 16px;
+  height: 15px;
+  line-height: 15px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  color: black;
+  font-size: bolder;
+}
+.homePage .toDoList .item .content li .removeContentButton:focus {
+  outline: none;
+}
+.homePage .toDoList .item .content li .removeContentButton:hover {
+  background-color: #4d4d4d;
+}
+.homePage .toDoList .item .content li p {
+  height: max-content;
+  line-height: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+.homePage .toDoList .item .addContentButton {
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  color: black;
+}
+.homePage .toDoList .item .addContentButton:focus {
+  outline: none;
+}
+.homePage .toDoList .item .addContentButton:hover {
+  background-color: #214e41;
+}
+.homePage .toDoList .addListButton {
+  position: absolute;
+  right: 1.8%;
+  top: 10px;
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .toDoList .addListButton:focus {
+  outline: none;
+}
+.homePage .toDoList .addListButton:hover {
+  background-color: #3f967e;
+}
+.homePage .addListWrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+.homePage .addListWrapper form {
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: left-to-right 500ms ease 1 forwards;
+  background-color: #52b69a;
+  padding: 20px 50px;
+  height: max-content;
+  width: 20rem;
+  min-width: 15rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.homePage .addListWrapper form label {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  margin-right: 5px;
+  width: max-content;
+}
+.homePage .addListWrapper form input {
+  font-family: "Raleway", sans-serif;
+  font-size: large;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.homePage .addListWrapper form input:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addListWrapper form textarea {
+  font-size: large;
+  max-height: 100px;
+  max-width: 220px;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+}
+.homePage .addListWrapper form textarea:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addListWrapper form .submitButton {
+  align-self: center;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 80px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addListWrapper form .submitButton:focus {
+  outline: none;
+}
+.homePage .addListWrapper form .submitButton:hover {
+  background-color: #030c14;
+}
+.homePage .addListWrapper form .cancelButton {
+  align-self: flex-end;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addListWrapper form .cancelButton:focus {
+  outline: none;
+}
+.homePage .addListWrapper form .cancelButton:hover {
+  background-color: #030c14;
+}
+.homePage .addContentWrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+.homePage .addContentWrapper form {
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: left-to-right 500ms ease 1 forwards;
+  background-color: #52b69a;
+  padding: 20px 50px;
+  height: max-content;
+  width: 20rem;
+  min-width: 15rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.homePage .addContentWrapper form label {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  margin-right: 5px;
+  width: max-content;
+}
+.homePage .addContentWrapper form input {
+  font-family: "Raleway", sans-serif;
+  font-size: large;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.homePage .addContentWrapper form input:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addContentWrapper form textarea {
+  font-size: large;
+  max-height: 100px;
+  max-width: 220px;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+}
+.homePage .addContentWrapper form textarea:focus {
+  box-shadow: 0px 0px 5px 0.2px #092841;
+}
+.homePage .addContentWrapper form .submitButton {
+  align-self: center;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 80px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addContentWrapper form .submitButton:focus {
+  outline: none;
+}
+.homePage .addContentWrapper form .submitButton:hover {
+  background-color: #030c14;
+}
+.homePage .addContentWrapper form .cancelButton {
+  align-self: flex-end;
+  background-color: #092841;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+}
+.homePage .addContentWrapper form .cancelButton:focus {
+  outline: none;
+}
+.homePage .addContentWrapper form .cancelButton:hover {
+  background-color: #030c14;
+}
+.homePage .addContentWrapper .form-right-to-left {
+  animation: right-to-left 500ms ease 1 forwards;
+}
+
+.loginErrorWrapper {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
+}
+.loginErrorWrapper .loginError {
+  color: white;
+}
+.loginErrorWrapper .loginError .error {
+  font-size: 25px;
+  color: red;
+}
+.loginErrorWrapper .loginError a {
+  color: white;
+  text-decoration: none;
+  background-color: #52b69a;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  transition: 100ms;
+  display: inline-block;
+  color: black;
+}
+.loginErrorWrapper .loginError a:focus {
+  outline: none;
+}
+.loginErrorWrapper .loginError a:hover {
+  background-color: #214e41;
+}
+
+.statusMessage-on {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transition: all 100ms linear;
+  z-index: 10;
+}
+.statusMessage-on .statusMessage p {
+  font-size: x-large;
+  color: white;
+}
+
+.statusMessage-off {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms 1s;
+  z-index: 10;
+}
+.statusMessage-off .statusMessage p {
+  font-size: x-large;
+  color: white;
+}
+
+@keyframes left-to-right {
+  from {
+    left: -20%;
+    opacity: 0;
+  }
+  to {
+    left: 50%;
+    opacity: 1;
+  }
+}
+@keyframes right-to-left {
+  from {
+    left: 50%;
+    opacity: 1;
+  }
+  to {
+    left: 110%;
+    opacity: 0;
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=Home.css.map */

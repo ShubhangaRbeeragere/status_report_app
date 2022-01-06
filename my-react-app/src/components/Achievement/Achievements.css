@@ -108,3 +108,64 @@ input::placeholder {
   box-shadow:0 0 5px #ff96ad, 0 0 25px 
   #279be9, 0 0 50px #ff96ad, 0 0 200px #1cb0dd;
 }
+
+
+.box{
+  text-align: center;
+  background-color: rgb(4, 57, 156);
+  width: 800px;
+  height: 55px;
+  color: rgb(204, 202, 202);
+  position: absolute;
+  top:20%;
+  left: 4%;
+  font-size: 12px;
+  border-radius: 15px;  
+  border:10cm;
+  border-color: #f8f8f8;
+
+}
+
+input {
+
+width : 40%;
+position: absolute;
+top:30%;
+left: 5%;
+height: 5%;
+
+}
+
+.Abutton{
+ color: rgb(6, 71, 209);
+ background-color: #ececea;
+ width: 10%;
+ height: 47px;
+ position: absolute;
+ top: 30%;
+ left: 48%;
+ cursor: pointer;
+
+}
+
+.ment {
+
+color: #ececea;
+background-color: rgb(6, 72, 196);
+width: 59.5%;
+height: 55px;
+
+position: relative;
+top:305px;
+left:62px;
+border-radius: 5px;
+
+}
+
+.ment .left {
+
+font-size: 22px;
+text-align:left;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}

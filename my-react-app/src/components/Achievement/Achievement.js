@@ -24,7 +24,7 @@ export default function Achievements () {
     };
     const onSubmit = (e) => {
       e.preventDefault();
-      console.log("refresh prevented");
+      console.log(values);
     };
 
 
