@@ -7,6 +7,9 @@ export default function StatusMessage(props) {
             onTransitionEnd={() => {
                 props.changeMessageVisiblity();
             }}
+            onClick={() => {
+                props.changeMessageVisiblity();
+            }}
         >
             <div className="statusMessage">
                 <p>{props.message}</p>
