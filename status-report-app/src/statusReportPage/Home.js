@@ -19,7 +19,8 @@ export const HomePage = (params) => {
     const [date, setDate] = useState(new Date());
     //for addList form validation///////////////////////////////////////////////////////////
     const [addList, setAddList] = useState({
-        AddListButtonState: false,
+        addListFormClass: "",
+        addListWrapperClass: "",
         project: "",
         date: "",
         content: "",
@@ -63,11 +64,11 @@ export const HomePage = (params) => {
     }
     //function for addList template///////////////////////////////
     //add or cancel the addlist form///////////////////////////////////////////////////////////
-    function toggleAddlist() {
-        let buttonState = addList.AddListButtonState ? false : true;
+    function toggleAddlist(formClassName, wrapperClassName) {
         setAddList({
             ...addList,
-            AddListButtonState: buttonState,
+            addListFormClass: formClassName,
+            addListWrapperClass: wrapperClassName,
             content: "",
             project: "",
             date: new Date().toISOString().substring(0, 10),
@@ -94,7 +95,6 @@ export const HomePage = (params) => {
             });
             return;
         }
-        setAddList({ ...addList, AddListButtonState: false });
         let regEx = /#[^(##)]*#/g;
         let array = [];
         let finalArray = [];
@@ -121,9 +121,13 @@ export const HomePage = (params) => {
                 jsonData
             );
             if (response === "error") {
-                console.log("error occured");
-                toggleAddlist();
                 setError(true);
+                console.log("error occured");
+                setAddList({
+                    ...addList,
+                    addListFormClass: "form-left-right-two",
+                    addListWrapperClass: "wrapper-fade-out",
+                });
             } else if (response.error) {
                 setLoadPage(false);
                 console.log(response.error);
@@ -131,6 +135,11 @@ export const HomePage = (params) => {
             } else {
                 setLoadPage(false);
                 setToDoList([...toDoList, response]);
+                setAddList({
+                    ...addList,
+                    addListFormClass: "form-left-right-two",
+                    addListWrapperClass: "wrapper-fade-out",
+                });
             }
         };
         receiveData();
@@ -181,6 +190,7 @@ export const HomePage = (params) => {
                 setAddContent({
                     ...addContent,
                     addContentFormClass: "form-left-right-two",
+                    addContentWrapperClass: "wrapper-fade-out",
                 });
             } else if (response.error) {
                 console.log(response.error);
@@ -311,14 +321,14 @@ export const HomePage = (params) => {
                     />
                 }
 
-                {addList.AddListButtonState && (
+                {
                     <AddList
                         toggleAddList={toggleAddlist}
                         addListInputValidate={addListInputValidate}
                         addListFormValidate={addListFormValidate}
                         addList={addList}
                     />
-                )}
+                }
                 {
                     <AddContent
                         addContent={addContent}

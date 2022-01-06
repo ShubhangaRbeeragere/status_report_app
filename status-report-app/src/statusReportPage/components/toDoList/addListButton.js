@@ -3,7 +3,7 @@ export const AddListButton = (props) => {
         <button
             className="addListButton"
             onClick={() => {
-                props.toggleAddList();
+                props.toggleAddList("form-left-right-one", "wrapper-fade-in");
             }}
         >
             Add

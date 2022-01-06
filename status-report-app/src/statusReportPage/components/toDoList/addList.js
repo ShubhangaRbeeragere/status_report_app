@@ -4,9 +4,10 @@ export const AddList = (props) => {
     let addList = props.addList;
 
     return (
-        <div className="addListWrapper">
+        <div className={`addListWrapper ${addList.addListWrapperClass}`}>
             <form
                 action="#"
+                className={addList.addListFormClass}
                 onSubmit={(e) => {
                     formValidate(e);
                 }}
@@ -15,7 +16,10 @@ export const AddList = (props) => {
                     type="button"
                     className="cancelButton"
                     onClick={() => {
-                        props.toggleAddList();
+                        props.toggleAddList(
+                            "form-left-right-two",
+                            "wrapper-fade-out"
+                        );
                     }}
                 >
                     <i className="fas fa-times"></i>

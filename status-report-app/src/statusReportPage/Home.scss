@@ -366,17 +366,15 @@ $warning: rgb(192, 12, 12);
     //add list template
     .addListWrapper {
         position: absolute;
-        right: 0;
-        left: 0;
         bottom: 0;
         top: 0;
         background-color: rgba(0, 0, 0, 0.6);
-        z-index: 5;
+        z-index: 1;
+        visibility: hidden;
         form {
             position: relative;
             top: 50%;
             transform: translate(-50%, -50%);
-            animation: left-to-right 500ms ease 1 forwards;
             background-color: $subColor;
             padding: 20px 50px;
             height: max-content;
@@ -386,6 +384,7 @@ $warning: rgb(192, 12, 12);
             display: flex;
             flex-direction: column;
             row-gap: 20px;
+            visibility: hidden;
             label {
                 font-size: 22px;
                 font-weight: bold;
