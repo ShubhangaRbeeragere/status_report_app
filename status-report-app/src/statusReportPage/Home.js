@@ -357,7 +357,12 @@ export const HomePage = (params) => {
                     />
                 }
 
-                {<Presentation />}
+                {presentation.buttonState && (
+                    <Presentation
+                        presentation={presentation}
+                        togglePresentation={togglePresentation}
+                    />
+                )}
             </div>
             {error && <LoginError />}
             <StatusMessage
