@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Presentation = (props) => {
     let presentation = props.presentation;
     return (
-        <div className="presentationWrapper">
+        <>
             <button
                 type="button"
                 className="cancelButton"
@@ -22,7 +22,7 @@ const Presentation = (props) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     );
 };
 

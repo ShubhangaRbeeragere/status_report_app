@@ -529,7 +529,7 @@
   bottom: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  z-index: 2;
   visibility: hidden;
 }
 
@@ -662,7 +662,7 @@
   bottom: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  z-index: 2;
   visibility: hidden;
 }
 
@@ -796,13 +796,37 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "cancelButton cancelButton" "presentation toDoList";
   background-image: -webkit-gradient(linear, left top, right bottom, color-stop(50%, #092841), color-stop(130%, #52b69a));
   background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
   z-index: 1;
+  -webkit-animation: fade-in 300ms ease forwards 1;
+          animation: fade-in 300ms ease forwards 1;
 }
 
 .homePage .presentationWrapper .presentation {
   color: white;
+  width: 50rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: presentation;
+  height: 90vh;
+}
+
+.homePage .presentationWrapper .toDoList {
+  width: 20rem;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: toDoList;
+  height: 90vh;
 }
 
 .homePage .presentationWrapper .cancelButton {
@@ -822,6 +846,16 @@
   cursor: pointer;
   -webkit-transition: 100ms;
   transition: 100ms;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: cancelButton;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-right: 5px;
 }
 
 .homePage .presentationWrapper .cancelButton:focus {

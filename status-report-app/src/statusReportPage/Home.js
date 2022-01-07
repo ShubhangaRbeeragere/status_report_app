@@ -372,11 +372,21 @@ export const HomePage = (params) => {
                 }
 
                 {presentation.buttonState && (
-                    <Presentation
-                        presentation={presentation}
-                        togglePresentation={togglePresentation}
-                        getPresentation={getPresentation}
-                    />
+                    <div className="presentationWrapper">
+                        <Presentation
+                            presentation={presentation}
+                            togglePresentation={togglePresentation}
+                            getPresentation={getPresentation}
+                        />
+                        <ToDoList
+                            toDoList={toDoList}
+                            toggleAddList={toggleAddlist}
+                            toggleContentlist={toggleContentlist}
+                            updateProjectName={updateProjectName}
+                            deleteProject={deleteProjectOnclick}
+                            deleteContent={deleteContentOnclick}
+                        />
+                    </div>
                 )}
             </div>
             {error && <LoginError />}

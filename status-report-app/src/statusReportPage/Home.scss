@@ -356,7 +356,7 @@ $warning: rgb(192, 12, 12);
         bottom: 0;
         top: 0;
         background-color: rgba(0, 0, 0, 0.6);
-        z-index: 1;
+        z-index: 2;
         visibility: hidden;
         form {
             position: relative;
@@ -428,7 +428,7 @@ $warning: rgb(192, 12, 12);
         bottom: 0;
         top: 0;
         background-color: rgba(0, 0, 0, 0.6);
-        z-index: 1;
+        z-index: 2;
         visibility: hidden;
         form {
             position: relative;
@@ -503,14 +503,33 @@ $warning: rgb(192, 12, 12);
         left: 0;
         right: 0;
         bottom: 0;
+        overflow: hidden;
+        display: grid;
+        grid-template-areas:
+            "cancelButton cancelButton"
+            "presentation toDoList";
         background-image: linear-gradient(
             to right bottom,
             $mainColor 50%,
             $subColor 130%
         );
         z-index: 1;
+        animation: fade-in 300ms ease forwards 1;
         .presentation {
             color: white;
+            width: 50rem;
+            background-color: rgba(white, 0.1);
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            margin: 5px;
+            grid-area: presentation;
+            height: 90vh;
+        }
+        .toDoList {
+            width: 20rem;
+            grid-area: toDoList;
+            height: 90vh;
         }
         .cancelButton {
             @include createButton(
@@ -519,6 +538,10 @@ $warning: rgb(192, 12, 12);
                 $height: 30px,
                 $border-radius: 5px
             );
+            grid-area: cancelButton;
+            justify-self: end;
+            align-self: center;
+            margin-right: 5px;
         }
     }
 }
