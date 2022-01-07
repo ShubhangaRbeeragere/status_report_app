@@ -791,9 +791,6 @@
 }
 
 .homePage .presentationWrapper {
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -806,15 +803,14 @@
   background-image: -webkit-gradient(linear, left top, right bottom, color-stop(50%, #092841), color-stop(130%, #52b69a));
   background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
   z-index: 1;
-  -webkit-animation: fade-in 300ms ease forwards 1;
-          animation: fade-in 300ms ease forwards 1;
-}
-
-.homePage .presentationWrapper::-webkit-scrollbar {
-  display: none;
+  -webkit-animation: fade-in 300ms ease-in forwards 1;
+          animation: fade-in 300ms ease-in forwards 1;
 }
 
 .homePage .presentationWrapper .presentation {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   color: white;
   width: 50rem;
   background-color: rgba(255, 255, 255, 0.1);
@@ -826,6 +822,10 @@
   -ms-grid-column: 1;
   grid-area: presentation;
   height: 90vh;
+}
+
+.homePage .presentationWrapper .presentation::-webkit-scrollbar {
+  display: none;
 }
 
 .homePage .presentationWrapper .presentation .achievement {

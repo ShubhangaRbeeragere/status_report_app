@@ -498,13 +498,6 @@ $warning: rgb(192, 12, 12);
 
     //presentation
     .presentationWrapper {
-        //remove scrollbar but keep scroll
-        overflow: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-            display: none;
-        }
         position: absolute;
         top: 0;
         left: 0;
@@ -521,10 +514,17 @@ $warning: rgb(192, 12, 12);
             $subColor 130%
         );
         z-index: 1;
-        animation: fade-in 300ms ease forwards 1;
+        animation: fade-in 300ms ease-in forwards 1;
 
         //presentation part////////////////////////////////////////////////////
         .presentation {
+            //remove scrollbar but keep scroll
+            overflow: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
             color: white;
             width: 50rem;
             background-color: rgba(white, 0.1);

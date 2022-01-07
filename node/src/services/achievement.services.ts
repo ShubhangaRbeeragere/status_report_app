@@ -40,22 +40,22 @@ export const addData = async (req: Request, res: Response) => {
 
         await manager.save(achievementDetails);
 
-        subAchievementsData.forEach(async (subAchievements) => {
+        for (let subAchievements of subAchievementsData) {
             let subACHIEVEMENTS = new SubAchievements();
             subACHIEVEMENTS.sub_achievement_name =
                 subAchievements.sub_achievement_name;
             subACHIEVEMENTS.content = subAchievements.content;
             subACHIEVEMENTS.sub_achievements_id_fk = achievementDetails;
             await manager.save(subACHIEVEMENTS);
-        });
+        }
 
-        milestonesData.forEach(async (milestonesDETAILS) => {
+        for (let milestonesDETAILS of milestonesData) {
             let MILESTONES = new Milestones();
             MILESTONES.title = milestonesDETAILS.title;
             MILESTONES.content = milestonesDETAILS.content;
             MILESTONES.milestones_id_fk = achievementDetails;
             await manager.save(MILESTONES);
-        });
+        }
 
         console.log("Data saved succesfully");
         res.status(200).send("Data saved succesfully");

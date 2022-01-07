@@ -65,6 +65,7 @@ export const HomePage = (params) => {
         document.title = "Home page";
         //calling getPresentation
         getPresentation();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //function for changing statusMessage isVisible variable

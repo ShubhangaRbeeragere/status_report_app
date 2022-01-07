@@ -5,26 +5,26 @@ import { SubAchievements } from "./subAchievement";
 @Entity()
 export class Achievements {
     @PrimaryGeneratedColumn()
-    achievement_id!: number;
+    achievement_id: number;
 
     @Column({ type: "varchar", nullable: false, unique: true })
-    achievement_name!: string;
+    achievement_name: string;
 
-    @Column({ type: "varchar", nullable: false, unique: true })
-    content!: string;
+    @Column({ type: "varchar", nullable: false, unique: false })
+    content: string;
 
     @Column({ type: "date", nullable: false })
-    date!: string;
+    date: string;
 
     @OneToMany(
         (type) => Milestones,
         (milestones) => milestones.milestones_id_fk
     )
-    milestones_key!: Milestones;
+    milestones_key: Milestones;
 
     @OneToMany(
         (type) => SubAchievements,
         (subAchievements) => subAchievements.sub_achievements_id_fk
     )
-    sub_achievements_key!: SubAchievements;
+    sub_achievements_key: SubAchievements;
 }

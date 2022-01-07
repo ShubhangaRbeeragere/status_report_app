@@ -10,18 +10,18 @@ import {
 @Entity()
 export class SubAchievements {
     @PrimaryGeneratedColumn()
-    sub_achievements_id!: number;
+    sub_achievements_id: number;
 
-    @Column({ type: "varchar", nullable: false, unique: true })
-    sub_achievement_name!: string;
+    @Column({ type: "varchar", nullable: false, unique: false })
+    sub_achievement_name: string;
 
-    @Column({ type: "varchar", nullable: false, unique: true })
-    content!: string;
+    @Column({ type: "varchar", nullable: false, unique: false })
+    content: string;
 
     @ManyToOne(
         (type) => Achievements,
         (achievements) => achievements.sub_achievements_key
     )
     @JoinColumn()
-    sub_achievements_id_fk!: Achievements;
+    sub_achievements_id_fk: Achievements;
 }
