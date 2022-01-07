@@ -179,7 +179,7 @@
   background-color: #3f967e;
 }
 
-.homePage .header .presentation {
+.homePage .header .presentationButton {
   background-color: #52b69a;
   color: white;
   border: none;
@@ -196,13 +196,14 @@
   cursor: pointer;
   -webkit-transition: 100ms;
   transition: 100ms;
+  font-weight: 700;
 }
 
-.homePage .header .presentation:focus {
+.homePage .header .presentationButton:focus {
   outline: none;
 }
 
-.homePage .header .presentation:hover {
+.homePage .header .presentationButton:hover {
   background-color: #3f967e;
 }
 

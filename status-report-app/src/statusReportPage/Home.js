@@ -11,6 +11,7 @@ import updateData from "./HTTPmethods/updateData";
 import { AddContent } from "./components/toDoList/addContent";
 import LoginError from "./components/errorMessages/loginError";
 import StatusMessage from "./components/errorMessages/httpStatusMessage";
+import Presentation from "./components/header/presentation";
 import "./Home.css";
 
 export const HomePage = (params) => {
@@ -51,7 +52,12 @@ export const HomePage = (params) => {
         isVisible: false,
     });
 
-    //for CSS addlist animation
+    //for displaying presentation
+    let [presentation, setPresentation] = useState({
+        buttonState: false,
+        data: null,
+    });
+
     //useeffect hhoookk///////////////////////////////////////////////////////////
     useEffect(() => {
         //set the title for home page
@@ -298,6 +304,12 @@ export const HomePage = (params) => {
         };
         deleteContent();
     }
+
+    ///////Presentation///////////////////////////////////////////////
+    function togglePresentation() {
+        let button = presentation.buttonState ? false : true;
+        setPresentation({ ...presentation, buttonState: button });
+    }
     //dummy
     const fetchData = () => {
         let dateValue = date.toLocaleDateString().replaceAll("/", "-");
@@ -308,7 +320,14 @@ export const HomePage = (params) => {
         <>
             {loadPage && <LoadingScreen />}
             <div className="homePage">
-                <Header date={date} setDate={setDate} fetchData={fetchData} />
+                <Header
+                    date={date}
+                    setDate={setDate}
+                    fetchData={fetchData}
+                    presentation={presentation}
+                    togglePresentation={togglePresentation}
+                />
+
                 <Achievements />
                 {
                     <ToDoList
@@ -337,6 +356,8 @@ export const HomePage = (params) => {
                         addContentInputValidate={addContentInputValidate}
                     />
                 }
+
+                {<Presentation />}
             </div>
             {error && <LoginError />}
             <StatusMessage
