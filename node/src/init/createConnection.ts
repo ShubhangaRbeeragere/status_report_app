@@ -4,7 +4,7 @@ import ToDoList from "../model/entity/toDoList";
 import Login from "../model/entity/login";
 import { Achievements } from "../model/entity/achievement";
 import { Milestones } from "../model/entity/milestone";
-import { SubAchievements } from "../model/entity/subAchievements";
+import { SubAchievements } from "../model/entity/subAchievement";
 
 export const makeConnection = createConnection({
     type: "postgres",

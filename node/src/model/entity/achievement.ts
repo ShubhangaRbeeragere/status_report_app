@@ -1,6 +1,6 @@
 import { Milestones } from "./milestone";
 import { PrimaryGeneratedColumn, Entity, Column, OneToMany } from "typeorm";
-import { SubAchievements } from "./subAchievements";
+import { SubAchievements } from "./subAchievement";
 
 @Entity()
 export class Achievements {
