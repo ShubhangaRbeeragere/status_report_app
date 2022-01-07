@@ -1,8 +1,10 @@
 import { createConnection } from "typeorm";
 import ToDoContent from "../model/entity/toDoContent";
-import ToDoList from "../model/entity/toDoList"
-import Login from "../model/entity/login"
-
+import ToDoList from "../model/entity/toDoList";
+import Login from "../model/entity/login";
+import { Achievements } from "../model/entity/achievement";
+import { Milestones } from "../model/entity/milestone";
+import { SubAchievements } from "../model/entity/subAchievements";
 
 export const makeConnection = createConnection({
     type: "postgres",
@@ -15,6 +17,9 @@ export const makeConnection = createConnection({
     entities: [
         ToDoList,
         ToDoContent,
-        Login
-    ]
+        Login,
+        Achievements,
+        SubAchievements,
+        Milestones,
+    ],
 });
