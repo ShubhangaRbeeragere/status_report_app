@@ -498,6 +498,13 @@ $warning: rgb(192, 12, 12);
 
     //presentation
     .presentationWrapper {
+        //remove scrollbar but keep scroll
+        overflow: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
         position: absolute;
         top: 0;
         left: 0;
@@ -515,6 +522,8 @@ $warning: rgb(192, 12, 12);
         );
         z-index: 1;
         animation: fade-in 300ms ease forwards 1;
+
+        //presentation part////////////////////////////////////////////////////
         .presentation {
             color: white;
             width: 50rem;
@@ -525,7 +534,44 @@ $warning: rgb(192, 12, 12);
             margin: 5px;
             grid-area: presentation;
             height: 90vh;
+            .achievement {
+                border: none;
+                margin: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 300px;
+                width: 80%;
+                padding: 10px;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 5px;
+                background-color: rgba(0, 0, 0, 0.6);
+                transition: box-shadow 150ms;
+                position: relative;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    left: 2px;
+                    top: 50%;
+                    height: 0%;
+                    transform: translateY(-50%);
+                    width: 4px;
+                    background-color: rgba($subColor, 1);
+                    transition: height 200ms;
+                    border-radius: 5px;
+                }
+                &:hover::after {
+                    height: 90%;
+                }
+                h1 {
+                }
+                p {
+                }
+            }
         }
+        //toDoList par////////////////////////////////////////////////////
         .toDoList {
             width: 20rem;
             grid-area: toDoList;
