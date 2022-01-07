@@ -28,6 +28,6 @@ export const Header = (props) => {
 
 Header.propTypes = {
     fetchData: PropTypes.func,
-    date: PropTypes.string,
+    date: PropTypes.any,
     togglePresentation: PropTypes.func,
 };

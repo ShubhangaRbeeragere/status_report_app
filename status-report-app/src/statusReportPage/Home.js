@@ -5,6 +5,7 @@ import { Achievements } from "./components/achievements/achievements";
 import { AddList } from "./components/toDoList/addList";
 import { useGet } from "./HTTPhooks/fetch";
 import LoadingScreen from "../loginPage/LoadingScreen";
+import getAll from "./HTTPmethods/getAll";
 import addData from "./HTTPmethods/addData";
 import deleteData from "./HTTPmethods/deleteData";
 import updateData from "./HTTPmethods/updateData";
@@ -62,6 +63,8 @@ export const HomePage = (params) => {
     useEffect(() => {
         //set the title for home page
         document.title = "Home page";
+        //calling getPresentation
+        getPresentation();
     }, []);
 
     //function for changing statusMessage isVisible variable
@@ -310,6 +313,17 @@ export const HomePage = (params) => {
         let button = presentation.buttonState ? false : true;
         setPresentation({ ...presentation, buttonState: button });
     }
+
+    //get all the data from the server and display it in app
+    function getPresentation() {
+        let url = "http://localhost:7000/achievement/getAll";
+        async function getData() {
+            let result = await getAll(url, token);
+            setPresentation({ ...presentation, data: result });
+        }
+        getData();
+    }
+
     //dummy
     const fetchData = () => {
         let dateValue = date.toLocaleDateString().replaceAll("/", "-");
@@ -361,6 +375,7 @@ export const HomePage = (params) => {
                     <Presentation
                         presentation={presentation}
                         togglePresentation={togglePresentation}
+                        getPresentation={getPresentation}
                     />
                 )}
             </div>
