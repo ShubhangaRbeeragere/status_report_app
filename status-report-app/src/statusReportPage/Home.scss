@@ -566,8 +566,43 @@ $warning: rgb(192, 12, 12);
                     height: 90%;
                 }
                 h1 {
+                    position: relative;
+                    &::after {
+                        content: "";
+                        background-color: white;
+                        position: absolute;
+                        height: 1px;
+                        width: 100%;
+                        left: 0;
+                        bottom: -1px;
+                    }
                 }
                 p {
+                    width: 30rem;
+                    margin: 5px;
+                    padding: 5px;
+                    overflow-wrap: break-word;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    column-gap: 5px;
+                    position: relative;
+                    border-radius: 5px;
+                    transition: box-shadow 100ms;
+                    &:hover {
+                        box-shadow: 0px 0px 5px 0.5px rgba($subColor, 0.7);
+                    }
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: -15px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background-color: $subColor;
+                    }
                 }
             }
         }

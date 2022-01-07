@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import SubAchievement from "./subAchievement";
 const Presentation = (props) => {
     let presentation = props.presentation;
     return (
@@ -14,11 +14,18 @@ const Presentation = (props) => {
                 <i className="fas fa-times"></i>
             </button>
             <div className="presentation">
-                {presentation.data.map((item) => (
-                    <div className="achievement" key={item.achievement_id}>
-                        <h1>{item.achievement_name}</h1>
-                        <p>{item.date}</p>
-                        <p>{item.content}</p>
+                {presentation.data.map((achievement) => (
+                    <div
+                        className="achievement"
+                        key={achievement.achievement_id}
+                    >
+                        <h1>{achievement.achievement_name}</h1>
+                        <p>{achievement.date}</p>
+                        <p>{achievement.content}</p>
+
+                        <SubAchievement
+                            subAchievement={achievement.sub_achievements_key}
+                        />
                     </div>
                 ))}
             </div>

@@ -12,7 +12,7 @@ import updateData from "./HTTPmethods/updateData";
 import { AddContent } from "./components/toDoList/addContent";
 import LoginError from "./components/errorMessages/loginError";
 import StatusMessage from "./components/errorMessages/httpStatusMessage";
-import Presentation from "./components/header/presentation";
+import Presentation from "./components/presentation/presentation";
 import "./Home.css";
 
 export const HomePage = (params) => {
