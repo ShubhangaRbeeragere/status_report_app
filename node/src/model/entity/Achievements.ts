@@ -12,7 +12,7 @@ import { SubAchievements } from './SubAchievements';
       @Column({ type: "varchar", nullable: false ,unique:true})
       achievement_name!: string;    
     
-      @Column({ type: "varchar", nullable: false ,unique:true})
+      @Column({ type: "varchar", nullable: false ,unique:false})
       content!: string;    
     
       @Column({ type: "date", nullable: false })

@@ -11,7 +11,7 @@ import {PrimaryGeneratedColumn,
       @Column({ type: "varchar", nullable: false ,unique:true})
       sub_achievement_name!: string;    
     
-      @Column({ type: "varchar", nullable: false ,unique:true})
+      @Column({ type: "varchar", nullable: false ,unique:false})
       content!: string;   
       
       @ManyToOne(type => Achievements, achievements => achievements.sub_achievements_key)

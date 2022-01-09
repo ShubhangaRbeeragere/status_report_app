@@ -39,10 +39,11 @@ const initialValues = {
         <form className='SubAchievement' onSubmit={onSubmit}  >
   
             <div className='name' >
-                <input type="text" value={values.Subachievement}
+              <h4>Sub Achievement</h4>               
+           <input type="text" value={values.Subachievement}
             onChange={handleInputChange}
             name="Subachievement" placeholder='Enter Sub Achievement...'></input>
-
+                  <h4>Content</h4>   
                 <input type="text" value={values.Content}
             onChange={handleInputChange}
             name="Content" placeholder='Enter Content...'></input>

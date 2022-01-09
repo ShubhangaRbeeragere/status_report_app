@@ -1,63 +1,70 @@
-import React,{useState} from 'react';
+import React,{useRef} from 'react';
 import './Achievements.css';
 
 
-const initialValues = {
-  Achievement: "",
-  Content: "",
-  Date:""
-};
 
-export default function Achievements () {
+export default function Achievements (props) {
 
-  const [values, setValues] = useState(initialValues);
+  const closeAchievements = props.closeAchievements;
 
-  const handleInputChange = (e) => {
-      //const name = e.target.name 
-      //const value = e.target.value 
-      const { name, value } = e.target;
-  
-      setValues({
-        ...values,
-        [name]: value,
-      });
-    };
+
+  const achievementInputRef = useRef(); 
+  const contentInputRef = useRef(); 
+  const dateInputRef = useRef(); 
+
+
     const onSubmit = (e) => {
       e.preventDefault();
-      console.log(values);
-    };
+     
+      
+    
+        const enteredachievement = achievementInputRef.current.value;
+        const enteredcontent = contentInputRef.current.value;
+        const entereddate = dateInputRef.current.value;
+
+        const Data = {
+                      achievement : enteredachievement,
+                      content     : enteredcontent,
+                      date        : entereddate
+
+
+        };
+      props.onAddData(Data);
+    
+      }
 
 
 
     return (
+   
         <form className='Achievement'  onSubmit={(onSubmit)}>
   
             <div className='name' >
-                <label><h4>Achievement</h4></label>
-                <input type="text" value={values.Achievement}
-            onChange={handleInputChange}
-            name="Achievement" placeholder='Enter Achievement...'></input>
+                <button className='xbutton' onClick={()=> closeAchievements(false)}>X</button>
+                <label><h4 className='aHeader'>Achievement</h4></label>
+                <input className='aInput' type="text" 
+            ref={achievementInputRef} placeholder='Enter Achievement...'></input>
    
-               <label> <h4>Content</h4></label>
-                <input type="text" value={values.Content}
-            onChange={handleInputChange}
-            name="Content" placeholder='Enter content...'></input>
+               <label> <h4 className='cHeader'>Content</h4></label>
+                <input className='cInput' type="text"  ref={contentInputRef} placeholder='Enter content...'></input>
 
-                <label><h4>Date</h4></label>
-                <input type="date" value={values.Date}
-            onChange={handleInputChange}
-            name="Date" ></input>
+                <label><h4 className='dHeader'>Date</h4></label>
+                <input className='dInput' type="date"  ref={dateInputRef}></input>
             </div>
-        
+     
             <div>
-          <button className='buttons'>SUBMIT  </button>
+          <button className='buttons' >SUBMIT  </button>
+
         </div>
+    
 
         
       </form>
 
-         );
 
+
+         
+    );
 }
 
 

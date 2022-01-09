@@ -1,19 +1,18 @@
-import React,{useState} from 'react';
-import AchievementHome from './components/Achievement/AchievementHome';
+import React from 'react';
+
+import AchievementTest from './components/Achievement/AchievementTest';
+
+
+
+
 
 
 function App() {
  
-  const [nextPageUrl,setNextPageUrl] = useState ()
-  const [sub,setSub] =useState ()
-  const [prevPageUrl,setPrevPageUrl] = useState ()
-
-
-
   return (
     <div>
 
-<AchievementHome/></div>
+< AchievementTest /></div>
 
 
   )
