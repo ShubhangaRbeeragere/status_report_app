@@ -8,26 +8,29 @@ const Presentation = (props) => {
                 type="button"
                 className="cancelButton"
                 onClick={() => {
-                    props.togglePresentation();
+                    props.togglePresentation("wrapper-fade-out");
                 }}
             >
                 <i className="fas fa-times"></i>
             </button>
             <div className="presentation">
-                {presentation.data.map((achievement) => (
-                    <div
-                        className="achievement"
-                        key={achievement.achievement_id}
-                    >
-                        <h1>{achievement.achievement_name}</h1>
-                        <p>{achievement.date}</p>
-                        <p>{achievement.content}</p>
+                {presentation.data &&
+                    presentation.data.map((achievement) => (
+                        <div
+                            className="achievement"
+                            key={achievement.achievement_id}
+                        >
+                            <h1>{achievement.achievement_name}</h1>
+                            <p>{achievement.date}</p>
+                            <p>{achievement.content}</p>
 
-                        <SubAchievement
-                            subAchievement={achievement.sub_achievements_key}
-                        />
-                    </div>
-                ))}
+                            <SubAchievement
+                                subAchievement={
+                                    achievement.sub_achievements_key
+                                }
+                            />
+                        </div>
+                    ))}
             </div>
         </>
     );

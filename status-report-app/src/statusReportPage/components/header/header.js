@@ -15,7 +15,7 @@ export const Header = (props) => {
             {
                 <button
                     onClick={() => {
-                        props.togglePresentation();
+                        props.togglePresentation("wrapper-fade-in");
                     }}
                     className="presentationButton"
                 >

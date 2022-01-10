@@ -35,6 +35,12 @@ export const HomePage = (params) => {
         project: "",
     });
 
+    //for displaying presentation
+    let [presentation, setPresentation] = useState({
+        presentationClass: "",
+        data: null,
+    });
+
     let token = localStorage.getItem("token");
     //for adding project to toDoList///////////////////////////////////////////////////////////
     //and handling loader and errors
@@ -51,12 +57,6 @@ export const HomePage = (params) => {
     let [statusMessage, setStatusMessage] = useState({
         message: null,
         isVisible: false,
-    });
-
-    //for displaying presentation
-    let [presentation, setPresentation] = useState({
-        buttonState: false,
-        data: null,
     });
 
     //useeffect hhoookk///////////////////////////////////////////////////////////
@@ -310,9 +310,8 @@ export const HomePage = (params) => {
     }
 
     ///////Presentation///////////////////////////////////////////////
-    function togglePresentation() {
-        let button = presentation.buttonState ? false : true;
-        setPresentation({ ...presentation, buttonState: button });
+    function togglePresentation(className) {
+        setPresentation({ ...presentation, presentationClass: className });
     }
 
     //get all the data from the server and display it in app
@@ -372,8 +371,10 @@ export const HomePage = (params) => {
                     />
                 }
 
-                {presentation.buttonState && (
-                    <div className="presentationWrapper">
+                {
+                    <div
+                        className={`presentationWrapper ${presentation.presentationClass}`}
+                    >
                         <Presentation
                             presentation={presentation}
                             togglePresentation={togglePresentation}
@@ -388,7 +389,7 @@ export const HomePage = (params) => {
                             deleteContent={deleteContentOnclick}
                         />
                     </div>
-                )}
+                }
             </div>
             {error && <LoginError />}
             <StatusMessage

@@ -500,11 +500,10 @@ $warning: rgb(192, 12, 12);
     .presentationWrapper {
         position: absolute;
         top: 0;
-        left: 0;
-        right: 0;
         bottom: 0;
         overflow: hidden;
         display: grid;
+        visibility: hidden;
         grid-template-areas:
             "cancelButton cancelButton"
             "presentation toDoList";
@@ -514,7 +513,6 @@ $warning: rgb(192, 12, 12);
             $subColor 130%
         );
         z-index: 1;
-        animation: fade-in 300ms ease-in forwards 1;
 
         //presentation part////////////////////////////////////////////////////
         .presentation {
@@ -611,6 +609,7 @@ $warning: rgb(192, 12, 12);
             width: 20rem;
             grid-area: toDoList;
             height: 90vh;
+            animation: none;
         }
         .cancelButton {
             @include createButton(
