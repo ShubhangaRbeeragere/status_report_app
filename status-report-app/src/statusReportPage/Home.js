@@ -63,9 +63,6 @@ export const HomePage = (params) => {
     useEffect(() => {
         //set the title for home page
         document.title = "Home page";
-        //calling getPresentation
-        getPresentation();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //function for changing statusMessage isVisible variable
@@ -310,8 +307,15 @@ export const HomePage = (params) => {
     }
 
     ///////Presentation///////////////////////////////////////////////
-    function togglePresentation(className) {
-        setPresentation({ ...presentation, presentationClass: className });
+    async function togglePresentation(className) {
+        let url = "http://localhost:7000/achievement/getAll";
+        //when the presentation button is pressed get all the details
+        if (className === "wrapper-fade-in") {
+            let result = await getAll(url, token);
+            setPresentation({ presentationClass: className, data: result });
+        } else {
+            setPresentation({ ...presentation, presentationClass: className });
+        }
     }
 
     //get all the data from the server and display it in app
