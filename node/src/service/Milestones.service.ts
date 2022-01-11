@@ -2,7 +2,6 @@ import {getManager} from "typeorm";
 import {Response, Request} from "express";
 import { Milestones } from '../model/entity/Milestone';
 import { StructureFORupdate } from '../interface/test.interface';
-import { SubAchievements } from '../model/entity/SubAchievements';
 
 ///////--------GET ALL MILESTONES DETAIL---------/////////
 

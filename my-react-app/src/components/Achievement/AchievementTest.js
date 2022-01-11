@@ -2,81 +2,31 @@ import React,{useState,useEffect} from 'react';
 import './Achievements.css';
 import Achievements from './Achievement';
 import AAccordion from './Aaccordion';
+import addData from './test';
+
 
 
 
 function AchievementTest(props) {
 
-    const [loading,setLoading] = useState(true);
-    const [loadedData,setLoadedData] = useState([]);
-  
-    useEffect(() => {
-      setLoading(true);
-  
-      fetch('https://my-react-app-ef4bc-default-rtdb.firebaseio.com/testdata.json'
-  ).then((response) => {
-      return response.json();
-  })
-    .then((data)    => {
-
-      const alists = [];
-      for (const key in data){
-
-          const alist = {
-
-            id:key,
-            ...data[key]
-
-          };
-
-          alists.push(alist);
-
-      }
-
-
-      setLoading(false);
-      setLoadedData(alists);
-  });
-  
-  
-    },[]);
-
-      if (loading) {
-          <section>
-
-              <p>Loading....</p>
-
-          </section>
-
-      }
-
-
 
   function addDataHandler(Data){
 
-    fetch('https://my-react-app-ef4bc-default-rtdb.firebaseio.com/testdata.json',
-    {
-      method:'POST',
-      body:JSON.stringify(Data),
-      headers:{
-          'Content-Type': 'application/json'
+    addData('http://localhost:8080/achievements/createADETAIL',
 
-
-
-      }
-
-    }
- 
     );
 
   }
-
-
-
-
     const [openAchievements,setOpenAchievements] = useState(false);
 
 
+    // function deleteAchievement (id) {
+
+    //     const updatedAchievement = [...props.alists].filter((props.alist) => alist.id !== id)
+
+    // }
+    
+   
     return (
         <div className='Ahome'>
                <div className="box">
@@ -85,10 +35,7 @@ function AchievementTest(props) {
         <div>
          <div className='AAcordion'>
          < AAccordion />
-      
-
-            <button className='AAcordionButton' >X</button>
-
+         {/* <button className='AAcordionButton' onClick={() => deleteAchievement(props.alist.id)} >X</button> */}
         
         </div>
 </div>

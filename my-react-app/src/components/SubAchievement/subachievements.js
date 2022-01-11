@@ -1,5 +1,5 @@
 import React,{useRef} from 'react';
-import './Achievements.css';
+import './subAchievements.css';
 
 
 

@@ -19,7 +19,7 @@ function Atestt (props) {
     useEffect(() => {
       setLoading(true);
   
-      fetch('https://my-react-app-ef4bc-default-rtdb.firebaseio.com/testdata.json'
+      fetch('http://localhost:8080/achievements/getDETAIL'
   ).then((response) => {
       return response.json();
   })
@@ -75,6 +75,7 @@ function Atestt (props) {
             }}
             >
             <Alist alists={loadedData}/>
+            
             </Typography>
             </AccordionSummary> 
             <div className='Subaccordion'>
