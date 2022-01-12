@@ -363,63 +363,76 @@ $warning: rgb(192, 12, 12);
             top: 50%;
             transform: translate(-50%, -50%);
             background-color: $subColor;
-            padding: 20px 50px;
             height: max-content;
             width: 20rem;
             min-width: 15rem;
             border-radius: 5px;
+            visibility: hidden;
             display: flex;
             flex-direction: column;
-            row-gap: 20px;
-            visibility: hidden;
-            label {
-                font-size: 22px;
-                font-weight: bold;
-                color: black;
-                margin-right: 5px;
-                width: max-content;
-            }
-            input {
-                font-family: "Raleway", sans-serif;
-                font-size: large;
-                height: 30px;
-                text-align: center;
-                border: none;
-                border-radius: 5px;
-                outline: none;
-                &:focus {
-                    box-shadow: 0px 0px 5px 0.2px $mainColor;
-                }
-            }
-            textarea {
-                font-size: large;
-                max-height: 100px;
-                max-width: 220px;
-                text-align: left;
-                border: none;
-                border-radius: 5px;
-                outline: none;
-                padding: 5px;
-                &:focus {
-                    box-shadow: 0px 0px 5px 0.2px $mainColor;
-                }
-            }
-            .submitButton {
-                align-self: center;
-                @include createButton(
-                    $background-color: $mainColor,
-                    $width: 80px,
-                    $height: 35px
-                );
-            }
+
             .cancelButton {
                 align-self: flex-end;
+                margin: 10px 10px;
                 @include createButton(
                     $background-color: $mainColor,
                     $width: 35px,
                     $height: 30px,
                     $border-radius: 5px
                 );
+            }
+            .formAlignment {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: left;
+                row-gap: 20px;
+                height: max-content;
+                min-height: 20rem;
+                width: max-content;
+                margin-left: auto;
+                margin-right: auto;
+
+                label {
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: black;
+                    margin-right: 5px;
+                    width: max-content;
+                }
+                input {
+                    font-family: "Raleway", sans-serif;
+                    font-size: large;
+                    height: 30px;
+                    text-align: center;
+                    border: none;
+                    border-radius: 5px;
+                    outline: none;
+                    &:focus {
+                        box-shadow: 0px 0px 5px 0.2px $mainColor;
+                    }
+                }
+                textarea {
+                    font-size: large;
+                    max-height: 100px;
+                    max-width: 220px;
+                    text-align: left;
+                    border: none;
+                    border-radius: 5px;
+                    outline: none;
+                    padding: 5px;
+                    &:focus {
+                        box-shadow: 0px 0px 5px 0.2px $mainColor;
+                    }
+                }
+                .submitButton {
+                    align-self: center;
+                    @include createButton(
+                        $background-color: $mainColor,
+                        $width: 80px,
+                        $height: 35px
+                    );
+                }
             }
         }
     }
