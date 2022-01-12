@@ -696,7 +696,7 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: #52b69a;
-  padding: 20px 50px;
+  padding: 20px 1px;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -710,6 +710,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   row-gap: 20px;
   visibility: hidden;
 }
@@ -788,6 +791,7 @@
 .homePage .addContentWrapper form .cancelButton {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  margin: 0 20px;
   background-color: #092841;
   color: white;
   border: none;
@@ -1049,6 +1053,91 @@
 
 .loginErrorWrapper .loginError a:hover {
   background-color: #214e41;
+}
+
+.notificationWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+}
+
+.notificationWrapper .notification .message {
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  margin: 5px;
+}
+
+.notificationWrapper .notification .buttonHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+}
+
+.notificationWrapper .notification .buttonHolder .deleteYes {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.notificationWrapper .notification .buttonHolder .deleteYes:focus {
+  outline: none;
+}
+
+.notificationWrapper .notification .buttonHolder .deleteYes:hover {
+  background-color: #cc0000;
+}
+
+.notificationWrapper .notification .buttonHolder .deleteNo {
+  background-color: green;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
+  cursor: pointer;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+}
+
+.notificationWrapper .notification .buttonHolder .deleteNo:focus {
+  outline: none;
+}
+
+.notificationWrapper .notification .buttonHolder .deleteNo:hover {
+  background-color: #004d00;
 }
 
 .statusMessage-on {

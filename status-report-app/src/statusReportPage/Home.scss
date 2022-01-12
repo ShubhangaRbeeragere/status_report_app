@@ -448,13 +448,14 @@ $warning: rgb(192, 12, 12);
             top: 50%;
             transform: translate(-50%, -50%);
             background-color: $subColor;
-            padding: 20px 50px;
+            padding: 20px 1px;
             height: max-content;
             width: 20rem;
             min-width: 15rem;
             border-radius: 5px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             row-gap: 20px;
             visibility: hidden;
             label {
@@ -499,6 +500,7 @@ $warning: rgb(192, 12, 12);
             }
             .cancelButton {
                 align-self: flex-end;
+                margin: 0 20px;
                 @include createButton(
                     $background-color: $mainColor,
                     $width: 35px,
@@ -674,6 +676,47 @@ $warning: rgb(192, 12, 12);
     }
 }
 
+.notificationWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center;
+    opacity: 1;
+
+    .notification {
+        .message {
+            font-weight: bold;
+            font-size: 25px;
+            color: white;
+            margin: 5px;
+        }
+        .buttonHolder {
+            display: flex;
+            justify-content: center;
+            column-gap: 10px;
+            .deleteYes {
+                @include createButton(
+                    $background-color: red,
+                    $width: 40px,
+                    $height: 30px,
+                    $border-radius: 5px
+                );
+            }
+            .deleteNo {
+                @include createButton(
+                    $background-color: green,
+                    $width: 40px,
+                    $height: 30px,
+                    $border-radius: 5px
+                );
+            }
+        }
+    }
+}
 .statusMessage-on {
     position: absolute;
     top: 0;

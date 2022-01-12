@@ -10,9 +10,10 @@ import addData from "./HTTPmethods/addData";
 import deleteData from "./HTTPmethods/deleteData";
 import updateData from "./HTTPmethods/updateData";
 import { AddContent } from "./components/toDoList/addContent";
-import LoginError from "./components/errorMessages/loginError";
-import StatusMessage from "./components/errorMessages/httpStatusMessage";
+import LoginError from "./components/Messages/loginError";
+import StatusMessage from "./components/Messages/httpStatusMessage";
 import Presentation from "./components/presentation/presentation";
+import DeleteNotification from "./components/Messages/deleteNotification";
 import "./Home.css";
 
 export const HomePage = (params) => {
@@ -395,6 +396,7 @@ export const HomePage = (params) => {
                     </div>
                 }
             </div>
+            {<DeleteNotification />}
             {error && <LoginError />}
             <StatusMessage
                 message={statusMessage.message}
