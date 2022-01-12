@@ -686,13 +686,19 @@ $warning: rgb(192, 12, 12);
     display: grid;
     place-items: center;
     opacity: 1;
+    z-index: 20;
 
     .notification {
         .message {
-            font-weight: bold;
-            font-size: 25px;
+            font-weight: lighter;
+            font-size: 20px;
             color: white;
             margin: 5px;
+            span {
+                font-weight: bold;
+                font-size: 25px;
+                color: $subColor;
+            }
         }
         .buttonHolder {
             display: flex;

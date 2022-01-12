@@ -29,6 +29,7 @@ export const AddList = (props) => {
                         Project:
                         <br />
                         <input
+                            autoComplete="off"
                             type="text"
                             value={addList.project}
                             name="project"

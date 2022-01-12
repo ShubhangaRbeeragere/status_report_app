@@ -1066,13 +1066,20 @@
   display: grid;
   place-items: center;
   opacity: 1;
+  z-index: 20;
 }
 
 .notificationWrapper .notification .message {
-  font-weight: bold;
-  font-size: 25px;
+  font-weight: lighter;
+  font-size: 20px;
   color: white;
   margin: 5px;
+}
+
+.notificationWrapper .notification .message span {
+  font-weight: bold;
+  font-size: 25px;
+  color: #52b69a;
 }
 
 .notificationWrapper .notification .buttonHolder {

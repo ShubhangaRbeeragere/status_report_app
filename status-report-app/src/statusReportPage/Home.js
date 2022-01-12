@@ -60,6 +60,11 @@ export const HomePage = (params) => {
         isVisible: false,
     });
 
+    //delete Project Notification
+    let [notification, setNotification] = useState({
+        isVisible: false,
+        projectName: "",
+    });
     //useeffect hhoookk///////////////////////////////////////////////////////////
     useEffect(() => {
         //set the title for home page
@@ -235,6 +240,8 @@ export const HomePage = (params) => {
             project: projectName,
             deleteProject: true,
         };
+        //trun of the notification
+        setNotification({ ...notification, isVisible: false });
         //delete the project and remove the item only when succeeds
         let deleteProject = async () => {
             setLoadPage(true);
@@ -329,6 +336,13 @@ export const HomePage = (params) => {
         getData();
     }
 
+    function toggleDeleteNotification(projectName, visibility) {
+        console.log(visibility);
+        setNotification({
+            projectName: projectName,
+            isVisible: visibility,
+        });
+    }
     //dummy
     const fetchData = () => {
         let dateValue = date.toLocaleDateString().replaceAll("/", "-");
@@ -354,8 +368,8 @@ export const HomePage = (params) => {
                         toggleAddList={toggleAddlist}
                         toggleContentlist={toggleContentlist}
                         updateProjectName={updateProjectName}
-                        deleteProject={deleteProjectOnclick}
                         deleteContent={deleteContentOnclick}
+                        toggleDeleteNotification={toggleDeleteNotification}
                     />
                 }
 
@@ -390,13 +404,19 @@ export const HomePage = (params) => {
                             toggleAddList={toggleAddlist}
                             toggleContentlist={toggleContentlist}
                             updateProjectName={updateProjectName}
-                            deleteProject={deleteProjectOnclick}
+                            toggleDeleteNotification={toggleDeleteNotification}
                             deleteContent={deleteContentOnclick}
                         />
                     </div>
                 }
             </div>
-            {<DeleteNotification />}
+            {notification.isVisible && (
+                <DeleteNotification
+                    toggleDeleteNotification={toggleDeleteNotification}
+                    projectName={notification.projectName}
+                    deleteProject={deleteProjectOnclick}
+                />
+            )}
             {error && <LoginError />}
             <StatusMessage
                 message={statusMessage.message}

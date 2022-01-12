@@ -2,16 +2,17 @@ import { Content } from "./content";
 import { AddListButton } from "./addListButton";
 export const ToDoList = (props) => {
     let toDoList = props.toDoList;
-    let deleteProject = props.deleteProject;
+    let toggleDeleteNotification = props.toggleDeleteNotification;
     let toDoItems =
         toDoList &&
         toDoList.map((list) => (
             <div className="item" key={list.list_id.toString()}>
                 <button
+                    type="button"
                     title="delete project"
                     className="removeProjectButton"
                     onClick={() => {
-                        deleteProject(list.title);
+                        toggleDeleteNotification(list.title, true);
                     }}
                 >
                     <i className="fas fa-times"></i>
