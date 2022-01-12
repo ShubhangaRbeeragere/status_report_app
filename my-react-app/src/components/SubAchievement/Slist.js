@@ -1,7 +1,7 @@
 import React from 'react';
-import Aitem from './Aitem';
+import Aitem from './Sitem';
 
-function Alist(props) {
+function Slist(props) {
 
     return (
         <ul className='Alist'>
@@ -9,10 +9,9 @@ function Alist(props) {
             
             <Aitem 
             key = {alist.id}
-            id={alist.achievement_id}
-            achievement={alist.achievement_name}
+            id={alist.subachievement_id}
+            subachievement={alist.subachievement_name}
             content={alist.content}
-            date={alist.date}
                 
             />
             ))}
@@ -21,4 +20,4 @@ function Alist(props) {
     );
 }
 
-export default Alist
+export default Slist;

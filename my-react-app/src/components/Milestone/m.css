@@ -16,11 +16,11 @@ body {
   }
 
 
- .Achievement {
+ .Milestones {
   width: 100vw;
   height: 100vh;
   background:rgba(0,0,0,0.87);
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@ body {
 
 
 
-.name {
+.Mname {
 
     color: rgb(0, 0, 0);
     background-color: #ececea;
@@ -43,7 +43,7 @@ body {
 
 
 }
-.name  {
+.Mname  {
 
   border-radius: 5px;
   border: 1px solid silver;
@@ -65,7 +65,7 @@ outline: none;
 
 }
 
-.name .aHeader {
+.Mname .aHeader {
 
 
   color: #4b4b48;
@@ -77,7 +77,7 @@ outline: none;
   
   }
 
-  .name .cHeader {
+  .Mname .cHeader {
 
 
     color: #4b4b48;
@@ -89,7 +89,7 @@ outline: none;
     
     }
 
-    .name .dHeader {
+    .Mname .dHeader {
 
 
       color: #4b4b48;
@@ -109,7 +109,7 @@ input::placeholder {
 
 }
 
-.content {
+.Mcontent {
 
   color: rgb(0, 0, 0);
   background-color: #ececea;
@@ -120,7 +120,7 @@ input::placeholder {
 
 }
 
-.content input {
+.Mcontent input {
 
 
   border-radius: 5px;
@@ -129,7 +129,7 @@ input::placeholder {
   width: 400px;
 }
 
-.buttons {
+.Mbuttons {
 
   cursor:pointer;
   width: 444px;
@@ -142,7 +142,7 @@ input::placeholder {
   left: 34.9%;
 }
 
-.name .xbutton {
+.Mname .xbutton {
 
 position: absolute;
 left: 380px;
@@ -153,22 +153,22 @@ color: white;
 
 }
 
-.buttons:hover {
+.Mbuttons:hover {
   background-color: #489de2;
   box-shadow:0 0 5px #ff96ad, 0 0 25px 
   #279be9, 0 0 50px #ff96ad, 0 0 200px #1cb0dd;
 }
 
 
-.box{
+.Mbox{
   text-align: center;
-  background-color: rgb(4, 57, 156);
-  width: 800px;
+  background-color: rgb(6, 123, 158);
+  width: 600px;
   height: 55px;
-  color: rgb(204, 202, 202);
+  color: rgb(0, 0, 0);
   position: absolute;
-  top:16%;
-  left: 4%;
+  top:15%;
+  left: 55%;
   font-size: 12px;
   border-radius: 15px;  
   border:1;
@@ -187,7 +187,7 @@ height: 5%;
 
 }
 
-.name .aInput {
+.Mname .aInput {
 
 position: absolute;
 top:15%;
@@ -197,7 +197,7 @@ height: 10%;
 }
 
 
-.name .cInput {
+.Mname .cInput {
 
   position: absolute;
   top:45%;
@@ -205,7 +205,7 @@ height: 10%;
   height: 20%;
   
   }
-.name .dInput {
+.Mname .dInput {
 
     position: absolute;
     top:80%;
@@ -215,7 +215,7 @@ height: 10%;
     }
       
 
-.Abutton{
+.Mbutton{
  color: rgb(255, 255, 255);
  background-color: #04ff25d0;
  width: 10%;
@@ -255,7 +255,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
 }
 .accordionBgc {
-  background-color: rgba(18, 255, 255, 0.808);
+  background-color: rgba(0, 255, 255, 0.808);
 
   width: 90%;
   height: 130px;
@@ -271,17 +271,17 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
-.accordion {
+.Maccordion {
 
   color: #000000;
   width: 82%;
-  height: 0px;
+  height: 1px;
   list-style: none;
   margin: 0;
   padding: 0;
   
   position: relative;
-  top:70px;
+  top:142px;
   left:48px;
   border-radius: 1px;
   border: 12px;
@@ -302,7 +302,7 @@ background-color: rgba(18, 153, 216, 0.541);
 height: 450px;
 width: 800px;
 position: absolute;
-top: 200px;
+top: 220px;
 left: 61px;
 border: #092841;
 border-width: 120px;

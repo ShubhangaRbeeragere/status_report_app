@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react';
 import './Achievements.css';
 import Achievements from './Achievement';
 import AAccordion from './Aaccordion';
-import addData from './test';
 
 
 
@@ -10,14 +9,26 @@ import addData from './test';
 function AchievementTest(props) {
 
 
-  function addDataHandler(Data){
 
-    addData('http://localhost:8080/achievements/createADETAIL',
 
-    );
+ function addDataHandler(Data){
+  
+        fetch('https://localhost:8080/achievements/createDETAIL',
+        {
+          method:'POST',
+          body:JSON.stringify(Data),
+          headers:{
+              'Content-Type': 'application/json'
+ }
+    
+ }
+     
+ );
+      
 
-  }
-    const [openAchievements,setOpenAchievements] = useState(false);
+ }
+
+ const [openAchievements,setOpenAchievements] = useState(false);
 
 
     // function deleteAchievement (id) {
@@ -29,9 +40,7 @@ function AchievementTest(props) {
    
     return (
         <div className='Ahome'>
-               <div className="box">
-        <h1>ACHIEVEMENTS</h1>
-      </div>
+
         <div>
          <div className='AAcordion'>
          < AAccordion />

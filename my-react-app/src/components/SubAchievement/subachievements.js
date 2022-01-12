@@ -1,16 +1,15 @@
 import React,{useRef} from 'react';
-import './subAchievements.css';
+import './s.css';
 
 
 
-export default function Achievements (props) {
+export default function SubAchievements (props) {
 
-  const closeAchievements = props.closeAchievements;
+  const closeSubAchievements = props.closeSubAchievements;
 
 
-  const achievementInputRef = useRef(); 
+  const subachievementInputRef = useRef(); 
   const contentInputRef = useRef(); 
-  const dateInputRef = useRef(); 
 
 
     const onSubmit = (e) => {
@@ -19,19 +18,17 @@ export default function Achievements (props) {
      
       
     
-        const enteredachievement = achievementInputRef.current.value;
+        const enteredsubachievement = subachievementInputRef.current.value;
         const enteredcontent = contentInputRef.current.value;
-        const entereddate = dateInputRef.current.value;
 
-        const Data = {
-                      achievement : enteredachievement,
+        const SubData = {
+                      subachievement : enteredsubachievement,
                       content     : enteredcontent,
-                      date        : entereddate
 
 
         };
-      props.onAddData(Data);
-      console.log(Data);
+      props.onAddData(SubData);
+      console.log(SubData);
     
       }
 
@@ -39,19 +36,16 @@ export default function Achievements (props) {
 
     return (
    
-        <form className='Achievement'  onSubmit={(onSubmit)}>
+        <form className='SubAchievement'  onSubmit={(onSubmit)}>
   
             <div className='name' >
-                <button className='xbutton' onClick={()=> closeAchievements(false)}>X</button>
-                <label><h4 className='aHeader'>Achievement</h4></label>
+                <button className='xbutton' onClick={()=> closeSubAchievements(false)}>X</button>
+                <label><h4 className='aHeader'>Sub Achievement</h4></label>
                 <input className='aInput' type="text" 
-            ref={achievementInputRef} placeholder='Enter Achievement...'></input>
+            ref={subachievementInputRef} placeholder='Enter Sub Achievement...'></input>
    
                <label> <h4 className='cHeader'>Content</h4></label>
                 <input className='cInput' type="text"  ref={contentInputRef} placeholder='Enter content...'></input>
-
-                <label><h4 className='dHeader'>Date</h4></label>
-                <input className='dInput' type="date"  ref={dateInputRef}></input>
             </div>
      
             <div>
@@ -61,11 +55,7 @@ export default function Achievements (props) {
     
 
         
-      </form>
-
-
-
-         
+      </form>        
     );
 }
 

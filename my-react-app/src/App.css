@@ -1,0 +1,60 @@
+.AT {
+
+position: absolute;
+left: 0% ;
+top: 10px;
+
+}
+.MT {
+
+    position: absolute;
+    left: 0% ;
+    top: -8%;
+    
+    }
+
+.SelectMilestones {
+
+background-color: rgb(23, 198, 241);
+position: absolute;
+top: 19%;
+left: 30%;
+width: 340px;
+height: 60px;
+cursor: pointer;
+border-radius: 15px;
+border-start-start-radius: 0px;
+border-bottom-left-radius: 0px;
+
+}
+
+.SelectMilestones:hover{
+
+
+    background-color: #fff;
+}
+.SelectAchievements{
+
+    background-color: rgb(23, 198, 241);
+    position: absolute;
+    top: 19%;
+    left: 6%;
+    width: 340px;
+    height: 60px;
+cursor: pointer;
+border-radius: 15px;
+border-bottom-right-radius: 0px;
+border-top-right-radius: 0px;
+    
+    }
+
+.SelectAchievements:hover{
+
+    background-color: white;
+}
+
+
+
+.SelectAchievements::selection {
+        color:white;
+      }

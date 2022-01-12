@@ -1,6 +1,7 @@
-import React from 'react';
-
+import React,{useState} from 'react';
 import AchievementTest from './components/Achievement/AchievementTest';
+import MilestoneTest from './components/Milestone/MilestoneTest';
+import './App.css'
 
 
 
@@ -8,11 +9,34 @@ import AchievementTest from './components/Achievement/AchievementTest';
 
 
 function App() {
+
+
+  const [openMilestone,setOpenMilestone] = useState(false);
+  const [openAchievements,setOpenAchievements] = useState(true);
  
   return (
-    <div>
+    <div><button className='SelectMilestones' onClick={() => {
+      setOpenMilestone(true);
+      setOpenAchievements(false);
+    }}>MILESTONES</button>
+    <button className='SelectAchievements' onClick={() => {
+      setOpenMilestone(false);
+      setOpenAchievements(true);
+    }}>ACHIEVEMENTS</button>
 
-< AchievementTest /></div>
+
+<div className='AT'>
+{openAchievements &&  <AchievementTest />}
+
+</div>
+
+<div className='MT'>
+{openMilestone &&  <MilestoneTest />}
+
+</div>
+
+
+</div>
 
 
   )

@@ -16,7 +16,7 @@ body {
   }
 
 
- .Achievement {
+ .SubAchievement {
   width: 100vw;
   height: 100vh;
   background:rgba(0,0,0,0.87);
@@ -162,12 +162,12 @@ color: white;
 
 .box{
   text-align: center;
-  background-color: rgb(4, 57, 156);
+  background-color: rgb(6, 123, 158);
   width: 800px;
   height: 55px;
-  color: rgb(204, 202, 202);
+  color: rgb(0, 0, 0);
   position: absolute;
-  top:16%;
+  top:30%;
   left: 4%;
   font-size: 12px;
   border-radius: 15px;  
@@ -217,13 +217,13 @@ height: 10%;
 
 .Abutton{
  color: rgb(255, 255, 255);
- background-color: #04ff25d0;
+ background-color: #11b627d0;
  width: 10%;
  height: 47px;
  position:fixed;
  top: 85%;
 
- left: 25%;
+ left: 26.8%;
  cursor: pointer;
 
 
@@ -255,7 +255,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
 }
 .accordionBgc {
-  background-color: rgba(18, 255, 255, 0.808);
+  background-color: rgba(0, 255, 255, 0.808);
 
   width: 90%;
   height: 130px;
@@ -274,15 +274,15 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 .accordion {
 
   color: #000000;
-  width: 82%;
-  height: 0px;
+  width: 65%;
+  height: 1px;
   list-style: none;
   margin: 0;
   padding: 0;
   
   position: relative;
-  top:70px;
-  left:48px;
+  top:13%;
+  left:15%;
   border-radius: 1px;
   border: 12px;
   border-color: #092841;
@@ -302,7 +302,7 @@ background-color: rgba(18, 153, 216, 0.541);
 height: 450px;
 width: 800px;
 position: absolute;
-top: 200px;
+top: 220px;
 left: 61px;
 border: #092841;
 border-width: 120px;

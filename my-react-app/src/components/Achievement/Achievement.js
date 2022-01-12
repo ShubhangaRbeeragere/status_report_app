@@ -17,25 +17,22 @@ export default function Achievements (props) {
       e.preventDefault();
 
      
-      
-    
-        const enteredachievement = achievementInputRef.current.value;
-        const enteredcontent = contentInputRef.current.value;
-        const entereddate = dateInputRef.current.value;
+        const EnteredAchievement = achievementInputRef.current.value;
+        const EnteredContent = contentInputRef.current.value;
+        const EnteredDate = dateInputRef.current.value;
 
         const Data = {
-                      achievement : enteredachievement,
-                      content     : enteredcontent,
-                      date        : entereddate
+                      achievement : EnteredAchievement,
+                      content     : EnteredContent,
+                      date        : EnteredDate
 
 
-        };
+        }; 
+             console.log("this" ,  Data);
       props.onAddData(Data);
-      console.log(Data);
+
     
       }
-
-
 
     return (
    

@@ -1,18 +1,17 @@
 import React from 'react';
-import Aitem from './Aitem';
+import Mitem from '/home/akhil.e@TA.COM/node-react-project-dec/my-react-app/src/components/Milestone/Mitem.js'
 
-function Alist(props) {
+function Mlist(props) {
 
     return (
         <ul className='Alist'>
             {props.alists.map((alist) => ( 
             
-            <Aitem 
+            <Mitem
             key = {alist.id}
-            id={alist.achievement_id}
-            achievement={alist.achievement_name}
+            id={alist.milestones_id}
+            achievement={alist.title}
             content={alist.content}
-            date={alist.date}
                 
             />
             ))}
@@ -21,4 +20,4 @@ function Alist(props) {
     );
 }
 
-export default Alist
+export default Mlist;
