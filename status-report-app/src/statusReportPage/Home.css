@@ -8,8 +8,8 @@
   width: 100vw;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 68vw 30vw;
-      grid-template-columns: 68vw 30vw;
+  -ms-grid-columns: 60vw 40vw;
+      grid-template-columns: 60vw 40vw;
   -ms-grid-rows: 15% 85%;
       grid-template-rows: 15% 85%;
   -webkit-box-pack: center;
@@ -351,9 +351,9 @@
   background-color: #52b69a;
   color: white;
   border: none;
-  width: 18px;
-  height: 18px;
-  line-height: 18px;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -416,15 +416,16 @@
 }
 
 .homePage .toDoList .itemWrapper .item .content .message {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.6);
   display: block;
   text-align: center;
   line-height: 20px;
 }
 
 .homePage .toDoList .itemWrapper .item .content li {
-  min-width: 250px;
+  min-width: 330px;
+  max-width: 330px;
   margin: 5px;
   padding: 5px;
   overflow-wrap: break-word;
@@ -470,9 +471,9 @@
   background-color: white;
   color: white;
   border: none;
-  width: 16px;
-  height: 15px;
-  line-height: 15px;
+  width: 21px;
+  height: 20px;
+  line-height: 20px;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -499,7 +500,7 @@
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  line-height: 20px;
+  line-height: 24px;
   width: 100%;
   overflow: hidden;
 }
@@ -508,20 +509,22 @@
   background-color: #52b69a;
   color: white;
   border: none;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  font-size: 12px;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.3px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 50%;
   -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
           box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.356);
   cursor: pointer;
   -webkit-transition: 100ms;
   transition: 100ms;
   color: black;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .homePage .toDoList .itemWrapper .item .addContentButton:focus {

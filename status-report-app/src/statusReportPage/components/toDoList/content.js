@@ -13,7 +13,7 @@ export const Content = (props) => {
                             deleteContent(props.project, contentData.content);
                         }}
                     >
-                        <i className="fas fa-minus"></i>
+                        <i className="fas fa-times"></i>
                     </button>
                 </li>
             ))}
@@ -23,7 +23,7 @@ export const Content = (props) => {
         <div className="content">
             {props.contentArray.length === 0 ? (
                 <span className="message">
-                    Press The Below Button To Add Content
+                    Press The Below Button To Add Issue
                 </span>
             ) : (
                 content
