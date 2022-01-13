@@ -415,6 +415,14 @@
   text-align: left;
 }
 
+.homePage .toDoList .itemWrapper .item .content .message {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  text-align: center;
+  line-height: 20px;
+}
+
 .homePage .toDoList .itemWrapper .item .content li {
   min-width: 250px;
   margin: 5px;
