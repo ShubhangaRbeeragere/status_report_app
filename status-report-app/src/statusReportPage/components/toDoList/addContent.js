@@ -28,7 +28,7 @@ export const AddContent = (props) => {
                     <i className="fas fa-times"></i>
                 </button>
                 <label>
-                    Content:
+                    Issues/Risk:
                     <br />
                     <textarea
                         name="content"

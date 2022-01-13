@@ -464,8 +464,8 @@ $warning: rgb(192, 12, 12);
             transform: translate(-50%, -50%);
             background-color: $subColor;
             padding: 20px 1px;
-            height: max-content;
-            width: 20rem;
+            height: 17rem;
+            width: 25rem;
             min-width: 15rem;
             border-radius: 5px;
             display: flex;
@@ -493,8 +493,11 @@ $warning: rgb(192, 12, 12);
             }
             textarea {
                 font-size: large;
-                max-height: 100px;
-                max-width: 220px;
+                max-height: 140px;
+                min-height: 140px;
+                height: 200px;
+                max-width: 330px;
+                min-width: 300px;
                 text-align: left;
                 border: none;
                 border-radius: 5px;
