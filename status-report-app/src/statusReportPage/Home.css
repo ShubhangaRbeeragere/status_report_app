@@ -555,7 +555,7 @@
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  width: 20rem;
+  width: 25rem;
   min-width: 15rem;
   border-radius: 5px;
   display: -webkit-box;
@@ -635,7 +635,8 @@
 .homePage .addListWrapper form .formAlignment input {
   font-family: "Raleway", sans-serif;
   font-size: large;
-  height: 30px;
+  height: 35px;
+  width: 150px;
   text-align: center;
   border: none;
   border-radius: 5px;
@@ -647,10 +648,17 @@
           box-shadow: 0px 0px 5px 0.2px #092841;
 }
 
+.homePage .addListWrapper form .formAlignment input[name="project"] {
+  min-width: 300px;
+}
+
 .homePage .addListWrapper form .formAlignment textarea {
   font-size: large;
-  max-height: 100px;
-  max-width: 220px;
+  max-height: 130px;
+  min-height: 130px;
+  height: 200px;
+  max-width: 300px;
+  min-width: 300px;
   text-align: left;
   border: none;
   border-radius: 5px;
@@ -683,6 +691,7 @@
   cursor: pointer;
   -webkit-transition: 100ms;
   transition: 100ms;
+  margin-bottom: 10px;
 }
 
 .homePage .addListWrapper form .formAlignment .submitButton:focus {
