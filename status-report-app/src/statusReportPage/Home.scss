@@ -364,19 +364,20 @@ $warning: rgb(192, 12, 12);
         position: absolute;
         bottom: 0;
         top: 0;
+        left: 0;
+        right: 0;
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 2;
-        visibility: hidden;
         form {
             position: relative;
             top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             background-color: $subColor;
             height: max-content;
             width: 20rem;
             min-width: 15rem;
             border-radius: 5px;
-            visibility: hidden;
             display: flex;
             flex-direction: column;
 
@@ -447,14 +448,19 @@ $warning: rgb(192, 12, 12);
     }
     .addContentWrapper {
         position: absolute;
+        left: 0;
+        right: 0;
         bottom: 0;
         top: 0;
+        width: 100%;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 2;
-        visibility: hidden;
+        opacity: 1;
         form {
             position: relative;
             top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             background-color: $subColor;
             padding: 20px 1px;
@@ -466,7 +472,6 @@ $warning: rgb(192, 12, 12);
             flex-direction: column;
             align-items: center;
             row-gap: 20px;
-            visibility: hidden;
             label {
                 font-size: 22px;
                 font-weight: bold;
@@ -523,11 +528,12 @@ $warning: rgb(192, 12, 12);
     //presentation
     .presentationWrapper {
         position: absolute;
+        left: 0;
+        right: 0;
         top: 0;
         bottom: 0;
         overflow: hidden;
         display: grid;
-        visibility: hidden;
         grid-template-areas:
             "cancelButton cancelButton"
             "presentation toDoList";
@@ -773,17 +779,28 @@ $warning: rgb(192, 12, 12);
 }
 //Animations
 .form-left-right-one {
-    animation: left-right-one 500ms ease 1 forwards;
+    // animation: left-right-one 500ms ease 1 forwards;
+
+    visibility: visible;
+    opacity: 1;
 }
 .form-left-right-two {
-    animation: left-right-two 500ms ease 1 forwards;
+    // animation: left-right-two 500ms ease 1 forwards;
+    visibility: visible;
+    opacity: 0;
 }
 
 .wrapper-fade-in {
-    animation: fade-in 500ms ease 1 forwards;
+    // animation: fade-in 500ms ease 1 forwards;
+    visibility: visible;
+    display: block;
+    opacity: 1;
 }
 .wrapper-fade-out {
-    animation: fade-out 500ms ease 1 forwards;
+    // animation: fade-out 500ms ease 1 forwards;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
 @keyframes fade-in {
     from {

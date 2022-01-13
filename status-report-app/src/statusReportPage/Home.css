@@ -539,14 +539,16 @@
   position: absolute;
   bottom: 0;
   top: 0;
+  left: 0;
+  right: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 2;
-  visibility: hidden;
 }
 
 .homePage .addListWrapper form {
   position: relative;
   top: 50%;
+  left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: #52b69a;
@@ -556,7 +558,6 @@
   width: 20rem;
   min-width: 15rem;
   border-radius: 5px;
-  visibility: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -694,16 +695,21 @@
 
 .homePage .addContentWrapper {
   position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   top: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 2;
-  visibility: hidden;
+  opacity: 1;
 }
 
 .homePage .addContentWrapper form {
   position: relative;
   top: 50%;
+  left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: #52b69a;
@@ -725,7 +731,6 @@
       -ms-flex-align: center;
           align-items: center;
   row-gap: 20px;
-  visibility: hidden;
 }
 
 .homePage .addContentWrapper form label {
@@ -831,12 +836,13 @@
 
 .homePage .presentationWrapper {
   position: absolute;
+  left: 0;
+  right: 0;
   top: 0;
   bottom: 0;
   overflow: hidden;
   display: -ms-grid;
   display: grid;
-  visibility: hidden;
       grid-template-areas: "cancelButton cancelButton" "presentation toDoList";
   background-image: -webkit-gradient(linear, left top, right bottom, color-stop(50%, #092841), color-stop(130%, #52b69a));
   background-image: linear-gradient(to right bottom, #092841 50%, #52b69a 130%);
@@ -1202,23 +1208,25 @@
 }
 
 .form-left-right-one {
-  -webkit-animation: left-right-one 500ms ease 1 forwards;
-          animation: left-right-one 500ms ease 1 forwards;
+  visibility: visible;
+  opacity: 1;
 }
 
 .form-left-right-two {
-  -webkit-animation: left-right-two 500ms ease 1 forwards;
-          animation: left-right-two 500ms ease 1 forwards;
+  visibility: visible;
+  opacity: 0;
 }
 
 .wrapper-fade-in {
-  -webkit-animation: fade-in 500ms ease 1 forwards;
-          animation: fade-in 500ms ease 1 forwards;
+  visibility: visible;
+  display: block;
+  opacity: 1;
 }
 
 .wrapper-fade-out {
-  -webkit-animation: fade-out 500ms ease 1 forwards;
-          animation: fade-out 500ms ease 1 forwards;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 @-webkit-keyframes fade-in {
