@@ -62,30 +62,24 @@ function Mtestt (props) {
 
 
         return (
-            <div className='Maccordion'>
-            <Accordion >
+          <li className='Maccordion'>
+          <Accordion >
 
-            <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            >
-            <Typography
-            style={{
-              fontWeight: 4,color:'black'
-            }}
-            >
-            <Mlist alists={loadedData}/>
-            
-            </Typography>
-            </AccordionSummary> 
-            <div className='Subaccordion'>
-            <AccordionDetails>
          
-            <Typography style={{color:'white'}}> </Typography>
           
-            </AccordionDetails></div>
-            </Accordion>
-            </div>
+          <Mlist alists={loadedData}/>
+              
+      
+          
+          {/* <div className='Subaccordion'>
+      
+          <AccordionDetails>
+       
+          <Typography style={{color:'white'}}>Sub Achievement one </Typography>
+        
+          </AccordionDetails></div> */}
+          </Accordion>
+          </li>
   );
 
         };

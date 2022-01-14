@@ -12,7 +12,7 @@ const sqlConnection = createConnection(
     port: 5432,
     username: "postgres",
     password: "2120Ae@$#",
-    database: "test",
+    database: "new",
 
     entities: [
       Achievements,

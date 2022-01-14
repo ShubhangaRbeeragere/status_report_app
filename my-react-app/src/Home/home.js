@@ -1,7 +1,6 @@
 import React from 'react'
 
 import HomeSubAchievement from '../components/Homet/home.subachievement';
-import SubAchievements from '../components/SubAchievement/SubAchievement';
 
 
 export default function Hometest(props) {

@@ -9,7 +9,7 @@ import { SubAchievements } from './SubAchievements';
       @PrimaryGeneratedColumn()
       achievement_id! : number;
 
-      @Column({ type: "varchar", nullable: false ,unique:true})
+      @Column({ type: "varchar", nullable: false ,unique:false})
       achievement_name!: string;    
     
       @Column({ type: "varchar", nullable: false ,unique:false})

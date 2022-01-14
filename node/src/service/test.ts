@@ -7,7 +7,7 @@ export const createADETAIL= async(req: Request, res: Response) => {
     console.log(req.body)
 
     let newData = new Achievements();
-    newData.achievement_name = req.body.achievem;
+    newData.achievement_name = req.body.achievement_name;
     newData.content = req.body.content;
     newData.date = req.body.date;
 

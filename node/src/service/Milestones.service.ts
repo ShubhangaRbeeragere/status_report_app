@@ -6,13 +6,21 @@ import { StructureFORupdate } from '../interface/test.interface';
 ///////--------GET ALL MILESTONES DETAIL---------/////////
 
 
-export const getMILESTONE = async(req: Request, res: Response) =>
-{
-    let getmanager = getManager();
-    let Data = await getmanager.find(Milestones); 
-    console.log(Data);
-    res.status(200).send(Data);
-}
+export const getMilestones = async(req: Request, res: Response) =>{
+    try{
+        let getmanager = getManager();
+        let Data = await getmanager.find(Milestones); 
+        console.log(Data);
+        res.status(200).send(Data);
+    }
+    catch(error: any){
+        console.log(error.message);
+        res.status(400).send(error.message);
+    }
+    
+    }
+    
+    
 export const createMILESTONE = async(req: Request, res: Response) => {
 
     console.log(req.body)

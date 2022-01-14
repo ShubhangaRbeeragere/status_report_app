@@ -2,11 +2,11 @@ import express from "express";
 import { createDETAIL, getDETAIL, getDETAILByDATE } from '../service/Achievements.service';
 import { createSUBS, getSUBS, updateSUBS, deleteSUBS } from '../service/SubAchievements.service';
 
-const subAchievementsRouter = express.Router();
+const subachievementsRouter = express.Router();
 
-subAchievementsRouter.get('/getSUBS', getSUBS);
-subAchievementsRouter.post('/createSUBS', createSUBS);
-subAchievementsRouter.put('/updateSUBS', updateSUBS);
-subAchievementsRouter.delete('/deleteSUBS', deleteSUBS);
+subachievementsRouter.get('/getSUBS', getSUBS);
+subachievementsRouter.post('/createSUBS', createSUBS);
+subachievementsRouter.put('/updateSUBS', updateSUBS);
+subachievementsRouter.delete('/deleteSUBS', deleteSUBS);
 
-export default subAchievementsRouter;
+export default subachievementsRouter;

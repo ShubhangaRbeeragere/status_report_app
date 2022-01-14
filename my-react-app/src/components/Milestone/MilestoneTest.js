@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
-import MAccordion from './Maccordion';
 import './m.css';
 import Milestones from './Milestones';
+import UsingFetch from './Mtest';
 
 
 
 
-function MilestoneTest (props) {
+function MilestoneTest () {
 
 
 
@@ -35,7 +35,7 @@ function MilestoneTest (props) {
 
         <div>
          <div className='AAcordion'>
-         < MAccordion />
+         < UsingFetch />
         
         </div>
 </div>

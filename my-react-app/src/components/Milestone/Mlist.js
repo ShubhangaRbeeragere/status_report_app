@@ -4,19 +4,20 @@ import Mitem from '/home/akhil.e@TA.COM/node-react-project-dec/my-react-app/src/
 function Mlist(props) {
 
     return (
-        <ul className='Alist'>
+        <ui className='Alist'>
+            <li>
             {props.alists.map((alist) => ( 
             
             <Mitem
             key = {alist.id}
             id={alist.milestones_id}
-            achievement={alist.title}
+            title={alist.title}
             content={alist.content}
                 
             />
             ))}
-            
-        </ul>
+            </li>
+        </ui>
     );
 }
 

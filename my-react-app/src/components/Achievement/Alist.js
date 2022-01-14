@@ -10,7 +10,7 @@ function Alist(props) {
             <Aitem 
             key = {alist.id}
             id={alist.achievement_id}
-            achievement={alist.achievement_name}
+            achievement_name={alist.achievement_name}
             content={alist.content}
             date={alist.date}
                 
