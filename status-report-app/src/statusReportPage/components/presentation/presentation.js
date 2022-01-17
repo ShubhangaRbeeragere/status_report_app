@@ -8,7 +8,7 @@ const Presentation = (props) => {
                 type="button"
                 className="cancelButton"
                 onClick={() => {
-                    props.togglePresentation("wrapper-fade-out");
+                    props.togglePresentation(false);
                 }}
             >
                 <i className="fas fa-times"></i>

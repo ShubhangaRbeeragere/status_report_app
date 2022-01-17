@@ -22,23 +22,21 @@ export const HomePage = (params) => {
     const [date, setDate] = useState(new Date());
     //for addList form validation///////////////////////////////////////////////////////////
     const [addList, setAddList] = useState({
-        addListFormClass: "",
-        addListWrapperClass: "",
+        isVisible: false,
         project: "",
         date: "",
         content: "",
     });
     //for addContent form validation///////////////////////////////////////////////////////////
     const [addContent, setAddContent] = useState({
-        addContentFormClass: "",
-        addContentWrapperClass: "",
+        isVisible: false,
         content: "",
         project: "",
     });
 
     //for displaying presentation
     let [presentation, setPresentation] = useState({
-        presentationClass: "",
+        isVisible: false,
         data: null,
     });
 
@@ -77,11 +75,10 @@ export const HomePage = (params) => {
     }
     //function for addList template///////////////////////////////
     //add or cancel the addlist form///////////////////////////////////////////////////////////
-    function toggleAddlist(formClassName, wrapperClassName) {
+    function toggleAddlist(visible) {
         setAddList({
             ...addList,
-            addListFormClass: formClassName,
-            addListWrapperClass: wrapperClassName,
+            isVisible: visible,
             content: "",
             project: "",
             date: new Date().toISOString().substring(0, 10),
@@ -138,8 +135,7 @@ export const HomePage = (params) => {
                 console.log("error occured");
                 setAddList({
                     ...addList,
-                    addListFormClass: "form-left-right-two",
-                    addListWrapperClass: "wrapper-fade-out",
+                    isVisible: false,
                 });
             } else if (response.error) {
                 setLoadPage(false);
@@ -150,8 +146,7 @@ export const HomePage = (params) => {
                 setToDoList([...toDoList, response]);
                 setAddList({
                     ...addList,
-                    addListFormClass: "form-left-right-two",
-                    addListWrapperClass: "wrapper-fade-out",
+                    isVisible: false,
                 });
             }
         };
@@ -164,10 +159,9 @@ export const HomePage = (params) => {
         setAddContent({ ...addContent, project: projectName });
     }
     //add or cancel the contentlist form and also update the project name for future//////////////////
-    function toggleContentlist(projectName, formClassName, wrapperClassName) {
+    function toggleContentlist(projectName, visible) {
         setAddContent({
-            addContentFormClass: formClassName,
-            addContentWrapperClass: wrapperClassName,
+            isVisible: visible,
             project: projectName,
             content: "",
         });
@@ -202,8 +196,7 @@ export const HomePage = (params) => {
                 console.log("error occured");
                 setAddContent({
                     ...addContent,
-                    addContentFormClass: "form-left-right-two",
-                    addContentWrapperClass: "wrapper-fade-out",
+                    isVisible: false,
                 });
             } else if (response.error) {
                 console.log(response.error);
@@ -213,8 +206,7 @@ export const HomePage = (params) => {
                 setLoadPage(false);
                 setAddContent({
                     ...addContent,
-                    addContentFormClass: "form-left-right-two",
-                    addContentWrapperClass: "wrapper-fade-out",
+                    isVisible: false,
                 });
                 let content = response.content;
                 let projectIndex = 0;
@@ -315,14 +307,14 @@ export const HomePage = (params) => {
     }
 
     ///////Presentation///////////////////////////////////////////////
-    async function togglePresentation(className) {
+    async function togglePresentation(visible) {
         let url = "http://localhost:7000/achievement/getAll";
         //when the presentation button is pressed get all the details
-        if (className === "wrapper-fade-in") {
+        if (visible === true) {
             let result = await getAll(url, token);
-            setPresentation({ presentationClass: className, data: result });
+            setPresentation({ isVisible: visible, data: result });
         } else {
-            setPresentation({ ...presentation, presentationClass: className });
+            setPresentation({ ...presentation, isVisible: visible });
         }
     }
 
@@ -373,27 +365,25 @@ export const HomePage = (params) => {
                     />
                 }
 
-                {
+                {addList.isVisible && (
                     <AddList
                         toggleAddList={toggleAddlist}
                         addListInputValidate={addListInputValidate}
                         addListFormValidate={addListFormValidate}
                         addList={addList}
                     />
-                }
-                {
+                )}
+                {addContent.isVisible && (
                     <AddContent
                         addContent={addContent}
                         toggleContentList={toggleContentlist}
                         addContentFormValidate={addContentFormValidate}
                         addContentInputValidate={addContentInputValidate}
                     />
-                }
+                )}
 
-                {
-                    <div
-                        className={`presentationWrapper ${presentation.presentationClass}`}
-                    >
+                {presentation.isVisible && (
+                    <div className="presentationWrapper">
                         <Presentation
                             presentation={presentation}
                             togglePresentation={togglePresentation}
@@ -408,7 +398,7 @@ export const HomePage = (params) => {
                             deleteContent={deleteContentOnclick}
                         />
                     </div>
-                }
+                )}
             </div>
             {notification.isVisible && (
                 <DeleteNotification

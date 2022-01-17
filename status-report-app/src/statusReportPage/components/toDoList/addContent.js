@@ -4,11 +4,8 @@ export const AddContent = (props) => {
     let addContent = props.addContent;
 
     return (
-        <div
-            className={`addContentWrapper ${addContent.addContentWrapperClass}`}
-        >
+        <div className="addContentWrapper">
             <form
-                className={addContent.addContentFormClass}
                 action="#"
                 onSubmit={(e) => {
                     formValidate(e);
@@ -18,11 +15,7 @@ export const AddContent = (props) => {
                     className="cancelButton"
                     type="button"
                     onClick={() => {
-                        props.toggleContentList(
-                            "",
-                            "form-left-right-two",
-                            "wrapper-fade-out"
-                        );
+                        props.toggleContentList("dummy", false);
                     }}
                 >
                     <i className="fas fa-times"></i>
