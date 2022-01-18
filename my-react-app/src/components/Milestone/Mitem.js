@@ -1,18 +1,39 @@
-import React from 'react';
 
+// function Mitem(props) {
 
-function Mitem(props) {
+//     const title = props.title;
+//     const content = props.content;
 
-    const title = props.title;
-    const content = props.content;
-
-    return <div>
+//     return <div>
         
-          <h4>{title}</h4>          
+//           <h4>{title}</h4>          
           
-          <h5>{content}</h5>
-          <button className='deleteButton'>X</button>
-          </div>
+//           <h5>{content}</h5>
+        
+//           </div>
+// }
+const User = ({id,title,content,onDelete}) => {
+
+    const handleDelete = () => {
+        onDelete(id);
+    }
+
+    return (
+        <div className='list'>
+            <span>{title}</span>
+            <span>{content}</span>
+            <span>
+                <button>edit</button>
+                <button onClick={handleDelete}>delete</button>
+            </span>
+        </div>
+    )
 }
 
-export default Mitem;
+export default User
+
+
+
+
+
+// export default Mitem;

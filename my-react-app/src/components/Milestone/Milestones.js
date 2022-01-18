@@ -12,7 +12,7 @@ export default function Milestones (props) {
     content: "",
   
   };
-  
+ 
   
     const [values, setValues] = useState(initialValues);
 
@@ -58,10 +58,7 @@ export default function Milestones (props) {
   return "error";
   }
   }
-  
 
-      
-     
       const onAddData = (e) => {
 
 

@@ -3,6 +3,7 @@ import Mitem from '/home/akhil.e@TA.COM/node-react-project-dec/my-react-app/src/
 
 function Mlist(props) {
 
+
     return (
         <ui className='Alist'>
             <li>
@@ -13,7 +14,7 @@ function Mlist(props) {
             id={alist.milestones_id}
             title={alist.title}
             content={alist.content}
-                
+        
             />
             ))}
             </li>

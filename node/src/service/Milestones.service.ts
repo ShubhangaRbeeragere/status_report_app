@@ -99,14 +99,14 @@ export const UpdateMILESTONES = async function(req: Request, res: Response){
 export const deleteMILESTONE = async(req: Request, res: Response) => {
     let manager = getManager();
     try{
-        let deletemilestone = await manager.findOne(Milestones,
+        let deletemilestone = await manager.find(Milestones,
             {
 
-                title : req.body.title,
+                milestone_id : req.body.id,
 
             });
         if(deletemilestone === undefined){
-            throw new Error("Data Doesn't Exist");
+            throw new Error("Data Doesn't Exist,yes");
         }
         await manager.remove(deletemilestone);
         console.log("Data Deleted");
@@ -114,7 +114,7 @@ export const deleteMILESTONE = async(req: Request, res: Response) => {
     } 
     catch(error: any){
         res.status(400).send(error.message);
-        console.log(error.message);
+        console.log(error.mesbodysage);
     }
 }
 
