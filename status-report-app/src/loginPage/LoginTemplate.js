@@ -9,6 +9,7 @@ const LoginTemplate = ({ userInput, formValidation, updateInputs, error }) => {
                     type="text"
                     name="username"
                     value={userInput.username}
+                    maxLength={23}
                     onChange={updateInputs}
                     placeholder="Username"
                     autoFocus
@@ -17,6 +18,7 @@ const LoginTemplate = ({ userInput, formValidation, updateInputs, error }) => {
                 <input
                     type="password"
                     name="password"
+                    maxLength={16}
                     value={userInput.password}
                     onChange={updateInputs}
                     placeholder="Password"
