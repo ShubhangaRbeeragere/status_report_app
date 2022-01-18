@@ -14,6 +14,7 @@ import LoginError from "./components/Messages/loginError";
 import StatusMessage from "./components/Messages/httpStatusMessage";
 import Presentation from "./components/presentation/presentation";
 import DeleteNotification from "./components/Messages/deleteNotification";
+import { DisplayToDoList } from "./components/toDoList/displayToDoList";
 import "./Home.css";
 
 export const HomePage = (params) => {
@@ -389,14 +390,7 @@ export const HomePage = (params) => {
                             togglePresentation={togglePresentation}
                             getPresentation={getPresentation}
                         />
-                        <ToDoList
-                            toDoList={toDoList}
-                            toggleAddList={toggleAddlist}
-                            toggleContentlist={toggleContentlist}
-                            updateProjectName={updateProjectName}
-                            toggleDeleteNotification={toggleDeleteNotification}
-                            deleteContent={deleteContentOnclick}
-                        />
+                        <DisplayToDoList toDoList={toDoList} />
                     </div>
                 )}
             </div>

@@ -546,6 +546,8 @@ $warning: rgb(192, 12, 12);
         bottom: 0;
         overflow: hidden;
         display: grid;
+        justify-content: center;
+        gap: 0;
         grid-template-areas:
             "cancelButton cancelButton"
             "presentation toDoList";
@@ -566,14 +568,14 @@ $warning: rgb(192, 12, 12);
                 display: none;
             }
             color: white;
-            width: 50rem;
+            width: 70vw;
+            height: 90vh;
             background-color: rgba(white, 0.1);
             text-align: center;
             border: none;
             border-radius: 10px;
             margin: 5px;
             grid-area: presentation;
-            height: 90vh;
             .achievement {
                 border: none;
                 margin: 10px;
@@ -648,10 +650,13 @@ $warning: rgb(192, 12, 12);
         }
         //toDoList par////////////////////////////////////////////////////
         .toDoList {
-            width: 20rem;
             grid-area: toDoList;
             height: 90vh;
-            animation: none;
+            width: 28vw;
+            .itemWrapper .item .content li {
+                min-width: 250px;
+                max-width: 250px;
+            }
         }
         .cancelButton {
             @include createButton(
