@@ -9,15 +9,5 @@ export const DisplayContent = (props) => {
             ))}
         </ul>
     );
-    return (
-        <div className="content">
-            {props.contentArray.length === 0 ? (
-                <span className="message">
-                    Press The Below Button To Add Issue
-                </span>
-            ) : (
-                content
-            )}
-        </div>
-    );
+    return <div className="content">{content}</div>;
 };
