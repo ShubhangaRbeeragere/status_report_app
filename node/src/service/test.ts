@@ -24,3 +24,25 @@ export const createADETAIL= async(req: Request, res: Response) => {
     }
 }
 
+
+// export const deleteData = async(req: Request, res: Response) => {
+//     let receivedData: personalDetailsLayout.mailAndName = req.body;
+//     let deleteInstitution: number[] = [];
+//     let deleteDegree: number[] = [];
+//     let deleteCourse: number[] = [];
+
+//     let manager = getManager();
+//     try{
+//         //get the applicant
+//         const applicant = await manager.findOne(ApplicantDetails, {email_address: receivedData.emailAddress});
+//         if(applicant === undefined){
+//             throw new Error("GET: user doesn't exist");
+//         }
+//         //remove previous employment
+//         let employeeData = await manager.find(PreviousEmployment, 
+//             {
+//                 where: {applicant_id_fk: applicant}
+//             })
+//         employeeData.forEach(async(employee) => {
+//             await manager.remove(employee);
+//         })

@@ -1,17 +1,4 @@
 
-// function Mitem(props) {
-
-//     const title = props.title;
-//     const content = props.content;
-
-//     return <div>
-        
-//           <h4>{title}</h4>          
-          
-//           <h5>{content}</h5>
-        
-//           </div>
-// }
 const User = ({id,title,content,onDelete}) => {
 
     const handleDelete = () => {
@@ -20,17 +7,18 @@ const User = ({id,title,content,onDelete}) => {
 
     return (
         <div className='list'>
+           
             <span>{title}</span>
             <span>{content}</span>
             <span>
                 <button>edit</button>
-                <button onClick={handleDelete}>delete</button>
+                <button onClick={handleDelete} className="fas fa trash"></button>
             </span>
         </div>
     )
 }
 
-export default User
+export default User;
 
 
 

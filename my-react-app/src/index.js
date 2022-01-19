@@ -1,11 +1,10 @@
 import ReactDOM from 'react-dom';
-import Apptest from './components/Milestone/Mtest';
-
+import App from './App';
 
 
 ReactDOM.render(
 
-    <Apptest />,
+    <App />,
 
   document.getElementById('root')
 );

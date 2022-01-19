@@ -1,5 +1,5 @@
 import express from "express";
-import { createMILESTONE, updateMILESTONE, deleteMILESTONE, getMilestones} from '../service/Milestones.service';
+import { createMILESTONE, updateMILESTONE, getMilestones,deleteMILESTONE } from '../service/Milestones.service';
 
 const milestonesRouter = express.Router();
 

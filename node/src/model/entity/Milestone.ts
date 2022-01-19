@@ -13,6 +13,9 @@ import {PrimaryGeneratedColumn,
     
       @Column({ type: "varchar", nullable: false ,unique:false})
       content!: string;   
+
+ 
+    
       
       @ManyToOne(type => Achievements, achievements => achievements.milestones_key)
       @JoinColumn()

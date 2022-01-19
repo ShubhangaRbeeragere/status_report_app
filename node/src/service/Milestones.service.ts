@@ -1,4 +1,4 @@
-import {getManager} from "typeorm";
+import {getConnection, getManager} from "typeorm";
 import {Response, Request} from "express";
 import { Milestones } from '../model/entity/Milestone';
 import { StructureFORupdate } from '../interface/test.interface';
@@ -102,19 +102,45 @@ export const deleteMILESTONE = async(req: Request, res: Response) => {
         let deletemilestone = await manager.find(Milestones,
             {
 
-                milestone_id : req.body.id,
+                 milestone_id: req.body.id,
 
             });
         if(deletemilestone === undefined){
             throw new Error("Data Doesn't Exist,yes");
         }
-        await manager.remove(deletemilestone);
-        console.log("Data Deleted");
-        res.status(200).send("Data Deleted");
-    } 
+        await manager.remove(deletemilestone)
+        .then(
+            () => {
+                console.log("deleted the applicant data")
+                res.status(200).send("deleted the data");
+            }
+        )
+        .catch(err => {console.log(err.message)})
+    }
     catch(error: any){
-        res.status(400).send(error.message);
-        console.log(error.mesbodysage);
+       console.log(error.message);
+       res.status(200).send(error.message);
     }
 }
 
+
+export const deleteMilestones = async (req: Request, res: Response, next: any) => {
+    try {
+      const data = await getConnection()
+        .createQueryBuilder()
+        .update(Milestones)
+        .set({
+            title : '' ,
+            content:''
+           
+          })
+        .where({ milestone_id: req.body.id })
+        .execute();
+      res.status(200).json({ data });
+    } catch (error:any) {
+        console.log(error.message);
+        res.status(400).send(error.message);
+    }
+  };
+
+  
