@@ -7,6 +7,13 @@ export default function Milestones (props) {
 
   const closeMilestones = props.closeMilestones;
 
+
+  
+    const refreshPage = () =>{
+      window.location.reload(false);
+    }
+    
+
   const initialValues = {
     title: "",
     content: "",
@@ -85,7 +92,7 @@ export default function Milestones (props) {
             </div>
      
             <div>
-          <button className='Mbuttons' >SUBMIT  </button>
+          <button className='Mbuttons' onClick={refreshPage}>SUBMIT  </button>
 
         </div>
     

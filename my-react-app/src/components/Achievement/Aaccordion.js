@@ -1,92 +1,92 @@
-import React,{useState,useEffect} from 'react';
-import Alist from './Alist';
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import './Achievements.css'
+// import React,{useState,useEffect} from 'react';
+// import Alist from './Alist';
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// import Accordion from "@material-ui/core/Accordion";
+// import AccordionDetails from "@material-ui/core/AccordionDetails";
+// import Typography from "@material-ui/core/Typography";
+// import AccordionSummary from "@material-ui/core/AccordionSummary";
+// import './Achievements.css'
 
 
-export default function AAccordion (props) {
+// export default function AAccordion (props) {
 
-function Atestt (props) {
+// function Atestt (props) {
     
-  }
-    const [loading,setLoading] = useState(true);
-    const [loadedData,setLoadedData] = useState([]);
+//   }
+//     const [loading,setLoading] = useState(true);
+//     const [loadedData,setLoadedData] = useState([]);
   
-    useEffect(() => {
-      setLoading(true);
+//     useEffect(() => {
+//       setLoading(true);
   
-      fetch('http://localhost:8080/achievements/getDETAIL'
-  ).then((response) => {
-      return response.json();
-  })
-    .then((data)    => {
+//       fetch('http://localhost:8080/achievements/getDETAIL'
+//   ).then((response) => {
+//       return response.json();
+//   })
+//     .then((data)    => {
 
-      const alists = [];
-      for (const key in data){
+//       const alists = [];
+//       for (const key in data){
 
-          const alist = {
+//           const alist = {
 
-            id:key,
-            ...data[key]
+//             id:key,
+//             ...data[key]
 
-          };
+//           };
 
-          alists.push(alist);
+//           alists.push(alist);
 
-      }
+//       }
 
 
-      setLoading(false);
-      setLoadedData(alists);
-  });
+//       setLoading(false);
+//       setLoadedData(alists);
+//   });
   
   
-    },[]);
+//     },[]);
 
-      if (loading) {
-          <section>
+//       if (loading) {
+//           <section>
 
-              <p>Loading....</p>
+//               <p>Loading....</p>
 
-          </section>
+//           </section>
 
-      }
-
-
+//       }
 
 
 
 
-        return (
-            <div className='accordion'>
-            <Accordion >
 
-            <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            >
-            <Typography
-            style={{
-              fontWeight: 4,color:'black'
-            }}
-            >
-            <Alist alists={loadedData}/>
+
+//         return (
+//             <div className='accordion'>
+//             <Accordion >
+
+//             <AccordionSummary
+//             expandIcon={<ExpandMoreIcon />}
+//             aria-controls="panel1a-content"
+//             >
+//             <Typography
+//             style={{
+//               fontWeight: 4,color:'black'
+//             }}
+//             >
+//             <Alist alists={loadedData}/>
             
-            </Typography>
-            </AccordionSummary> 
-            <div className='Subaccordion'>
-            <AccordionDetails>
+//             </Typography>
+//             </AccordionSummary> 
+//             <div className='Subaccordion'>
+//             <AccordionDetails>
          
-            <Typography style={{color:'white'}}>Sub Achievement one </Typography>
+//             <Typography style={{color:'white'}}>Sub Achievement one </Typography>
           
-            </AccordionDetails></div>
-            </Accordion>
-            </div>
-  );
+//             </AccordionDetails></div>
+//             </Accordion>
+//             </div>
+//   );
 
-        };
+//         };
 

@@ -112,6 +112,11 @@ export const deleteMILESTONE = async(req: Request, res: Response) => {
         .then(
             () => {
                 console.log("deleted the applicant data")
+                res.status(200).json({ 
+                    title: req.body.title,
+                    content: req.body.content,
+                   
+                });
                 res.status(200).send("deleted the data");
             }
         )

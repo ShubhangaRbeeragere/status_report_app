@@ -255,3 +255,36 @@ export const deleteDetail = async(req: Request, res: Response) => {
        res.status(200).send(error.message);
     }
 }
+
+export const deleteA = async(req: Request, res: Response) => {
+    let manager = getManager();
+    try{
+        let deleteachievement = await manager.find(Achievements,
+            {
+
+                 achievement_id: req.body.id,
+
+            });
+        if(deleteachievement === undefined){
+            throw new Error("Data Doesn't Exist,yes");
+        }
+        await manager.remove(deleteachievement)
+        .then(
+            () => {
+                console.log("deleted the applicant data");
+                res.status(200).json({ 
+                    achievement_name: req.body.achievement_name,
+                    content: req.body.content,
+                    date: req.body.date,
+                   
+                });
+                res.status(200).send("deleted the data");
+            }
+        )
+        .catch(err => {console.log(err.message)})
+    }
+    catch(error: any){
+       console.log(error.message);
+       res.status(200).send(error.message);
+    }
+}

@@ -1,27 +1,35 @@
 
-const User = ({id,title,content,onDelete}) => {
+import './m.css'
+
+
+const Mitem = ({id,Mkey,title,content,onDelete}) => {
 
     const handleDelete = () => {
         onDelete(id);
+        window.location.reload(false);
     }
 
+
     return (
-        <div className='list'>
-           
-            <span>{title}</span>
-            <span>{content}</span>
+        <li className='list' key={Mkey}>
+         
+            <span className="titlespan">{title}</span>
+            <br></br>
+          
+            <span className="contentspan">{content}</span>
             <span>
-                <button>edit</button>
-                <button onClick={handleDelete} className="fas fa trash"></button>
+                <div className="listedit">
+                 </div>
+                <div className="listdelete">
+                    <button onClick={handleDelete} className="deletelist">D e l e t e</button>
+                </div>
+                
+               
             </span>
-        </div>
+        </li>
     )
 }
 
-export default User;
+export default Mitem;
 
 
-
-
-
-// export default Mitem;

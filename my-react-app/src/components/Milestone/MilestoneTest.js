@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import './m.css';
 import Milestones from './Milestones';
-import UsingFetch from './Mtest';
+import Apptest from './Mtest';
+
 
 
 
@@ -35,13 +36,13 @@ function MilestoneTest () {
 
         <div>
          <div className='AAcordion'>
-         < UsingFetch />
+         < Apptest />
         
         </div>
 </div>
       <div >
 
-      <button className="Mbutton"  onClick={()=>{setOpenMilestones(true)}}>ADD</button> 
+      <button className="Mbutton"  onClick={()=>{setOpenMilestones(true)}}>+</button> 
         {openMilestones &&  <Milestones  closeMilestones={setOpenMilestones} onAddData={addDataHandler} />}
       </div>
 

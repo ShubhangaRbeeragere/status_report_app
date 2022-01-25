@@ -1,7 +1,7 @@
-import React,{useState,useEffect} from 'react';
-import './Achievements.css';
+import React,{useState} from 'react';
+import './A.css';
 import Achievements from './Achievement';
-import AAccordion from './Aaccordion';
+import Apptest from './Atest';
 
 
 
@@ -16,17 +16,17 @@ function AchievementTest(props) {
 
    
     return (
-        <div className='Ahome'>
+        <div className='Mhome'>
 
         <div>
          <div className='AAcordion'>
-         < AAccordion />
+         < Apptest />
         
         </div>
 </div>
       <div >
 
-      <button className="Abutton"  onClick={()=>{setOpenAchievements(true)}}>ADD</button> 
+      <button className="Abutton"  onClick={()=>{setOpenAchievements(true)}}>+</button> 
         {openAchievements &&  <Achievements  closeAchievements={setOpenAchievements}  />}
       </div>
 

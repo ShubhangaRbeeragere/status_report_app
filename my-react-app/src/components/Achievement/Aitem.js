@@ -1,21 +1,35 @@
-import React from 'react'
 
-function Aitem(props) {
+import './A.css'
 
-    const name = props.achievement_name;
-    const content = props.content;
-    const date = props.date;
 
-    return <div>
-        
-          <h4>{name}</h4>
-          <h5>{content}</h5>
-         
-          <h7>{date}</h7>
+const Aitem = ({id,Akey,achievement_name,content,onDelete}) => {
 
-     
-       
-        </div>
+    const handleDelete = () => {
+
+        onDelete(id);
+        window.location.reload(false);
+    }
+
+    return (
+        <li className='Alist' key={Akey}>
+           
+            <span className="titlespan2">{achievement_name}</span>
+            <br></br>
+          
+            <span className="contentspan2">{content}</span>
+            <span>
+                <div className="listedit">
+                 </div>
+                <div className="listdelete">
+                    <button onClick={handleDelete} className="deletelist">D e l e t e</button>
+                </div>
+                
+               
+            </span>
+        </li>
+    )
 }
 
 export default Aitem;
+
+

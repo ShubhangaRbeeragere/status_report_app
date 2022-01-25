@@ -2,7 +2,7 @@
 
 position: absolute;
 left: 0% ;
-top: 10px;
+top: -8%;
 
 }
 .MT {
@@ -15,16 +15,18 @@ top: 10px;
 
 .SelectMilestones {
 
-background-color: rgb(23, 198, 241);
+background-color: rgb(255, 255, 255);
 position: absolute;
 top: 19%;
 left: 30%;
-width: 340px;
+width: 385px;
 height: 60px;
 cursor: pointer;
 border-radius: 15px;
 border-start-start-radius: 0px;
 border-bottom-left-radius: 0px;
+border: 6px solid rgb(255, 255, 255);
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
 
@@ -33,19 +35,26 @@ border-bottom-left-radius: 0px;
 
     background-color: #fff;
 }
+
+.SelectMilestones:focus{
+
+    color: white;
+    background-color: rgb(245, 80, 80);
+}
 .SelectAchievements{
 
-    background-color: rgb(23, 198, 241);
+    background-color: white;
     position: absolute;
     top: 19%;
-    left: 6%;
-    width: 340px;
+    left: 3.5%;
+    width: 385px;
     height: 60px;
-cursor: pointer;
-border-radius: 15px;
-border-bottom-right-radius: 0px;
-border-top-right-radius: 0px;
-    
+    cursor: pointer;
+    border-radius: 15px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 6px solid rgb(255, 255, 255);
     }
 
 .SelectAchievements:hover{
@@ -56,5 +65,44 @@ border-top-right-radius: 0px;
 
 
 .SelectAchievements::selection {
-        color:white;
+        color:rgb(23, 198, 241);
+   
       }
+
+.SelectAchievements:focus {
+    background-color: rgb(23, 198, 241);
+    color: white;
+}
+
+.SelectAchievements:active {
+    background-color:rgb(23, 198, 241);
+}
+
+.header {
+
+    background-color: rgba(2, 27, 73, 0.753);
+    width: 98%;
+    height: 35px;
+    margin-top: 0%;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 25px;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    text-align:left;
+    padding: 15px;
+    border: 10px solid rgb(0, 66, 121);
+    
+  box-shadow: 0px 0px 8px 10px #2e2e2e;
+  margin-left: -10px;
+
+
+
+
+
+}
+
+.header::first-letter {
+    font-size: 140%;
+    color: rgba(2, 27, 73, 0.753);;
+  }

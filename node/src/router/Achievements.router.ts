@@ -1,5 +1,5 @@
 import express from "express";
-import { getDETAIL, getDETAILByDATE, updateDETAIL, deleteDETAIL, getAllDETAIL, UpdateDETAILS, getALLDETAILByDATE } from '../service/Achievements.service';
+import { getDETAIL, getDETAILByDATE, updateDETAIL, deleteDETAIL, getAllDETAIL, UpdateDETAILS, getALLDETAILByDATE, deleteA } from '../service/Achievements.service';
 import { createDETAIL } from '../service/Achievements.service';
 import { deleteDetail } from '../service/Achievements.service';
 import { createADETAIL } from "../service/test";
@@ -15,6 +15,7 @@ achievementsRouter.post('/createDETAIL', createDETAIL);
 achievementsRouter.put('/updateDETAIL', updateDETAIL);
 achievementsRouter.put('/updateDETAILS', UpdateDETAILS);
 achievementsRouter.delete('/deleteDetail', deleteDetail);
+achievementsRouter.delete('/deleteA', deleteA);
 achievementsRouter.post('/createADETAIL', createADETAIL);
 
 

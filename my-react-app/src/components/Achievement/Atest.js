@@ -1,20 +1,19 @@
 import {useState,useEffect} from 'react';
-import './m.css'
-import User from './Mitem';
+import './A.css';
 import deleteData from '../test/deleteData';
-import Mitem from './Mitem';
+import Aitem from './Aitem';
 
-
-const Apptest = () => {
+const Apptest = () => { 
   const [users, setUsers] = useState([]);
-  useEffect(() => {
+  useEffect(() => {   
     fetchData();
+
     
 
   }, []);
 
   const fetchData = async () => {
-    await fetch("http://localhost:8080/milestones/getMilestones")
+    await fetch("http://localhost:8080/achievements/getDetail")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => {
@@ -29,24 +28,23 @@ const Apptest = () => {
    };
     
     let deleteDatas = async () => {
-
+        
+     
         let response = await deleteData(
-            "http://localhost:8080/milestones/deleteM",
+            "http://localhost:8080/achievements/deleteA",
             jsonData
         );
         if (response === "error") {
-            
             console.log("deleteData: error occured");
         } else if (response.error) {
           
+       
             console.log(response.error);
         } else {
-          
-            
+     
        
         } };
-          deleteDatas(); 
-         }
+          deleteDatas();  }
 
 
     //       const [title, setTitle] = useState('');
@@ -64,7 +62,7 @@ const Apptest = () => {
     //         title: title,
     //         content: content
     //       }
-    //       axios.put('http://localhost:8080/milestones/updateMILESTONE', data).then(res => {
+    //       axios.put('http://localhost:8080/achievements/updateDetail', data).then(res => {
     //         setUsers(res.data);
     //         setTitle('');
     //         setContent('');
@@ -78,27 +76,26 @@ const Apptest = () => {
     //     const updateMilestone = (milestone_id,updatedMilestone) => {
     //       setUsers(users.map((user)=> user.id === milestone_id ? updatedMilestone : user))
     //   }
-    // const updateMilestone = (id,updatedMilestone) => {
-    //         setUsers(users.map((user)=> user.id === id ? updatedMilestone : user))
-    //     }
 
   return (
     <div className="mtest">
   
 
-      
+      <div>
         {users.map(user => (
-          <Mitem 
-           Mkey={user.id}   
-            id={user.milestone_id} 
-                  
-            title = {user.title}         
+          <Aitem
+            Akey={user.id}
+            id={user.achievement_id}
+            achievement_name = {user.achievement_name}         
             content={user.content}
+            date={user.date}
             onDelete={deleteOnclick}  
-    
+          
+
+        
           />
         ))}
-   
+      </div>
     </div>
   );
 };

@@ -1,18 +1,5 @@
 import deleteData from '../test/deleteData';
 import {useState} from 'react'
-// function Mitem(props) {
-
-//     const title = props.title;
-//     const content = props.content;
-
-//     return <div>
-        
-//           <h4>{title}</h4>          
-          
-//           <h5>{content}</h5>
-        
-//           </div>
-// }
 
 export default function Testfortest(id,title,content,deletebutton) {
        
@@ -24,11 +11,6 @@ export default function Testfortest(id,title,content,deletebutton) {
        
 function DeleteOnclick( ) {
 
-
-
-
-    
-    //delete the project and remove the item only when succeeds
     let deleteDatas = async () => {
         setUserss(true);
         let response = await deleteData(

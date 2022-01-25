@@ -6,6 +6,11 @@ export default function Achievements (props) {
 
   const closeAchievements = props.closeAchievements;
 
+  const refreshPage = () =>{
+    window.location.reload(false);
+  }
+  
+
   const initialValues = {
     achievement_name: "",
     content: "",
@@ -114,7 +119,7 @@ export default function Achievements (props) {
             </div>
      
             <div>
-          <button className='buttons' >SUBMIT  </button>
+          <button className='buttons' onClick={refreshPage}>SUBMIT  </button>
 
         </div>
     
