@@ -81,7 +81,7 @@ const Apptest = () => {
     <div className="mtest">
   
 
-      <div>
+    
         {users.map(user => (
           <Aitem
             Akey={user.id}
@@ -95,7 +95,7 @@ const Apptest = () => {
         
           />
         ))}
-      </div>
+
     </div>
   );
 };

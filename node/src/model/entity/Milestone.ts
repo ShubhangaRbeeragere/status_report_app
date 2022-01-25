@@ -8,7 +8,7 @@ import {PrimaryGeneratedColumn,
       @PrimaryGeneratedColumn()
       milestone_id! : number;
 
-      @Column({ type: "varchar", nullable: false ,unique:true})
+      @Column({ type: "varchar", nullable: false ,unique:false})
       title!: string;    
     
       @Column({ type: "varchar", nullable: false ,unique:false})

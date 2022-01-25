@@ -4,6 +4,8 @@ import './Achievements.css';
 
 export default function Achievements (props) {
 
+  const [achievement,setAchievement] = useState(true);
+
   const closeAchievements = props.closeAchievements;
 
   const refreshPage = () =>{

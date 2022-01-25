@@ -1,6 +1,5 @@
 import {useState,useEffect} from 'react';
 import './m.css'
-import User from './Mitem';
 import deleteData from '../test/deleteData';
 import Mitem from './Mitem';
 
@@ -41,7 +40,7 @@ const Apptest = () => {
           
             console.log(response.error);
         } else {
-          
+          console.log("successfully deleted");
             
        
         } };
