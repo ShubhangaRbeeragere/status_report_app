@@ -10,7 +10,7 @@ export default async function deleteData(url, jsonData) {
         
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      redirect: "follow",
+      
       referrerPolicy: "no-referrer",
       body: JSON.stringify(jsonData),
     });

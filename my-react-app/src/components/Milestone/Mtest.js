@@ -4,22 +4,43 @@ import deleteData from '../test/deleteData';
 import Mitem from './Mitem';
 
 
-const Apptest = () => {
+function Apptest () { 
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    fetchData();
+    getData();
+
+    // we will use async/await to fetch this data
+    async function getData() {
+      const response = await fetch("http://localhost:8080/milestones/getMilestones");
+      const data = await response.json();
+
+      // store the data into our books variable
+      setUsers(data) ;
+    }
+  }, [users]); // <- you may need to put the setBooks function in this array
+  // useEffect(() => {
+  //   fetchData();
     
 
-  }, []);
+  // }, []);
 
-  const fetchData = async () => {
-    await fetch("http://localhost:8080/milestones/getMilestones")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const fetchData = async () => {
+  //   await fetch("http://localhost:8080/milestones/getMilestones")
+  //     .then((res) => res.json())
+  //     .then((data) => setUsers(data))
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // async function fetchData() {
+  //   const response = await fetch("http://localhost:8080/milestones/getMilestones");
+  //   const data = await response.json();
+
+  //   // store the data into our books variable
+  //   setUsers(data) ;
+  // }
 
   const deleteOnclick =  (id)  => {
     let jsonData = {
@@ -48,39 +69,7 @@ const Apptest = () => {
          }
 
 
-    //       const [title, setTitle] = useState('');
-    //       const [content, setContent] = useState('');
-    //       const [loading, setLoading] = useState(false);
-    //       const [isError, setIsError] = useState(false);
    
-         
-    //  const updateOnclick = (title,content)=> {
-       
-
-    //       setLoading(true);
-    //       setIsError(false);
-    //       const data = {
-    //         title: title,
-    //         content: content
-    //       }
-    //       axios.put('http://localhost:8080/milestones/updateMILESTONE', data).then(res => {
-    //         setUsers(res.data);
-    //         setTitle('');
-    //         setContent('');
-    //         setLoading(false);
-    //       }).catch(err => {
-    //         setLoading(false);
-    //         setIsError(true);
-    //       });
-    //     }
-
-    //     const updateMilestone = (milestone_id,updatedMilestone) => {
-    //       setUsers(users.map((user)=> user.id === milestone_id ? updatedMilestone : user))
-    //   }
-    // const updateMilestone = (id,updatedMilestone) => {
-    //         setUsers(users.map((user)=> user.id === id ? updatedMilestone : user))
-    //     }
-
   return (
     <div className="mtest">
   
@@ -88,9 +77,8 @@ const Apptest = () => {
       
         {users.map(user => (
           <Mitem 
-           Mkey={user.id}   
-            id={user.milestone_id} 
-                  
+            Mkey={user.id}   
+            id={user.milestone_id}     
             title = {user.title}         
             content={user.content}
             onDelete={deleteOnclick}  

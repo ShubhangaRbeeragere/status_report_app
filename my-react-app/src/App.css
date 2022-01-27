@@ -106,3 +106,13 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
     font-size: 140%;
     color: rgba(2, 27, 73, 0.753);;
   }
+
+  .getdate {
+
+
+    position: fixed;
+    top:-10%;
+    left: 80%;
+    width: 350px;
+    height: 400px;
+  }

@@ -7,7 +7,7 @@ const Aitem = ({id,Akey,achievement_name,content,onDelete}) => {
     const handleDelete = () => {
 
         onDelete(id);
-        window.location.reload(false);
+        // window.location.reload(false);
     }
 
     return (

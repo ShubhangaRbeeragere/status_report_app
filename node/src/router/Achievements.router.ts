@@ -8,7 +8,7 @@ import { createADETAIL } from "../service/test";
 const achievementsRouter = express.Router();
 
 achievementsRouter.get('/getDETAIL', getDETAIL);
-achievementsRouter.get('/getALLDETAIL', getAllDETAIL);
+achievementsRouter.get('/getAllDetail', getAllDETAIL);
 achievementsRouter.get('/getDETAILByDATE', getDETAILByDATE);
 achievementsRouter.get('/getALLDETAILByDATE', getALLDETAILByDATE);
 achievementsRouter.post('/createDETAIL', createDETAIL);

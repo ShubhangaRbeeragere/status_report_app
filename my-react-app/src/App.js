@@ -2,25 +2,24 @@ import React,{useState} from 'react';
 import AchievementTest from './components/Achievement/AchievementTest';
 import MilestoneTest from './components/Milestone/MilestoneTest';
 import './App.css'
-import Header from './components/header/header';
-
-
-
-
+import AHeader from './components/header/Aheader';
 
 
 function App() {
 
-
   const [openMilestone,setOpenMilestone] = useState(false);
   const [openAchievements,setOpenAchievements] = useState(true);
  
+
   return (
     <div>
       <div className='header'>
-        <Header/>
+        <AHeader/>
       </div>
-      
+      {/* <div  className='getdate'>
+        <GetByDate/>
+      </div>
+       */}
       
       <button className='SelectMilestones' onClick={() => {
       setOpenMilestone(true);

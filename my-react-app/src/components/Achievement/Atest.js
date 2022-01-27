@@ -10,7 +10,7 @@ const Apptest = () => {
 
     
 
-  }, []);
+  }, [users]);
 
   const fetchData = async () => {
     await fetch("http://localhost:8080/achievements/getDetail")

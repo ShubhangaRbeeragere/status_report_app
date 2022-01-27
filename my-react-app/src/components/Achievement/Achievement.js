@@ -9,7 +9,7 @@ export default function Achievements (props) {
   const closeAchievements = props.closeAchievements;
 
   const refreshPage = () =>{
-    window.location.reload(false);
+    // window.location.reload(false);
   }
   
 

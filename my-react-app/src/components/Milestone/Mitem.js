@@ -6,7 +6,8 @@ const Mitem = ({id,Mkey,title,content,onDelete}) => {
 
     const handleDelete = () => {
         onDelete(id);
-        window.location.reload(false);
+        //window.location.reload();
+        //e.preventDefault();
     }
 
 
