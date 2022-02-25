@@ -1,5 +1,4 @@
 export const DisplayContent = (props) => {
-    console.log(props.contentArray.length);
     let content = (
         <ul>
             {props.contentArray.map((contentData) => (
